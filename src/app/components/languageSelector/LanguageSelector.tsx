@@ -3,13 +3,14 @@
 import React, { useCallback } from 'react';
 import { usePathname, useRouter, useParams } from 'next/navigation';
 
-const LanguageSelector = () => {
+interface ILanguageSelectorProps {
+  languages: { [key: string]: string },
+}
+
+const LanguageSelector = ({ languages }: ILanguageSelectorProps) => {
   const pathname = usePathname();
   const { push } = useRouter();
   const { locale } = useParams();
-
-  const labelEnglish = locale === 'en' ? 'english' : 'inglés';
-  const labelSpanish = locale === 'en' ? 'spanish' : 'español';
 
   const handleLanguageChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>): void => {
     const pathWithoutLocale = pathname.replace(`/${locale as string}`, '');
@@ -18,8 +19,8 @@ const LanguageSelector = () => {
 
   return (
     <select onChange={handleLanguageChange} value={locale}>
-      <option value='en'>{labelEnglish}</option>
-      <option value='es'>{labelSpanish}</option>
+      <option value='en'>{languages?.english}</option>
+      <option value='es'>{languages?.spanish}</option>
     </select>
   )
 }

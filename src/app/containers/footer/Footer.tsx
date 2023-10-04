@@ -1,4 +1,3 @@
-import { useCallback } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
@@ -10,6 +9,11 @@ import LanguageSelector from '@/app/components/languageSelector/LanguageSelector
  */
 export default function Footer() {
   const labels = useTranslations('footer');
+  const labelsLanguage = useTranslations('language');
+  const languages = {
+    english: labelsLanguage('en'),
+    spanish: labelsLanguage('es'),
+  };
 
   return (
     <footer className={styles.wrapper}>
@@ -21,15 +25,15 @@ export default function Footer() {
       <div className={styles.column}>
         <div className={styles.subcolumn}>
           <h3>{labels('product')}</h3>
-          <a>{labels('all-jobs')}</a>
+          <a>{labels('all_jobs')}</a>
           <a>{labels('companies')}</a>
           <a>{labels('candidates')}</a>
         </div>
         <div className={styles.subcolumn}>
           <h3>{labels('company')}</h3>
           <a>{labels('about')}</a>
-          <a>{labels('join-us')}</a>
-          <a>{labels('learn-more')}</a>
+          <a>{labels('join_us')}</a>
+          <a>{labels('learn_more')}</a>
         </div>
       </div>
       <div className={styles.column}>
@@ -40,14 +44,14 @@ export default function Footer() {
           <Image alt="youtube" src='/icons/social-media/youtube.png' width={30} height={25} />
         </div>
         <div className={styles.otherLinks}>
-          <p>{labels('copy-right')}</p>
+          <p>{labels('copy_right')}</p>
           <p>• {labels('privacy')}</p>
           <p>• {labels('terms')}</p>
           <p>• {labels('sitemap')}</p>
         </div>
       </div>
       <div className={styles.column}>
-        <LanguageSelector />
+        <LanguageSelector languages={languages} />
       </div>
     </footer >
   )
