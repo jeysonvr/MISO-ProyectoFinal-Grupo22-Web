@@ -1,0 +1,22 @@
+{
+  "Index": {
+    "title": "Hello world!",
+    "about": "About.."
+  },
+  "footer": {
+    "about": "About",
+    "all-jobs": "All Jobs",
+    "candidates": "candidates",
+    "companies": "Companies",
+    "company": "Company",
+    "copy-right": "© 2023 ABC Jobs",
+    "english": "English",
+    "join-us": "Join us",
+    "learn-more": "Learn more",
+    "privacy": "Privacy",
+    "product": "Product",
+    "sitemap": "Sitemap",
+    "spanish": "Spanish",
+    "terms": "Terms"
+  }
+}
