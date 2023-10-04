@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import styles from './Footer.module.scss';
-import LanguageSelector from '@/app/components/languageSelector/LanguageSelector';
+import LanguageSelector from '../../components/languageSelector/LanguageSelector';
 
 /**
  * Componente que representa el footer de la página.
