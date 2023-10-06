@@ -19,6 +19,11 @@
     "spanish": "Español",
     "terms": "Términos"
   },
+  "navigation":{
+    "Home": "Inicio",
+    "Tech_tests": "Pruebas técnicas",
+    "Performance_review": "Evaluación de desempeño"
+  },
   "language": {
     "en": "Inglés",
     "es": "Español"
