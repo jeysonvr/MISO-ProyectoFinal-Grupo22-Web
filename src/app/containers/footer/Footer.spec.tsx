@@ -1,6 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { NextIntlClientProvider, useMessages } from 'next-intl';
+import { NextIntlClientProvider } from 'next-intl';
+
+import * as message from '../../../../messages/es.json'
+
 import Footer from './Footer';
 
 jest.mock("next/navigation", () => ({
@@ -21,7 +24,10 @@ jest.mock("next/navigation", () => ({
 
 describe('Footer component', () => {
   const renderWithProvider = () => (
-    <NextIntlClientProvider locale={'es'} >
+    <NextIntlClientProvider
+      locale={'es'}
+      messages={message}
+    >
       <Footer />
     </NextIntlClientProvider >);
 
