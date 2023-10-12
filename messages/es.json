@@ -1,0 +1,31 @@
+{
+  "Index": {
+    "title": "Hola mundo!",
+    "about": "Acerca de"
+  },
+  "footer": {
+    "about": "Acerca de",
+    "all_jobs": "Todos los trabajos",
+    "candidates": "Candidatos",
+    "companies": "Empresas",
+    "company": "Empresa",
+    "copy_right": "© 2023 ABC Jobs",
+    "english": "Inglés",
+    "join_us": "Únete a nosotros",
+    "learn_more": "Más información",
+    "privacy": "Privacidad",
+    "product": "Producto",
+    "sitemap": "Mapa del sitio",
+    "spanish": "Español",
+    "terms": "Términos"
+  },
+  "language": {
+    "en": "Inglés",
+    "es": "Español"
+  },
+  "error": {
+    "action": "Volver",
+    "title_something_wrong": "¡Ups, algo salió mal!",
+    "error_404": "Estamos avergonzados, ¿deseas volver a la página anterior?"
+  }
+}
