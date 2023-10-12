@@ -1,1 +1,40 @@
 # Run unit tests
+name: Build and Test
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+  push:
+    branches:
+      - main
+    tags:
+      - "**"
+
+env:
+  MIN_COVERAGE_REQUIRED: 75
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    
+    - name: Use Node.js 16.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 16.x
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Testing the code
+      run: npm run test
+
+    - name: Build
+      run: npm run build
