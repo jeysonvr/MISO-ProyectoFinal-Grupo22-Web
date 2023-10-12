@@ -54,9 +54,9 @@ describe('Footer component', () => {
 
   it('should render the product links', () => {
     const { getByText } = render(renderWithProvider());
-    const allJobsLink = getByText('footer.all_jobs');
-    const companiesLink = getByText('footer.companies');
-    const candidatesLink = getByText('footer.candidates');
+    const allJobsLink = getByText('Todos los trabajos');
+    const companiesLink = getByText('Empresas');
+    const candidatesLink = getByText('Candidatos');
 
     screen.debug();
     expect(allJobsLink).toBeDefined();
@@ -66,9 +66,9 @@ describe('Footer component', () => {
 
   it('should render the company links', () => {
     const { getByText } = render(renderWithProvider());
-    const aboutLink = getByText('footer.about');
-    const joinUsLink = getByText('footer.join_us');
-    const learnMoreLink = getByText('footer.learn_more');
+    const aboutLink = getByText('Acerca de');
+    const joinUsLink = getByText('Únete a nosotros');
+    const learnMoreLink = getByText('Más información');
     expect(aboutLink).toBeDefined();
     expect(joinUsLink).toBeDefined();
     expect(learnMoreLink).toBeDefined();
