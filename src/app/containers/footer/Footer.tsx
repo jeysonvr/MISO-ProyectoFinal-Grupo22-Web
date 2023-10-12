@@ -8,7 +8,7 @@ import LanguageSelector from '../../components/languageSelector/LanguageSelector
  * Componente que representa el footer de la página.
  */
 export default function Footer() {
-
+  const labels = useTranslations('footer');
   const labelsLanguage = useTranslations('language');
   const languages = {
     english: labelsLanguage('en'),
