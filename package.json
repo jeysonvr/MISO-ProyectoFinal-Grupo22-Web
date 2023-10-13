@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "node 'node_modules/.bin/jest' --coverage --watchAll=false"
+    "test": "node 'node_modules/.bin/jest'"
   },
   "dependencies": {
     "next": "^13.5.4",
