@@ -19,6 +19,11 @@
     "spanish": "Spanish",
     "terms": "Terms"
   },
+  "navigation":{
+    "Home": "Home",
+    "Tech_tests": "Technical Tests",
+    "Performance_review": "Performance Review"
+  },
   "language": {
     "en": "English",
     "es": "Spanish"

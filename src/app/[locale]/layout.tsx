@@ -2,7 +2,7 @@ import '../globals.css';
 import type { Metadata } from 'next';
 
 import Footer from '../containers/footer/Footer'
-
+import Navigation from '../components/navigation';
 export const metadata: Metadata = {
   title: 'ABC Jobs',
   description: 'Uniandes 2023',
@@ -14,12 +14,15 @@ export default function RootLayout({ children, params: { locale } }: {
 }) {
   return (
     <html lang={locale}>
-      <body id='page-container'>
+      <body>
+        <Navigation />
         <div id='content-wrap'>
           {children}
-        </div>
-        <Footer />
+        </div>        
       </body>
+      <footer>
+        <Footer />
+      </footer>      
     </html>
   )
 }

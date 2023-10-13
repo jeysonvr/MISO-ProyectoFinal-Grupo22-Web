@@ -9,7 +9,11 @@
 
   /* COLORS */
   --neutral-300: #DDE1E6;
+  --neutral-600: #565E6C;
   --neutral-900: #161A1E;
+
+  /* SIZE */
+  --nav-height: 100px;
 
   /* SIZE */
   --footer-height: 200px;
@@ -45,3 +49,4 @@ body {
   position: absolute;
   z-index: 1;
 }
+
