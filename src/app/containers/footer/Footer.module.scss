@@ -3,10 +3,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   color: var(--neutral-300);
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  height: var(--footer-height);
   border-bottom: 0;
 }
 

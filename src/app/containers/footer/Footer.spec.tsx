@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { NextIntlClientProvider } from 'next-intl';
 
 import * as message from '../../../../messages/es.json'
@@ -34,7 +34,6 @@ describe('Footer component', () => {
   it('should render the logo', () => {
     const { getByAltText } = render(renderWithProvider());
 
-    screen.debug()
     const logo = getByAltText('Logo');
     expect(logo).toBeDefined();
   });
@@ -58,7 +57,6 @@ describe('Footer component', () => {
     const companiesLink = getByText('Empresas');
     const candidatesLink = getByText('Candidatos');
 
-    screen.debug();
     expect(allJobsLink).toBeDefined();
     expect(companiesLink).toBeDefined();
     expect(candidatesLink).toBeDefined();
