@@ -14,15 +14,13 @@ export default function RootLayout({ children, params: { locale } }: {
 }) {
   return (
     <html lang={locale}>
-      <body>
+      <body className="flex flex-col h-screen justify-between bg-white">
         <Navigation />
-        <div id='content-wrap'>
+        <main className="mb-auto">
           {children}
-        </div>        
-      </body>
-      <footer>
+        </main>
         <Footer />
-      </footer>      
-    </html>
+      </body>
+    </html >
   )
 }
