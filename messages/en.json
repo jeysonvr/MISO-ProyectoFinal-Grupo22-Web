@@ -9,7 +9,7 @@
     "contact": "Contact",
     "copy_right": "© 2023 ABC Jobs. All Rights Reserved."
   },
-  "navigation":{
+  "navigation": {
     "Home": "Home",
     "Tech_tests": "Technical Tests",
     "Performance_review": "Performance Review"
@@ -22,5 +22,35 @@
     "action": "Go back",
     "title_something_wrong": "Oops, something went wrong!",
     "error_404": "We're sorry, do you want to go back to the previous page?"
+  },
+  "user_profile": {
+    "main_title": "Edit profile",
+    "cta_cancel": "Cancel",
+    "cta_save": "Save",
+    "title_personal_info": "Personal information",
+    "title_academic_info": "Academic information",
+    "title_laboral_info": "Work information",
+    "input_name": "Name",
+    "input_age": "Age",
+    "input_email": "Email",
+    "input_phone": "Phone",
+    "select_country": "Country",
+    "label_language": "Languages",
+    "input_language": "Other language",
+    "label_soft_skills": "Soft skills",
+    "input_soft_skills": "Other skill",
+    "label_tech_skills": "Technical skills",
+    "input_tech_skills": "Other skill",
+    "cta_add": "Add",
+    "cta_remove": "Remove",
+    "label_educative_institution": "Educational institution",
+    "label_title": "Title",
+    "label_in_progress": "In progress",
+    "label_start_date": "Start date",
+    "label_end_date": "End date",
+    "label_company": "Company",
+    "label_role": "Role",
+    "label_current_job": "Current job",
+    "label_activity_description": "Activity description"
   }
 }

@@ -15,7 +15,7 @@ const LanguageSelector = ({ languages }: ILanguageSelectorProps) => {
   const handleLanguageChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>): void => {
     const pathWithoutLocale = pathname.replace(`/${locale as string}`, '');
     push(`/${e.target.value}${pathWithoutLocale}`);
-  }, [locale, pathname]);
+  }, [locale, pathname, push]);
 
   return (
     <select id="languages"
