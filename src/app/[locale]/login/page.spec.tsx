@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Signin from './page';
+import Login from './page';
 
-describe('Signin page', () => {
+describe('Login page', () => {
   it('should render content', () => {
-    const { getByText } = render(<Signin />);
-    const signUpMessage = getByText('Sign in here');
+    const { getByText } = render(<Login />);
+    const signUpMessage = getByText('Log in here');
     expect(signUpMessage).toBeDefined();
   });
 });

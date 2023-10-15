@@ -37,7 +37,7 @@ const Navbar = ({ toggle }: { toggle: () => void }) => {
                 </Link>
               </li>
               <li>
-                <Link href="/signin">
+                <Link href="techTest">
                   <p>Pruebas Técnicas</p>
                 </Link>
               </li>
@@ -48,7 +48,10 @@ const Navbar = ({ toggle }: { toggle: () => void }) => {
               </li>              
             </ul>
             <div className="hidden md:block">
-              <Button />
+              {/* <Button/> */}
+              <Link href="/signup">
+                  <p>Registro</p>
+                </Link>
             </div>
           </div>
         </div>

@@ -3,9 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 
-export default function Signup() {
+export default function Login() {
 
-  const [fullName, setFullName] = useState('Pepito Pérez');
   const [email, setEmail] = useState('pepitoperez@gmail.com');
   const [password, setPassword] = useState('micontraseña123');
   const [termsAccepted, setTermsAccepted] = useState(false);
@@ -13,30 +12,21 @@ export default function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (termsAccepted) {
-      console.log('Nombre completo:', fullName);
       console.log('Correo electrónico:', email);
       console.log('Contraseña:', password);
     } else {
       alert('Debes aceptar los términos y condiciones para iniciar sesión.');
     }
-  }; 
+  };   
 
   return (
-    <main>
-      <div className="p-4 float-right mx-auto w-2/5 h-screen bg-white">
-        <h2 className="pb-5 text-center text-2xl font-bold text-black">Registro</h2>
+    <div style={{height:'425px', backgroundColor:'white'}}>
+      <div className="float-left mx-auto w-3/5 bg-teal-500">
+        <img className="w-80 h-80" src="/images/imageBackground.png"></img>
+      </div>
+      <div className="p-4 float-right mx-auto w-2/5 bg-white">
+        <h2 className="pb-5 text-center text-2xl font-bold text-black">Iniciar sesión</h2>
         <form className="text-center" onSubmit={handleSubmit}>
-          <div>
-            <label className="text-left block" htmlFor="fullName">Nombre completo:</label>
-            <input
-              type="text"
-              id="fullName"
-              value={fullName}
-              required
-              className="bg-gray-200 w-full mb-3 h-8 pl-2"
-            />
-          </div>
-
           <div>
             <label className="text-left block" htmlFor="email">Correo electrónico:</label>
             <input
@@ -65,9 +55,8 @@ export default function Signup() {
                 type="checkbox"
                 checked={termsAccepted}
                 onChange={(e) => setTermsAccepted(e.target.checked)}
-                required 
               />
-              <span className="ml-2 text-sm">Estoy de acuerdo con los términos de uso y política de privacidad</span>
+              <span className="ml-2 text-sm">Recuérdame</span>
             </label>
           </div>
 
@@ -82,19 +71,19 @@ export default function Signup() {
                 borderRadius: '5px',
               }}
             >
-              Registrarme
+              Iniciar sesión
             </button>
           </div>
 
           <div className="flex items-center justify-center mt-3">
-            <label> ¿Tienes una cuenta? </label>
-            <Link href="login" className="ml-2 text-teal-500 font-semibold">
-              <p>Iniciar sesión</p>
+            <label> ¿No tienes una cuenta? </label>
+            <Link href="signup" className="ml-2 text-teal-500 font-semibold">
+              <p>Crear cuenta</p>
             </Link>
           </div>
 
         </form>
       </div>
-    </main>
+    </div>
   )
 }
