@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { NextIntlClientProvider } from 'next-intl';
 
 import * as message from '../../../../messages/es.json'
@@ -34,43 +34,20 @@ describe('Footer component', () => {
   it('should render the logo', () => {
     const { getByAltText } = render(renderWithProvider());
 
-    screen.debug()
-    const logo = getByAltText('Logo');
+    const logo = getByAltText('ABC Jobs Logo');
     expect(logo).toBeDefined();
   });
 
-  it('should render social network icons', () => {
-    const { getByAltText } = render(renderWithProvider());
-    const twitterIcon = getByAltText('twitter');
-    const facebookIcon = getByAltText('facebook');
-    const linkedinIcon = getByAltText('linkedin');
-    const youtubeIcon = getByAltText('youtube');
-
-    expect(twitterIcon).toBeDefined();
-    expect(facebookIcon).toBeDefined();
-    expect(linkedinIcon).toBeDefined();
-    expect(youtubeIcon).toBeDefined();
-  });
-
-  it('should render the product links', () => {
+  it('should render copies correctly', () => {
     const { getByText } = render(renderWithProvider());
-    const allJobsLink = getByText('Todos los trabajos');
-    const companiesLink = getByText('Empresas');
-    const candidatesLink = getByText('Candidatos');
+    const aboutLabel = getByText('Acerca de');
+    const PrivacyPolicyLabel = getByText('Política de privacidad');
+    const contactLabel = getByText('Contacto');
+    const copyRightLabel = getByText(/Todos los derechos reservados./);
 
-    screen.debug();
-    expect(allJobsLink).toBeDefined();
-    expect(companiesLink).toBeDefined();
-    expect(candidatesLink).toBeDefined();
-  });
-
-  it('should render the company links', () => {
-    const { getByText } = render(renderWithProvider());
-    const aboutLink = getByText('Acerca de');
-    const joinUsLink = getByText('Únete a nosotros');
-    const learnMoreLink = getByText('Más información');
-    expect(aboutLink).toBeDefined();
-    expect(joinUsLink).toBeDefined();
-    expect(learnMoreLink).toBeDefined();
+    expect(aboutLabel).toBeDefined();
+    expect(PrivacyPolicyLabel).toBeDefined();
+    expect(contactLabel).toBeDefined();
+    expect(copyRightLabel).toBeDefined();
   });
 });

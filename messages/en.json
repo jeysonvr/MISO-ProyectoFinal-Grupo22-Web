@@ -5,19 +5,9 @@
   },
   "footer": {
     "about": "About",
-    "all_jobs": "All Jobs",
-    "candidates": "candidates",
-    "companies": "Companies",
-    "company": "Company",
-    "copy_right": "© 2023 ABC Jobs",
-    "english": "English",
-    "join_us": "Join us",
-    "learn_more": "Learn more",
-    "privacy": "Privacy",
-    "product": "Product",
-    "sitemap": "Sitemap",
-    "spanish": "Spanish",
-    "terms": "Terms"
+    "privacy_policy": "Privacy policy",
+    "contact": "Contact",
+    "copy_right": "© 2023 ABC Jobs. All Rights Reserved."
   },
   "navigation":{
     "Home": "Home",

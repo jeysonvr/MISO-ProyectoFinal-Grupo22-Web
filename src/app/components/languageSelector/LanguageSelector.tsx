@@ -18,7 +18,10 @@ const LanguageSelector = ({ languages }: ILanguageSelectorProps) => {
   }, [locale, pathname]);
 
   return (
-    <select onChange={handleLanguageChange} value={locale}>
+    <select id="languages"
+      onChange={handleLanguageChange} value={locale}
+      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
+    >
       <option value='en'>{languages?.english}</option>
       <option value='es'>{languages?.spanish}</option>
     </select>
