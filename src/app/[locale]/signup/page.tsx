@@ -10,7 +10,7 @@ export default function Signup() {
   const [password, setPassword] = useState('micontraseña123');
   const [termsAccepted, setTermsAccepted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:any) => {
     e.preventDefault();
     if (termsAccepted) {
       console.log('Nombre completo:', fullName);

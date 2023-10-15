@@ -17,7 +17,7 @@ export default function Login() {
   const [password, setPassword] = useState('micontraseña123');
   const [remember, setRemember] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:any) => {
     e.preventDefault();
     if (remember) {
       console.log('aceptando términos');
