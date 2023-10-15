@@ -22,8 +22,11 @@ export default function Signup() {
   }; 
 
   return (
-    <main>
-      <div className="p-4 float-right mx-auto w-2/5 h-screen bg-white">
+    <div style={{height: '70vh', backgroundColor:'white'}}>
+      <div className="float-left mx-auto w-3/5 bg-teal-500 h-full flex justify-center items-center">
+        <img className="w-80 h-80" src="/images/imageBackground.png"></img>
+      </div>
+      <div className="p-4 float-right mx-auto w-2/5 h-full">
         <h2 className="pb-5 text-center text-2xl font-bold text-black">Registro</h2>
         <form className="text-center" onSubmit={handleSubmit}>
           <div>
@@ -95,6 +98,6 @@ export default function Signup() {
 
         </form>
       </div>
-    </main>
+    </div>
   )
 }
