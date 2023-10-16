@@ -1,7 +1,7 @@
 import Button, { ButtonStyle, IconType } from '../../../components/button/Button';
 import { useCallback, useState } from 'react';
 
-interface laboralRegisters {
+interface ILaboralRegisters {
   institution: string;
   title: string;
   startDate: string;
@@ -16,7 +16,7 @@ const EMPTY_REGISTER = {
 }
 
 const LaboralInfoForm = ({ labels }: any) => {
-  const [laboralRegisters, setLaboralRegisters] = useState<laboralRegisters[]>([EMPTY_REGISTER]);
+  const [laboralRegisters, setLaboralRegisters] = useState<ILaboralRegisters[]>([EMPTY_REGISTER]);
   const [isInProgress, setIsInProgress] = useState(false);
 
   const handleAddRegister = useCallback(() => {

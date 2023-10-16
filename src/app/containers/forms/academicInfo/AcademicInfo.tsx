@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 
 import Button, { ButtonStyle, IconType } from '../../../components/button/Button';
 
-interface academicRegister {
+interface IAcademicRegister {
   institution: string;
   title: string;
   startDate: string;
@@ -18,7 +18,7 @@ const EMPTY_REGISTER = {
 
 const AcademicInfoForm = ({ labels }: any) => {
 
-  const [academicRegisters, setAcademicRegisters] = useState<academicRegister[]>([EMPTY_REGISTER]);
+  const [academicRegisters, setAcademicRegisters] = useState<IAcademicRegister[]>([EMPTY_REGISTER]);
   const [isInProgress, setIsInProgress] = useState(false);
 
   const handleAddRegister = useCallback(() => {

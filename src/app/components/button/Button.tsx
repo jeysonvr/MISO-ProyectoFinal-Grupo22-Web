@@ -14,7 +14,7 @@ export interface IButton {
   icon?: IconType;
   text: string;
   onClick?: () => void;
-  type?: 'submit' | 'reset' | 'button' | undefined;
+  type?: 'submit' | 'reset' | 'button';
   classOverrides?: string;
 }
 
@@ -51,7 +51,7 @@ const iconsMapper = {
 const Button = ({ style, icon, text, onClick, type = 'button', classOverrides }: IButton) => {
   return (
     <button
-      className={`${stylesMapper[style]} ${classOverrides || ''}`}
+      className={`${stylesMapper[style]} ${classOverrides ?? ''}`}
       onClick={onClick}
       type={type}
     >
