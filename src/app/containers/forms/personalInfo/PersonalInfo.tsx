@@ -8,17 +8,30 @@ const PersonalInfoForm = ({ labels }: any) => {
       <div className="grid gap-6 mb-6 md:grid-cols-2">
         <div>
           <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.input_name}</label>
-          <input type="text" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          <input
+            type="text"
+            minLength={3}
+            id="name"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder={labels.input_name} required />
         </div>
         <div>
           <label htmlFor="age" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.input_age}</label>
-          <input type="text" id="age" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          <input
+            type="number"
+            id="age"
+            min={18}
+            max={99}
+            defaultValue={18}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder={labels.input_age} required />
         </div>
         <div>
           <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.input_email}</label>
-          <input type="text" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          <input
+            type="email"
+            id="email"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder={labels.input_email} required />
         </div>
         <div>

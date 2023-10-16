@@ -2,7 +2,7 @@
 
 import { useCallback, useRef, useState } from 'react';
 
-interface IPillEditor {
+export interface IPillEditor {
   title: string;
   placeHolder: string;
   ctaLabel: string;
@@ -35,7 +35,7 @@ const PillEditor = ({ title, placeHolder, ctaLabel, pillsAmountLimit = 5, id }: 
 
   return (
     <div className='mb-4'>
-      <input hidden value={pillsList.join()} id={id} />
+      <input hidden defaultValue={pillsList.join()} id={id} />
       <strong>{title}</strong>
       <div className='grid grid-cols-3'>
         <ul

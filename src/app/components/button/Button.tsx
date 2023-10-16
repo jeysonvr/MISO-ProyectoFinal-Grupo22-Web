@@ -9,7 +9,7 @@ export enum ButtonStyle {
   secondary = 'secondary',
 }
 
-interface IButton {
+export interface IButton {
   style: ButtonStyle;
   icon?: IconType;
   text: string;
@@ -26,11 +26,11 @@ const stylesMapper = {
 const iconsMapper = {
   [IconType.plus]: (
     <svg className="h-6 w-8 text-white-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 4v16m8-8H4" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M12 4v16m8-8H4" />
     </svg>
   ),
   [IconType.trash]: (
-    <svg className="h-6 w-8 text-white-500" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <svg className="h-6 w-8 text-white-500" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" />
       <line x1="4" y1="7" x2="20" y2="7" />
       <line x1="10" y1="11" x2="10" y2="17" />
@@ -40,7 +40,7 @@ const iconsMapper = {
     </svg>
   ),
   [IconType.save]: (
-    <svg className="h-6 w-8 text-white-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+    <svg className="h-6 w-8 text-white-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
       <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
       <polyline points="17 21 17 13 7 13 7 21" />
       <polyline points="7 3 7 8 15 8" />

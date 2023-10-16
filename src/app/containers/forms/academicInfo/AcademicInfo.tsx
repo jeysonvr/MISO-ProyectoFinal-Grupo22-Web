@@ -19,6 +19,7 @@ const EMPTY_REGISTER = {
 const AcademicInfoForm = ({ labels }: any) => {
 
   const [academicRegisters, setAcademicRegisters] = useState<academicRegister[]>([EMPTY_REGISTER]);
+  const [isInProgress, setIsInProgress] = useState(false);
 
   const handleAddRegister = useCallback(() => {
     setAcademicRegisters((academicRegisters) => [...academicRegisters, EMPTY_REGISTER])
@@ -30,6 +31,15 @@ const AcademicInfoForm = ({ labels }: any) => {
 
       return [...academicRegisters.slice(0, academicRegisters.length - 1)];
     });
+  }, []);
+
+  const handleInProgressCheck = useCallback((e: any) => {
+    const { checked } = e.target;
+    if (checked) {
+      setIsInProgress(true);
+      return;
+    }
+    setIsInProgress(false);
   }, []);
 
   return (
@@ -55,7 +65,12 @@ const AcademicInfoForm = ({ labels }: any) => {
                 placeholder={labels.label_title} />
             </div>
             <div className="flex items-center">
-              <input id="checked-checkbox" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+              <input
+                id="checked-checkbox"
+                type="checkbox"
+                value=""
+                onChange={handleInProgressCheck}
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
               <label htmlFor="checked-checkbox" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{labels.label_in_progress}</label>
             </div>
             <div>
@@ -65,7 +80,12 @@ const AcademicInfoForm = ({ labels }: any) => {
             </div>
             <div>
               <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_end_date}</label>
-              <input type="text" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              <input
+                type="text"
+                id="name"
+                disabled={isInProgress}
+                className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 
+                ${isInProgress ? 'disabled:opacity-50' : ''}`}
                 placeholder={labels.label_end_date} />
             </div>
           </div>
