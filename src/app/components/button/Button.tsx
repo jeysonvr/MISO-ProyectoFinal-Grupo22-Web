@@ -19,7 +19,7 @@ export interface IButton {
 }
 
 const stylesMapper = {
-  [ButtonStyle.primary]: 'bg-teal-600 text-white focus:outline-none mr-2 my-2 rounded p-2 inline-flex align-bottom',
+  [ButtonStyle.primary]: 'bg-teal-700 text-white focus:outline-none mr-2 my-2 rounded p-2 inline-flex align-bottom',
   [ButtonStyle.secondary]: 'bg-transparent border border-gray-500 text-gray-600 focus:outline-none rounded p-2 inline-flex mr-2 my-2 align-bottom',
 };
 

@@ -32,7 +32,9 @@ export default function Footer() {
             <li>
               <a href="#" className="mr-6 hover:underline md:mr-8">{footerLabels('contact')}</a>
             </li>
-            <LanguageSelector languages={languages} />
+            <li>
+              <LanguageSelector languages={languages} />
+            </li>
           </ul>
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-500 lg:my-8" />

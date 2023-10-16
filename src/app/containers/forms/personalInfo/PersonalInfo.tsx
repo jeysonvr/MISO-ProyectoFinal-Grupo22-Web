@@ -4,7 +4,7 @@ const PersonalInfoForm = ({ labels }: any) => {
   return (
     <div
       className="blockp-6 bg-white border border-gray-200 rounded-lg px-10 py-5 items-center">
-      <h5 className="mb-6 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{labels.title_personal_info}</h5>
+      <h2 className="mb-6 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{labels.title_personal_info}</h2>
       <div className="grid gap-6 mb-6 md:grid-cols-2">
         <div>
           <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.input_name}</label>
