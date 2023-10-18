@@ -35,10 +35,12 @@ const Logo = () => {
 
   return (
     <>
-      <Link href="/" style={{ display: showButton ? "none" : "block" }}>
+      <Link
+        role="button"
+        href="/" style={{ display: showButton ? "none" : "block" }}>
         <Image
           src="/images/logo_transparent.png"
-          alt="Logo"  
+          alt="Logo"
           width={width < 1024 ? "40" : "60"}
           height={width < 1024 ? "30" : "50"}
           className="relative"

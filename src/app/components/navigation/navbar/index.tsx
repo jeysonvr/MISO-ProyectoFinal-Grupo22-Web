@@ -5,8 +5,6 @@ import Button from "./Button";
 
 
 const Navbar = ({ toggle }: { toggle: () => void }) => {
-  // const labels = useTranslations('navigation');
-
   return (
     <>
       <div className="w-full h-20 bg-white sticky top-0 my-6 mt-0">
