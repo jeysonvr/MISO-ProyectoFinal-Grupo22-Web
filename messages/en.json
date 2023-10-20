@@ -52,5 +52,24 @@
     "label_role": "Role",
     "label_current_job": "Current job",
     "label_activity_description": "Activity description"
+  },
+  "login": {
+    "title_login": "Login",
+    "label_email": "Email:",
+    "label_password": "Password:",
+    "label_remember": "Remember",
+    "cta_login": "Login",
+    "label_have_an_account": "Does not have an account?",
+    "label_create_account": "Create an account"
+  },
+  "signup": {
+    "title_signup": "Register",
+    "label_full_name": "Full name:",
+    "label_email": "Email:",
+    "label_password": "Password:",
+    "label_agree_terms": "I agree to the terms of use and privacy policy",
+    "cta_signup": "Register",
+    "label_have_an_account": "Already have an account?",
+    "label_login": "Login"
   }
 }
