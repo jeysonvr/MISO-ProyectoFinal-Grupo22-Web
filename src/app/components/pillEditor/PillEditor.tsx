@@ -4,7 +4,7 @@ import { useCallback, useRef, useState } from 'react';
 
 export interface IPillEditor {
   title: string;
-  placeHolder: string;
+  placeHolder?: string;
   ctaLabel: string;
   pillsAmountLimit?: number;
   id: string;
