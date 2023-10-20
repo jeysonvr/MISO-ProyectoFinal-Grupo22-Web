@@ -8,17 +8,43 @@ export interface IPillEditor {
   ctaLabel: string;
   pillsAmountLimit?: number;
   id: string;
+  type?: string;
+  elements?: any[];
+  isMultiSelector?: boolean;
 }
 
-const PillEditor = ({ title, placeHolder, ctaLabel, pillsAmountLimit = 5, id }: IPillEditor) => {
+const PillEditor = ({
+  title,
+  placeHolder,
+  ctaLabel,
+  pillsAmountLimit = 5,
+  id,
+  type,
+  elements,
+  isMultiSelector,
+}: IPillEditor) => {
   const [inputValue, setInputValue] = useState('');
   const [pillsList, setPillsList] = useState<string[]>([]);
   const inputRef = useRef<any>(null);
+  const extraInputRef = useRef<any>(null); // Use for secondary selector
+
+  const [secondarySelectorData, setSecondarySelectorData] = useState(elements?.[0]?.extraData || []);
+
+  const handleSelectorChange = useCallback(() => {
+    if (!isMultiSelector || !inputRef.current?.value) return;
+
+    const selectorValue = inputRef.current?.value;
+    elements?.find(({ value, extraData }) => {
+      if (value === selectorValue) {
+        setSecondarySelectorData(extraData);
+      }
+    });
+  }, [isMultiSelector]);
 
   const handleAddPill = useCallback(() => {
     if (!inputRef.current?.value) return;
 
-    const newPillValue = inputRef.current?.value;
+    const newPillValue = inputRef.current?.value + (isMultiSelector ? ',' + extraInputRef.current?.value : '');
     setPillsList((pills) => {
       // Set a limit for pills amount
       if (pills.length >= pillsAmountLimit || pills.some((pill) => pill === newPillValue)) return [...pills];
@@ -52,16 +78,48 @@ const PillEditor = ({ title, placeHolder, ctaLabel, pillsAmountLimit = 5, id }: 
           ))
           }
         </ul >
-        <div className='grid grid-cols-2 h-2'>
-          <input
-            ref={inputRef}
-            value={inputValue}
-            type="text"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder={placeHolder}
-            maxLength={10}
-            onChange={(e) => setInputValue(e.target.value)}
-          />
+        <div className={`grid grid-cols-${isMultiSelector ? '3' : '2'} h-2`}>
+          {
+            (type === 'select') ? (
+              <>
+                <select
+                  ref={inputRef}
+                  onChange={handleSelectorChange}
+                  id=""
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  {
+                    elements?.map(({ id, value }: any, index) => (
+                      <option value={value} key={'option-' + id}>{value}</option>
+                    ))
+                  }
+                </select>
+                {
+                  isMultiSelector && (
+                    <select
+                      ref={extraInputRef}
+                      id=""
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                      {
+                        secondarySelectorData?.map(({ id, value }: any) => (
+                          <option value={value} key={'extra-option-' + id}>{value}</option>
+                        ))
+                      }
+                    </select>
+                  )
+                }
+              </>
+            ) : (
+              <input
+                ref={inputRef}
+                value={inputValue}
+                type="text"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder={placeHolder}
+                maxLength={10}
+                onChange={(e) => setInputValue(e.target.value)}
+              />
+            )
+          }
           <button
             className='my-auto mx-2 flex'
             onClick={handleAddPill}
@@ -70,6 +128,10 @@ const PillEditor = ({ title, placeHolder, ctaLabel, pillsAmountLimit = 5, id }: 
       </div >
     </div>
   )
+}
+
+PillEditor.defaultProps = {
+  type: 'select'
 }
 
 export default PillEditor;
