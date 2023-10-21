@@ -8,6 +8,7 @@ export default function Profile() {
     title_personal_info: labels('title_personal_info'),
     title_academic_info: labels('title_academic_info'),
     title_laboral_info: labels('title_laboral_info'),
+    title_general_info: labels('title_general_info'),
     cta_cancel: labels('cta_cancel'),
     cta_save: labels('cta_save'),
     cta_add: labels('cta_add'),
@@ -32,6 +33,12 @@ export default function Profile() {
     label_role: labels('label_role'),
     label_current_job: labels('label_current_job'),
     label_activity_description: labels('label_activity_description'),
+    label_business_type: labels('label_business_type'),
+    label_business_vertical: labels('label_business_vertical'),
+    label_ubication: labels('label_ubication'),
+    input_business_vertical: labels('input_business_vertical'),
+    input_ubication_country: labels('input_ubication_country'),
+    input_ubication_city: labels('input_ubication_city'),
   };
 
   return (

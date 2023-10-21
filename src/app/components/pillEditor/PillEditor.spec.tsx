@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 
 import PillEditor, { IPillEditor } from './PillEditor';
+import { multiSelectorMock } from '../../mocks/selector';
 
 describe('Pill Editor Component', () => {
   const renderPillEditor = (replaceProps?: Partial<IPillEditor>) => {
@@ -18,8 +19,64 @@ describe('Pill Editor Component', () => {
     );
   };
 
-  it('should render correctly', () => {
+  it('should render correctly for select type', () => {
     render(renderPillEditor());
+    const title = screen.getByText('Lenguajes');
+    const ctaAdd = screen.getByText('+ Agregar');
+    const select = screen.getByRole('combobox');
+
+    expect(title).toBeDefined();
+    expect(select).toBeDefined();
+    expect(ctaAdd).toBeDefined();
+  });
+
+  it('should render multiselector', () => {
+    render(renderPillEditor({
+      elements: multiSelectorMock,
+      isMultiSelector: true,
+    }));
+    const title = screen.getByText('Lenguajes');
+    const ctaAdd = screen.getByText('+ Agregar');
+    const select = screen.getAllByRole('combobox');
+
+    expect(title).toBeDefined();
+    expect(select).toHaveLength(2);
+    expect(ctaAdd).toBeDefined();
+  });
+
+  it('should update value for selector type', () => {
+    render(renderPillEditor({
+      elements: multiSelectorMock,
+    }));
+    const title = screen.getByText('Lenguajes');
+    const select = screen.getByRole('combobox') as HTMLSelectElement;
+
+    expect(title).toBeDefined();
+    expect(select.value).toBe('Colombia');
+
+    fireEvent.change(select[0], { target: { value: 'USA' } })
+    expect(select.value).toBe('USA');
+  });
+
+  it('should update secondary selector when first selector changes its value', () => {
+    render(renderPillEditor({
+      elements: multiSelectorMock,
+      isMultiSelector: true,
+    }));
+    const title = screen.getByText('Lenguajes');
+    const select = screen.getAllByRole('combobox') as HTMLSelectElement[];
+
+    expect(title).toBeDefined();
+    expect(select).toHaveLength(2);
+    expect(select[1].value).toBe('Bogotá');
+
+    fireEvent.change(select[0], { target: { value: 'USA' } })
+
+    expect(select[1].value).toBe('New York');
+  });
+
+  it('should render correctly for input type', () => {
+    render(renderPillEditor({ type: 'input' }));
     const title = screen.getByText('Lenguajes');
     const placeHolderInput = screen.getByPlaceholderText('Agrega un lenguaje');
     const ctaAdd = screen.getByText('+ Agregar');
@@ -30,7 +87,7 @@ describe('Pill Editor Component', () => {
   });
 
   it('should add/remove pills', () => {
-    render(renderPillEditor());
+    render(renderPillEditor({ type: 'input' }));
     const placeHolderInput = screen.getByPlaceholderText('Agrega un lenguaje');
     const ctaAdd = screen.getByText('+ Agregar');
 
@@ -53,7 +110,7 @@ describe('Pill Editor Component', () => {
   });
 
   it('should not add a pill if no value', () => {
-    render(renderPillEditor());
+    render(renderPillEditor({ type: 'input' }));
     const ctaAdd = screen.getByText('+ Agregar');
 
     let pills = screen.queryAllByText('English');
@@ -66,8 +123,8 @@ describe('Pill Editor Component', () => {
     expect(pills).toHaveLength(0);
   });
 
-  it('should not add a pill is value already exists', () => {
-    render(renderPillEditor());
+  it('should not add a pill if value already exists', () => {
+    render(renderPillEditor({ type: 'input' }));
     const placeHolderInput = screen.getByPlaceholderText('Agrega un lenguaje');
     const ctaAdd = screen.getByText('+ Agregar');
 
