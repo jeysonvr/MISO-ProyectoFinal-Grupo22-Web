@@ -30,6 +30,7 @@
     "title_personal_info": "Personal information",
     "title_academic_info": "Academic information",
     "title_laboral_info": "Work information",
+    "title_general_info": "General information",
     "input_name": "Name",
     "input_age": "Age",
     "input_email": "Email",
@@ -51,7 +52,13 @@
     "label_company": "Company",
     "label_role": "Role",
     "label_current_job": "Current job",
-    "label_activity_description": "Activity description"
+    "label_activity_description": "Activity description",
+    "label_business_type": "Business type",
+    "label_business_vertical": "Business vertical",
+    "label_ubication": "Location",
+    "input_business_vertical": "Other vertical",
+    "input_ubication_country": "Country",
+    "input_ubication_city": "City"
   },
   "login": {
     "title_login": "Login",

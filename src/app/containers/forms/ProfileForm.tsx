@@ -1,13 +1,18 @@
 "use client";
 
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import AcademicInfoForm from './academicInfo/AcademicInfo';
 import PersonalInfoForm from "./personalInfo/PersonalInfo";
 import LaboralInfoForm from './laboralInfo/LaboralInfo';
 import Button, { ButtonStyle, IconType } from '../../components/button/Button';
+import { UserType } from '../../contants/userType';
+import GeneralInfoForm from './generalInfo/GeneralInfo';
 
 const ProfileForm = ({ labels }: any) => {
+
+  // User type
+  const [userType, setUserType] = useState(undefined);
 
   const onFormSubmit = useCallback((e: any) => {
     e.preventDefault();
@@ -16,6 +21,11 @@ const ProfileForm = ({ labels }: any) => {
 
   const handleCancel = useCallback(() => {
     window.location.reload();
+  }, []);
+
+  useEffect(() => {
+    const type = JSON.parse(localStorage.getItem('user') || '{}').type;
+    setUserType(type);
   }, []);
 
   return (
@@ -34,9 +44,20 @@ const ProfileForm = ({ labels }: any) => {
           text={labels.cta_save}
         />
       </div>
-      <PersonalInfoForm labels={labels} />
-      <AcademicInfoForm labels={labels} />
-      <LaboralInfoForm labels={labels} />
+      {
+        userType === UserType.candidate && (
+          <>
+            <PersonalInfoForm labels={labels} />
+            <AcademicInfoForm labels={labels} />
+            <LaboralInfoForm labels={labels} />
+          </>
+        )
+      }
+      {
+        userType === UserType.company && (
+          <GeneralInfoForm labels={labels}/>
+        )
+      }
     </form>
   )
 }

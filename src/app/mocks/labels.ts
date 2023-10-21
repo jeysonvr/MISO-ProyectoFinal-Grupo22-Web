@@ -2,6 +2,7 @@ export const labelsProfileInfo = {
   title_personal_info: 'Información personal',
   title_academic_info: 'Información académica',
   title_laboral_info: 'Información laboral',
+  title_general_info: 'Información general',
   cta_cancel: 'Cancelar',
   cta_save: 'Guardar',
   cta_add: 'Agregar',
@@ -26,6 +27,12 @@ export const labelsProfileInfo = {
   label_role: 'Rol desempeñado',
   label_current_job: 'Trabajo actual',
   label_activity_description: 'Descripción de las actividades',
+  label_business_type: "Tipo de empresa",
+  label_business_vertical: "Vertical de negocio",
+  label_ubication: "Ubicación",
+  input_business_vertical: 'Otra vertical',
+  input_ubication_country: 'País',
+  input_ubication_city: 'Ciudad',
 }
 
 export const labelsLogin = {
