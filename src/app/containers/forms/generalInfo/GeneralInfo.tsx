@@ -47,7 +47,7 @@ const GeneralInfoForm = ({ labels }: any) => {
             ]
           },
           {
-            id: '1',
+            id: '2',
             value: 'USA',
             extraData: [
               {
