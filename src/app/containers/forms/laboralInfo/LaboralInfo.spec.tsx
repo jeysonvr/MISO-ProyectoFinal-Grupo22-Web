@@ -10,11 +10,9 @@ describe('Laboral Info Container', () => {
     render(<LaboralInfo labels={labelsProfileInfo} />);
     const laboralInfoTitle = screen.getByText('Información laboral');
     const rolLabel = screen.getByText('Rol desempeñado');
-    const rolPlaceHolder = screen.getByPlaceholderText('Rol desempeñado');
 
     expect(laboralInfoTitle).toBeDefined();
     expect(rolLabel).toBeDefined();
-    expect(rolPlaceHolder).toBeDefined();
   });
 
   it('should add/remove laboral registers', () => {

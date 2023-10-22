@@ -15,7 +15,9 @@ const EMPTY_REGISTER = {
   endDate: '',
 }
 
-const LaboralInfoForm = ({ labels }: any) => {
+const LaboralInfoForm = ({ labels, metadata }: any) => {
+  const rolMetadata = metadata?.roles?.map(({ id, rol }: any) => ({ id, value: rol })) || [];
+
   const [laboralRegisters, setLaboralRegisters] = useState<ILaboralRegisters[]>([EMPTY_REGISTER]);
   const [isInProgress, setIsInProgress] = useState(false);
 
@@ -48,20 +50,22 @@ const LaboralInfoForm = ({ labels }: any) => {
         laboralRegisters.map((register, idx) => (
           <div className="grid gap-6 my-16 md:grid-cols-2" key={'laboralRegister' + idx}>
             <div className='col-span-2'>
-              <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_company}</label>
-              <select id="countries" className="mb-10 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option value="US">United States</option>
-                <option value="CA">Canada</option>
-                <option value="FR">France</option>
-                <option value="DE">Germany</option>
-              </select>
+              <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_company}</label>
+              <input type="text" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder={labels.label_company} />
             </div>
 
             <div>
-              <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_role}</label>
-              <input type="text" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder={labels.label_role} />
+              <label htmlFor="rol" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_role}</label>
+              <select id="rol" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                {
+                  rolMetadata.map(({ id, value }: any) => (
+                    <option value={value} key={'rol-' + id}>{value}</option>
+                  ))
+                }
+              </select>
             </div>
+
             <div className="flex items-center">
               <input
                 id="checked-checkbox"

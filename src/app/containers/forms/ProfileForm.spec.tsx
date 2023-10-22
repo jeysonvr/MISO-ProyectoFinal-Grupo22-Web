@@ -1,12 +1,17 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 
 import ProfileForm from './ProfileForm';
 
-import { labelsProfileInfo } from '../../mocks/labels'
+import { labelsProfileInfo } from '../../mocks/labels';
+import { candidateMetadata } from '../../mocks/metadata';
 
 describe('Profile Form Container', () => {
   const originalLocation = window.location;
+
+  global.fetch = jest.fn(async () =>
+    Promise.resolve({ json: async () => Promise.resolve(candidateMetadata) })
+  ) as jest.Mock;
 
   beforeAll(() => {
     Object.defineProperty(window, 'location', {
@@ -38,23 +43,28 @@ describe('Profile Form Container', () => {
     expect(window.location.reload).toHaveBeenCalled();
   });
 
-  it('should render company profile if userType is candidate', () => {
+  it('should render company profile if userType is candidate', async () => {
     Storage.prototype.getItem = jest.fn(() => JSON.stringify({ type: 'candidate' }));
     render(<ProfileForm labels={labelsProfileInfo} />);
-    const titlePersonalInfo = screen.getByText('Información personal');
-    const titleAcademicInfo = screen.getByText('Información académica');
-    const titleLaboralInfo = screen.getByText('Información laboral');
+    await waitFor(() => {
+      const titlePersonalInfo = screen.getByText('Información personal');
+      const titleAcademicInfo = screen.getByText('Información académica');
+      const titleLaboralInfo = screen.getByText('Información laboral');
 
-    expect(titlePersonalInfo).toBeDefined();
-    expect(titleAcademicInfo).toBeDefined();
-    expect(titleLaboralInfo).toBeDefined();
+      expect(titlePersonalInfo).toBeDefined();
+      expect(titleAcademicInfo).toBeDefined();
+      expect(titleLaboralInfo).toBeDefined();
+    });
   });
 
-  it('should render company profile if userType is company', () => {
+  it('should render company profile if userType is company', async () => {
     Storage.prototype.getItem = jest.fn(() => JSON.stringify({ type: 'company' }));
     render(<ProfileForm labels={labelsProfileInfo} />);
-    const titleGeneralInfo = screen.getByText('Información general');
 
-    expect(titleGeneralInfo).toBeDefined();
+    await waitFor(() => {
+      const titleGeneralInfo = screen.getByText('Información general');
+
+      expect(titleGeneralInfo).toBeDefined();
+    });
   });
 });

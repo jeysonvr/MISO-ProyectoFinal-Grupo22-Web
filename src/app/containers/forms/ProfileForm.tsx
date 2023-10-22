@@ -9,10 +9,14 @@ import Button, { ButtonStyle, IconType } from '../../components/button/Button';
 import { UserType } from '../../contants/userType';
 import GeneralInfoForm from './generalInfo/GeneralInfo';
 
-const ProfileForm = ({ labels }: any) => {
+const mapUser = {
+  [UserType.company]: 'empresa',
+  [UserType.candidate]: 'candidato',
+};
 
-  // User type
-  const [userType, setUserType] = useState(undefined);
+const ProfileForm = ({ labels }: any) => {
+  const [userType, setUserType] = useState(undefined); // User type
+  const [profileMetadata, setProfileMetadata] = useState(undefined); // Metadata depending on profile type
 
   const onFormSubmit = useCallback((e: any) => {
     e.preventDefault();
@@ -27,6 +31,14 @@ const ProfileForm = ({ labels }: any) => {
     const type = JSON.parse(localStorage.getItem('user') || '{}').type;
     setUserType(type);
   }, []);
+
+  useEffect(() => {
+    if (!userType) return;
+    // Get profile metadata - company
+    fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/${mapUser[userType]}/metadata/`)
+      .then(res => res.json())
+      .then(data => setProfileMetadata(data));
+  }, [userType]);
 
   return (
     <form onSubmit={onFormSubmit}>
@@ -47,15 +59,15 @@ const ProfileForm = ({ labels }: any) => {
       {
         userType === UserType.candidate && (
           <>
-            <PersonalInfoForm labels={labels} />
+            <PersonalInfoForm labels={labels} metadata={profileMetadata} />
             <AcademicInfoForm labels={labels} />
-            <LaboralInfoForm labels={labels} />
+            <LaboralInfoForm labels={labels} metadata={profileMetadata} />
           </>
         )
       }
       {
         userType === UserType.company && (
-          <GeneralInfoForm labels={labels}/>
+          <GeneralInfoForm labels={labels} metadata={profileMetadata} />
         )
       }
     </form>
