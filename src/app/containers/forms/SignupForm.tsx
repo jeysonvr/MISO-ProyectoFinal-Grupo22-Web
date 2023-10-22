@@ -34,8 +34,6 @@ const SignupForm = ({ labels }: any) => {
             id_tipo_usuario: 1
         };
 
-        console.log('Object body:', formData);
-
         try {
             const response = await fetch('https://34.117.49.114/registro/usuario', {
                 method: 'POST',
@@ -46,7 +44,6 @@ const SignupForm = ({ labels }: any) => {
             });
 
             const responseBody = await response.json();
-            console.log('Response body:', responseBody);
 
         } catch (error) {
             console.error('Request failed', error);

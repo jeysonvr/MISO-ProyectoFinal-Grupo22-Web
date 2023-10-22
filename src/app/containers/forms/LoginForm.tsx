@@ -27,8 +27,6 @@ const LoginForm = ({ labels }: any) => {
             contrasena: password
         };
 
-        console.log('Object body:', formData);
-
         try {
             const response = await fetch('https://34.117.49.114/registro/login', {
                 method: 'POST',
@@ -39,9 +37,13 @@ const LoginForm = ({ labels }: any) => {
             });
 
             const responseBody = await response.json();
-            console.log('Response body:', responseBody);
 
-            localStorage.setItem('user', JSON.stringify({email: email, type: 'candidate|company'}))
+            let userType: string = 'company';
+            if(responseBody.id_tipo_usuario == 1) {
+                userType = 'candidate';
+            }
+
+            localStorage.setItem('user', JSON.stringify({email: email, type: userType}))
 
         } catch (error) {
             console.error('Request failed', error);
