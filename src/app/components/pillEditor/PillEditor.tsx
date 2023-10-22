@@ -31,23 +31,23 @@ const PillEditor = ({
   const inputRef = useRef<any>(null);
   const extraInputRef = useRef<any>(null); // Use for secondary selector
 
-  const [secondarySelectorData, setSecondarySelectorData] = useState(elements?.[0]?.extraData || []);
+  const [secondarySelectorData, setSecondarySelectorData] = useState([]);
 
   const handleSelectorChange = useCallback(() => {
     if (!isMultiSelector || !inputRef.current?.value) return;
 
     const selectorValue = inputRef.current?.value;
-    elements?.find(({ value, extraData }) => {
-      if (value === selectorValue) {
+    elements?.find(({ id, value, extraData }) => {
+      if (`${value}-${id}` === selectorValue) {
         setSecondarySelectorData(extraData);
       }
     });
-  }, [isMultiSelector]);
+  }, [isMultiSelector, elements]);
 
   const handleAddPill = useCallback(() => {
     if (!inputRef.current?.value) return;
 
-    const newPillValue = inputRef.current?.value + (isMultiSelector ? ',' + extraInputRef.current?.value : '');
+    const newPillValue = (isMultiSelector ? extraInputRef.current?.value + '/' : '') + inputRef.current?.value;
     setPillsList((pills) => {
       // Set a limit for pills amount
       if (pills.length >= pillsAmountLimit || pills.some((pill) => pill === newPillValue)) return [...pills];
@@ -68,6 +68,12 @@ const PillEditor = ({
     setPillsList(selectedPills);
   }, [selectedPills]);
 
+  // Update secondary select
+  useEffect(() => {
+    if (!elements?.[0]?.extraData) return;
+    setSecondarySelectorData(elements?.[0]?.extraData);
+  }, [elements?.[0]?.extraData]);
+
   return (
     <div className='mb-4'>
       <input hidden defaultValue={pillsList?.join()} id={id} />
@@ -79,7 +85,7 @@ const PillEditor = ({
           data-te-nav-ref>
           {pillsList?.map((pill, index) => (
             <div className="no-underline bg-teal-600 text-white font-sans font-semibold focus:outline-none mr-2 my-2 rounded" key={'pill-' + index}>
-              <span className='text-xs font-medium leading-tight text-white h-8 px-8'>{pill}</span>
+              <span className='text-xs font-medium leading-tight text-white h-8 px-8'>{pill?.split('-')[0]}</span>
               <button
                 style={{ padding: '2px 4px' }}
                 onClick={handleDeletePill} value={pill} tabIndex={index}>x</button>
@@ -87,7 +93,7 @@ const PillEditor = ({
           ))
           }
         </ul >
-        <div className={`grid grid-cols-${isMultiSelector ? '3' : '2'} h-2`}>
+        <div className={`grid ${!isMultiSelector ? 'grid-cols-2' : ''} ${isMultiSelector ? 'grid-cols-3' : ''} h-2`}>
           {
             (type === 'select') ? (
               <>
@@ -98,7 +104,9 @@ const PillEditor = ({
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {
                     elements?.map(({ id, value }: any, index) => (
-                      <option value={value} key={'option-' + id}>{value}</option>
+                      <option
+                        value={`${value}-${id}`}
+                        key={'option-' + id}>{value}</option>
                     ))
                   }
                 </select>

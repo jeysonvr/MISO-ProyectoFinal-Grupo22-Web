@@ -56,17 +56,17 @@ const AcademicInfoForm = ({ labels, profileData }: any) => {
         academicRegisters.map((register, idx) => (
           <div className="grid gap-6 my-16 md:grid-cols-2" key={'academicRegister' + idx}>
             <div className='col-span-2'>
-              <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_educative_institution}</label>
-              <input type="text" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              <label htmlFor="educative_institution_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_educative_institution}</label>
+              <input type="text" id="educative_institution_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder={labels.label_educative_institution}
                 defaultValue={register?.institucion}
               />
             </div>
 
             <div>
-              <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_title}</label>
+              <label htmlFor="academic_title" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_title}</label>
               <input
-                type="text" id="name"
+                type="text" id="academic_title"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder={labels.label_title}
                 defaultValue={register?.titulo}
@@ -74,25 +74,25 @@ const AcademicInfoForm = ({ labels, profileData }: any) => {
             </div>
             <div className="flex items-center">
               <input
-                id="checked-checkbox"
+                id="academic_inProgress"
                 type="checkbox"
                 defaultChecked={register?.en_curso}
                 onChange={handleInProgressCheck}
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-              <label htmlFor="checked-checkbox" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{labels.label_in_progress}</label>
+              <label htmlFor="academic_inProgress" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{labels.label_in_progress}</label>
             </div>
             <div>
-              <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_start_date}</label>
-              <input type="text" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              <label htmlFor="academic_startDate" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_start_date}</label>
+              <input type="text" id="academic_startDate" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder={labels.label_start_date}
                 defaultValue={register?.fecha_inicio}
               />
             </div>
             <div>
-              <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_end_date}</label>
+              <label htmlFor="academic_endDate" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_end_date}</label>
               <input
                 type="text"
-                id="name"
+                id="academic_endDate"
                 disabled={isInProgress}
                 className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 
                 ${isInProgress ? 'disabled:opacity-50' : ''}`}

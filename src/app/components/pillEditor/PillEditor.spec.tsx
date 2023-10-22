@@ -52,10 +52,10 @@ describe('Pill Editor Component', () => {
     const select = screen.getByRole('combobox') as HTMLSelectElement;
 
     expect(title).toBeDefined();
-    expect(select.value).toBe('Colombia');
+    expect(select.value).toBe('Colombia-1');
 
-    fireEvent.change(select[0], { target: { value: 'USA' } })
-    expect(select.value).toBe('USA');
+    fireEvent.change(select[0], { target: { value: 'USA-2' } })
+    expect(select.value).toBe('USA-2');
   });
 
   it('should update secondary selector when first selector changes its value', () => {
@@ -70,7 +70,7 @@ describe('Pill Editor Component', () => {
     expect(select).toHaveLength(2);
     expect(select[1].value).toBe('Bogotá');
 
-    fireEvent.change(select[0], { target: { value: 'USA' } })
+    fireEvent.change(select[0], { target: { value: 'USA-2' } })
 
     expect(select[1].value).toBe('New York');
   });
