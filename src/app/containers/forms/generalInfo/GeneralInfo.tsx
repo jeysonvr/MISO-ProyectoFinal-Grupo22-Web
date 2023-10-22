@@ -1,6 +1,15 @@
 import PillEditor from "../../../components/pillEditor/PillEditor";
 
-const GeneralInfoForm = ({ labels }: any) => {
+const GeneralInfoForm = ({ labels, metadata }: any) => {
+  const businessVerticalsMetadata = metadata?.areas_negocio?.map((area: any) => ({ id: area.id, value: area.descripcion })) || [];
+  const locationsMetadata = metadata?.paises?.map((ubicacion: any) => (
+    {
+      id: ubicacion.id,
+      value: ubicacion.pais,
+      extraData: ubicacion.ciudads
+    }
+  )) || [];
+
   return (
     <div
       className="blockp-6 bg-white border border-gray-200 rounded-lg px-10 py-5 items-center">
@@ -26,37 +35,17 @@ const GeneralInfoForm = ({ labels }: any) => {
         </div>
       </div>
 
-      <PillEditor title={labels.label_business_vertical} ctaLabel={labels.cta_add} id={'business_vertical_selector'} elements={[{ id: '1', value: 'abc' }]} />
+      <PillEditor
+        title={labels.label_business_vertical}
+        ctaLabel={labels.cta_add}
+        id={'business_vertical_selector'}
+        elements={businessVerticalsMetadata}
+      />
       <PillEditor
         title={labels.label_ubication}
         ctaLabel={labels.cta_add}
         id={'ubication_selector'}
-        elements={[
-          {
-            id: '1',
-            value: 'Colombia',
-            extraData: [
-              {
-                "id": 1,
-                "value": "Bogotá",
-              },
-              {
-                "id": 2,
-                "value": "Medellín",
-              }
-            ]
-          },
-          {
-            id: '2',
-            value: 'USA',
-            extraData: [
-              {
-                "id": 1,
-                "value": "New York",
-              }
-            ]
-          }
-        ]}
+        elements={locationsMetadata}
         isMultiSelector={true}
       />
     </div>

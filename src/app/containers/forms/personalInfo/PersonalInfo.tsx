@@ -1,6 +1,10 @@
 import PillEditor from "../../../components/pillEditor/PillEditor";
 
-const PersonalInfoForm = ({ labels }: any) => {
+const PersonalInfoForm = ({ labels, metadata }: any) => {
+  const languagesMetadata = metadata?.idiomas?.map(({ id, idioma }: any) => ({ id, value: idioma })) || [];
+  const softSkillsMetadata = metadata?.habilidadesBlandas?.map(({ id, descripcion }: any) => ({ id, value: descripcion })) || [];
+  const techSkillsMetadata = metadata?.habilidadesTecnicas?.map(({ id, descripcion }: any) => ({ id, value: descripcion })) || [];
+
   return (
     <div
       className="blockp-6 bg-white border border-gray-200 rounded-lg px-10 py-5 items-center">
@@ -41,17 +45,15 @@ const PersonalInfoForm = ({ labels }: any) => {
         </div>
       </div>
 
-      <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.select_country}</label>
-      <select id="countries" className="mb-10 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-        <option value="US">United States</option>
-        <option value="CA">Canada</option>
-        <option value="FR">France</option>
-        <option value="DE">Germany</option>
-      </select>
+      <div>
+        <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.select_country}</label>
+        <input type="tel" id="phone" className="mb-10 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder={labels.select_country} pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
+      </div>
 
-      <PillEditor title={labels.label_language} placeHolder={labels.input_language} ctaLabel={labels.cta_add} id={'language'} />
-      <PillEditor title={labels.label_soft_skills} placeHolder={labels.input_soft_skills} ctaLabel={labels.cta_add} id={'softSkills'} />
-      <PillEditor title={labels.label_tech_skills} placeHolder={labels.input_tech_skills} ctaLabel={labels.cta_add} id={'techSkills'} />
+      <PillEditor title={labels.label_language} ctaLabel={labels.cta_add} id={'language'} elements={languagesMetadata} />
+      <PillEditor title={labels.label_soft_skills} ctaLabel={labels.cta_add} id={'softSkills'} elements={softSkillsMetadata} />
+      <PillEditor title={labels.label_tech_skills} ctaLabel={labels.cta_add} id={'techSkills'} elements={techSkillsMetadata} />
     </div>
   )
 }
