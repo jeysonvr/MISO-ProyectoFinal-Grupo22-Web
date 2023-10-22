@@ -12,9 +12,47 @@ const SignupForm = ({ labels }: any) => {
     const [password, setPassword] = useState('');
     const [termsAccepted, setTermsAccepted] = useState(false);
 
-    const handleSubmit = useCallback((e:any) => {
-        //e.preventDefault();
-    }, []); 
+    const handleFullNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFullName(e.target.value); 
+    };
+
+    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setEmail(e.target.value); 
+    };
+
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setPassword(e.target.value); 
+    };
+
+    const handleSubmit = useCallback(async (e:any) => {
+        e.preventDefault();
+
+        const formData = {
+            nombre_completo: fullName,
+            email,
+            contrasena: password,
+            id_tipo_usuario: 1
+        };
+
+        console.log('Object body:', formData);
+
+        try {
+            const response = await fetch('https://34.117.49.114/registro/usuario', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const responseBody = await response.json();
+            console.log('Response body:', responseBody);
+
+        } catch (error) {
+            console.error('Request failed', error);
+        }
+        
+    }, [fullName, email, password]); 
 
     return (
         <div style={{height: '70vh', backgroundColor:'white'}}>
@@ -29,9 +67,10 @@ const SignupForm = ({ labels }: any) => {
                 <input
                 type="text"
                 id="fullName"
-                value={fullName}
                 required
                 className="bg-gray-200 w-full mb-3 h-8 pl-2"
+                value={fullName} 
+                onChange={handleFullNameChange} 
                 />
             </div>
 
@@ -40,9 +79,10 @@ const SignupForm = ({ labels }: any) => {
                 <input
                 type="email"
                 id="email"
-                value={email}
                 required
                 className="bg-gray-200 w-full mb-3 h-8 pl-2"
+                value={email} 
+                onChange={handleEmailChange} 
                 />
             </div>
 
@@ -51,9 +91,10 @@ const SignupForm = ({ labels }: any) => {
                 <input
                 type="password"
                 id="password"
-                value={password}
                 required
                 className="bg-gray-200 w-full mb-3 h-8 pl-2"
+                value={password} 
+                onChange={handlePasswordChange} 
                 />
             </div>
 
@@ -61,6 +102,7 @@ const SignupForm = ({ labels }: any) => {
                 <label className="text-left block">
                 <input
                     type="checkbox"
+                    id='terms'
                     checked={termsAccepted}
                     onChange={(e) => setTermsAccepted(e.target.checked)}
                     required 
@@ -72,6 +114,7 @@ const SignupForm = ({ labels }: any) => {
             <div>
                 <button
                 className="mt-4 mx-auto w-full h-8"
+                id='signupBtn'
                 type="submit"
                 style={{
                     backgroundColor: '#0DA89B',

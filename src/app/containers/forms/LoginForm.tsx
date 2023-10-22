@@ -7,13 +7,47 @@ import '../../globals.css';
 
 const LoginForm = ({ labels }: any) => {
   
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [remember, setRemember] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [remember, setRemember] = useState(false);
 
-  const handleSubmit = useCallback((e:any) => {
-      //e.preventDefault();
-  }, []);   
+    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setEmail(e.target.value); 
+    };
+
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setPassword(e.target.value); 
+    };
+
+    const handleSubmit = useCallback(async (e:any) => {
+        e.preventDefault();
+
+        const formData = {
+            email,
+            contrasena: password
+        };
+
+        console.log('Object body:', formData);
+
+        try {
+            const response = await fetch('https://34.117.49.114/registro/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const responseBody = await response.json();
+            console.log('Response body:', responseBody);
+
+            localStorage.setItem('user', JSON.stringify({email: email, type: 'candidate|company'}))
+
+        } catch (error) {
+            console.error('Request failed', error);
+        }
+
+  }, [email, password]);   
 
   return (
       <div style={{height: '70vh', backgroundColor:'white'}}>
@@ -28,7 +62,8 @@ const LoginForm = ({ labels }: any) => {
                   <input
                   type="email"
                   id="email"
-                  value={email  }
+                  value={email}
+                  onChange={handleEmailChange} 
                   required
                   className="bg-gray-200 w-full mb-3 h-8 pl-2"
                   />
@@ -40,6 +75,7 @@ const LoginForm = ({ labels }: any) => {
                   type="password"
                   id="password"
                   value={password}
+                  onChange={handlePasswordChange} 
                   required
                   className="bg-gray-200 w-full mb-3 h-8 pl-2"
                   />
@@ -49,6 +85,7 @@ const LoginForm = ({ labels }: any) => {
                   <label className="text-left block">
                   <input
                       type="checkbox"
+                      id='remember'
                       checked={remember}
                       onChange={(e) => setRemember(e.target.checked)}
                   />
@@ -59,6 +96,7 @@ const LoginForm = ({ labels }: any) => {
               <div>
                   <button
                   className="mt-4 mx-auto w-full h-8"
+                  id='loginBtn'
                   type="submit"
                   style={{
                       backgroundColor: '#0DA89B',
