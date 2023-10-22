@@ -59,5 +59,24 @@
     "input_business_vertical": "Otra vertical",
     "input_ubication_country": "País",
     "input_ubication_city": "Ciudad"
+  },
+  "login": {
+    "title_login": "Iniciar sesión",
+    "label_email": "Correo electrónico:",
+    "label_password": "Contraseña:",
+    "label_remember": "Recuérdame",
+    "cta_login": "Iniciar sesión",
+    "label_have_an_account": "¿Aún no tienes una cuenta?",
+    "label_create_account": "Crear cuenta"
+  },
+  "signup": {
+    "title_signup": "Registrarme",
+    "label_full_name": "Nombre completo:",
+    "label_email": "Correo electrónico:",
+    "label_password": "Contraseña:",
+    "label_agree_terms": "Estoy de acuerdo con los términos de uso y política de privacidad",
+    "cta_signup": "Registrarme",
+    "label_have_an_account": "¿Tienes una cuenta?",
+    "label_login": "Iniciar sesión"
   }
 }
