@@ -22,8 +22,85 @@ const ProfileForm = ({ labels }: any) => {
 
   const onFormSubmit = useCallback((e: any) => {
     e.preventDefault();
-    // TODO: Build request object (e.targe)
-  }, []);
+    const idiomas = e.target.language.value.split(',').map((idioma: any) => (idioma.split('-')[1]));
+    const habilidadesBlandas = e.target.softSkills.value.split(',').map((idioma: any) => (idioma.split('-')[1]));
+    const habilidadesTecnicas = e.target.techSkills.value.split(',').map((idioma: any) => (idioma.split('-')[1]));
+
+    // Academic info
+    let informacionAcademica: any = [];
+    console.log('Test::', e.target.educative_institution_name.value)
+    if(e.target.educative_institution_name.length) {
+      e.target.educative_institution_name.forEach((institution: any, index: number) => {
+        informacionAcademica.push({
+          institucion: institution.value,
+          titulo: e.target.academic_title[index].value,
+          en_curso: e.target.academic_inProgress[index].checked ? 1 : 0,
+          fecha_inicio: e.target.academic_startDate[index].value,
+          fecha_fin: e.target.academic_endDate[index].value,
+        })
+      })
+    } else {
+      informacionAcademica = [
+        {
+          institucion: e.target.educative_institution_name.value,
+          titulo: e.target.degree.value,
+          en_curso: e.target.isInProgress.checked ? 1 : 0,
+          fecha_inicio: e.target.startDate.value,
+          fecha_fin: e.target.endDate.value,
+        }
+      ]
+    }
+
+    // Laboral info
+    let experiencia: any = [];
+    if (e.target.companyName.length) {
+      e.target.companyName.forEach((company: any, index: number) => {
+        experiencia.push({
+          nombre_empresa: company.value,
+          fecha_inicio: e.target.laboral_startDate[index].value,
+          fecha_fin: e.target.laboral_endDate[index].value,
+          actual: e.target.laboral_isCurrent[index].checked ? 1 : 0,
+          descripcion_actividades: e.target.laboral_activityDescription[index].value,
+          id_rol: e.target.laboral_rol[index].value,
+        })
+      })
+    } else {
+      experiencia = [
+        {
+          nombre_empresa: e.target.companyName.value,
+          fecha_inicio: e.target.laboral_startDate.value,
+          fecha_fin: e.target.laboral_endDate.value,
+          actual: e.target.laboral_isCurrent.checked ? 1 : 0,
+          descripcion_actividades: e.target.laboral_activityDescription.value,
+          id_rol: e.target.laboral_rol.value,
+        }
+      ]
+    }
+
+    // Build request object
+    const bodyObject = {
+      edad: e.target.age.value,
+      numero_telefono: e.target.phone_number.value,
+      email: userEmail,
+      id_pais: e.target.candidate_country.value,
+      habilidadesBlandas,
+      habilidadesTecnicas,
+      idiomas,
+      experiencia,
+      informacionAcademica,
+    }
+
+    // Send request
+    fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/candidato/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(bodyObject),
+    });
+
+    // TODO: Show success message
+  }, [userEmail]);
 
   const handleCancel = useCallback(() => {
     window.location.reload();
@@ -49,7 +126,7 @@ const ProfileForm = ({ labels }: any) => {
     fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/candidato/info/${userEmail}`)
       .then(res => res.json())
       .then(data => setProfileInformation(data));
-  }, [userType]);
+  }, [userType, userEmail]);
 
   return (
     <form onSubmit={onFormSubmit}>
@@ -72,7 +149,7 @@ const ProfileForm = ({ labels }: any) => {
           <>
             <PersonalInfoForm labels={labels} metadata={profileMetadata} profileData={profileInformation} />
             <AcademicInfoForm labels={labels} profileData={profileInformation} />
-            <LaboralInfoForm labels={labels} metadata={profileMetadata} profileData={profileInformation}/>
+            <LaboralInfoForm labels={labels} metadata={profileMetadata} profileData={profileInformation} />
           </>
         )
       }

@@ -65,20 +65,20 @@ const LaboralInfoForm = ({ labels, metadata, profileData }: any) => {
         laboralRegisters.map((register, idx) => (
           <div className="grid gap-6 my-16 md:grid-cols-2" key={'laboralRegister' + idx}>
             <div className='col-span-2'>
-              <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_company}</label>
-              <input type="text" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              <label htmlFor="companyName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_company}</label>
+              <input type="text" id="companyName" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder={labels.label_company}
                 defaultValue={register?.nombre_empresa}
               />
             </div>
 
             <div>
-              <label htmlFor="rol" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_role}</label>
-              <select id="rol" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <label htmlFor="laboral_rol" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_role}</label>
+              <select id="laboral_rol" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 {
                   rolMetadata.map(({ id, value }: any) => (
                     <option
-                      value={value} key={'rol-' + id}
+                      value={id} key={'rol-' + id}
                       defaultChecked={register?.Rol?.rol === value}
                     >{value}</option>
                   ))
@@ -88,25 +88,25 @@ const LaboralInfoForm = ({ labels, metadata, profileData }: any) => {
 
             <div className="flex items-center">
               <input
-                id="checked-checkbox"
+                id="laboral_isCurrent"
                 type="checkbox"
                 onChange={handleInProgressCheck}
                 defaultChecked={register?.actual}
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-              <label htmlFor="checked-checkbox" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{labels.label_current_job}</label>
+              <label htmlFor="laboral_isCurrent" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{labels.label_current_job}</label>
             </div>
             <div>
-              <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_start_date}</label>
-              <input type="text" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              <label htmlFor="laboral_startDate" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_start_date}</label>
+              <input type="text" id="laboral_startDate" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder={labels.label_start_date}
                 defaultValue={register?.fecha_inicion}
               />
             </div>
             <div>
-              <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_end_date}</label>
+              <label htmlFor="laboral_endDate" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_end_date}</label>
               <input
                 type="text"
-                id="name"
+                id="laboral_endDate"
                 disabled={isInProgress}
                 className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 
                 ${isInProgress ? 'disabled:opacity-50' : ''}`}
@@ -115,8 +115,8 @@ const LaboralInfoForm = ({ labels, metadata, profileData }: any) => {
             </div>
 
             <div className='col-span-2'>
-              <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_activity_description}</label>
-              <textarea id="message" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              <label htmlFor="laboral_activityDescription" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_activity_description}</label>
+              <textarea id="laboral_activityDescription" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder={labels.label_activity_description}
                 defaultValue={register?.descripcion_actividades}
               ></textarea>
