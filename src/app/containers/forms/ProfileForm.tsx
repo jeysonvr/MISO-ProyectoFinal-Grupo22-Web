@@ -16,7 +16,9 @@ const mapUser = {
 
 const ProfileForm = ({ labels }: any) => {
   const [userType, setUserType] = useState(undefined); // User type
+  const [userEmail, setUserEmail] = useState(undefined); // User email
   const [profileMetadata, setProfileMetadata] = useState(undefined); // Metadata depending on profile type
+  const [profileInformation, setProfileInformation] = useState(undefined); // Profile information
 
   const onFormSubmit = useCallback((e: any) => {
     e.preventDefault();
@@ -28,16 +30,25 @@ const ProfileForm = ({ labels }: any) => {
   }, []);
 
   useEffect(() => {
-    const type = JSON.parse(localStorage.getItem('user') || '{}').type;
-    setUserType(type);
+    const userData = JSON.parse(localStorage.getItem('user') || '{}');
+    setUserType(userData.type);
+    setUserEmail(userData.email);
   }, []);
 
   useEffect(() => {
     if (!userType) return;
-    // Get profile metadata - company
+    // Get profile metadata
     fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/${mapUser[userType]}/metadata/`)
       .then(res => res.json())
       .then(data => setProfileMetadata(data));
+  }, [userType]);
+
+  useEffect(() => {
+    if (!userEmail) return;
+    // Get user profile data
+    fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/candidato/info/${userEmail}`)
+      .then(res => res.json())
+      .then(data => setProfileInformation(data));
   }, [userType]);
 
   return (
@@ -59,9 +70,9 @@ const ProfileForm = ({ labels }: any) => {
       {
         userType === UserType.candidate && (
           <>
-            <PersonalInfoForm labels={labels} metadata={profileMetadata} />
-            <AcademicInfoForm labels={labels} />
-            <LaboralInfoForm labels={labels} metadata={profileMetadata} />
+            <PersonalInfoForm labels={labels} metadata={profileMetadata} profileData={profileInformation} />
+            <AcademicInfoForm labels={labels} profileData={profileInformation} />
+            <LaboralInfoForm labels={labels} metadata={profileMetadata} profileData={profileInformation}/>
           </>
         )
       }
