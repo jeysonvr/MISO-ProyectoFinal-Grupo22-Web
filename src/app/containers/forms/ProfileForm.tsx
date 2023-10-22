@@ -51,13 +51,6 @@ const ProfileForm = ({ labels }: any) => {
       ]
     }
 
-    // [
-    //   {
-    //     institucion: "Universidad de Pamplona",
-    //     titulo: "Ingeniero de sistemas"
-    //   }
-    // ]
-
     // Laboral info
     let experiencia: any = [];
     if (e.target.companyName.length) {
@@ -133,7 +126,7 @@ const ProfileForm = ({ labels }: any) => {
     fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/candidato/info/${userEmail}`)
       .then(res => res.json())
       .then(data => setProfileInformation(data));
-  }, [userType]);
+  }, [userType, userEmail]);
 
   return (
     <form onSubmit={onFormSubmit}>

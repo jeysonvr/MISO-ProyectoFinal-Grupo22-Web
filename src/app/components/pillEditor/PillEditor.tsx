@@ -31,7 +31,7 @@ const PillEditor = ({
   const inputRef = useRef<any>(null);
   const extraInputRef = useRef<any>(null); // Use for secondary selector
 
-  const [secondarySelectorData, setSecondarySelectorData] = useState([]);
+  const [secondarySelectorData, setSecondarySelectorData] = useState(elements?.[0]?.extraData);
 
   const handleSelectorChange = useCallback(() => {
     if (!isMultiSelector || !inputRef.current?.value) return;
@@ -54,7 +54,7 @@ const PillEditor = ({
       return [...pills, newPillValue];
     });
     setInputValue('');
-  }, [inputRef, pillsAmountLimit]);
+  }, [pillsAmountLimit, isMultiSelector]);
 
   const handleDeletePill = useCallback((e: any) => {
     setPillsList((pills) => {
