@@ -60,6 +60,11 @@
     "input_ubication_country": "Country",
     "input_ubication_city": "City"
   },
+  "search_candidate": {
+    "title": "Search <span>Candidates</span>",
+    "cta_clean_filter": "Clear filters",
+    "label_results_for": "{amount} results for {search}"
+  },
   "login": {
     "title_login": "Login",
     "label_email": "Email:",
