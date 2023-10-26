@@ -26,7 +26,7 @@ const PillEditor = ({
   isMultiSelector,
 }: IPillEditor) => {
   const [inputValue, setInputValue] = useState('');
-  const [pillsList, setPillsList] = useState<string[]>([]);
+  const [pillsList, setPillsList] = useState<any[]>([]);
 
   const inputRef = useRef<any>(null);
   const extraInputRef = useRef<any>(null); // Use for secondary selector
@@ -38,7 +38,7 @@ const PillEditor = ({
 
     const selectorValue = inputRef.current?.value;
     elements?.find(({ id, value, extraData }) => {
-      if (`${value}-${id}` === selectorValue) {
+      if (id == selectorValue) {
         setSecondarySelectorData(extraData);
       }
     });
@@ -47,24 +47,37 @@ const PillEditor = ({
   const handleAddPill = useCallback(() => {
     if (!inputRef.current?.value) return;
 
-    const newPillValue = (isMultiSelector ? extraInputRef.current?.value + '/' : '') + inputRef.current?.value;
+    const pillValue = inputRef.current.value;
+    const pillText = type === 'input' ? inputRef.current.value : inputRef.current.options[inputRef.current.selectedIndex].text;
+
+    // const newPillValue = (isMultiSelector ? extraInputRef.current?.value + '/' : '') + inputRef.current?.value;
+    // If Multiselector
+    const pillExtraValue = isMultiSelector && extraInputRef.current ? extraInputRef.current.value : null;
+    const pillExtraText = isMultiSelector && extraInputRef.current ? extraInputRef.current.options[extraInputRef.current.selectedIndex]?.text : null;
+
     setPillsList((pills) => {
-      // Set a limit for pills amount
-      if (pills.length >= pillsAmountLimit || pills.some((pill) => pill === newPillValue)) return [...pills];
-      return [...pills, newPillValue];
-    });
+      // Do not add if value (id) already exist (Single selector)
+      if (pills.some((pill) => pill.pillValue == pillValue)) {
+        if (!isMultiSelector) return [...pills];
+        // Check if multiselector
+        if (pills.some((pill) => pill.pillExtraValue == pillExtraValue)) return [...pills];
+      }
+
+      return [...pills, { pillValue, pillText, pillExtraValue, pillExtraText }];
+    })
     setInputValue('');
   }, [pillsAmountLimit, isMultiSelector]);
 
   const handleDeletePill = useCallback((e: any) => {
     setPillsList((pills) => {
-      return [...pills.filter((pill) => pill !== e.target.value)]
+      return [...pills.filter((pill) => pill.pillValue != e.target.value)]
     });
   }, []);
 
   // Update pills
   useEffect(() => {
     if (!selectedPills) return;
+
     setPillsList(selectedPills);
   }, [selectedPills]);
 
@@ -76,19 +89,19 @@ const PillEditor = ({
 
   return (
     <div className='mb-4'>
-      <input hidden defaultValue={pillsList?.join()} id={id} />
+      <input hidden defaultValue={pillsList?.map(pills => pills.pillValue)?.join()} id={id} />
       <strong>{title}</strong>
       <div className='grid grid-cols-3'>
         <ul
           className="mb-5 flex list-none flex-col flex-wrap pl-0 md:flex-row col-span-2"
           role="tablist"
           data-te-nav-ref>
-          {pillsList?.map((pill, index) => (
+          {pillsList?.map(({ pillValue, pillText, pillExtraValue }, index) => (
             <div className="no-underline bg-teal-600 text-white font-sans font-semibold focus:outline-none mr-2 my-2 rounded" key={'pill-' + index}>
-              <span className='text-xs font-medium leading-tight text-white h-8 px-8'>{pill?.split('-')[0]}</span>
+              <span className='text-xs font-medium leading-tight text-white h-8 px-8'>{`${pillExtraValue ? pillExtraValue + ',' : ''}${pillText}`}</span>
               <button
                 style={{ padding: '2px 4px' }}
-                onClick={handleDeletePill} value={pill} tabIndex={index}>x</button>
+                onClick={handleDeletePill} value={pillValue} tabIndex={index}>x</button>
             </div>
           ))
           }
@@ -105,7 +118,7 @@ const PillEditor = ({
                   {
                     elements?.map(({ id, value }: any, index) => (
                       <option
-                        value={`${value}-${id}`}
+                        value={id}
                         key={'option-' + id}>{value}</option>
                     ))
                   }
@@ -145,7 +158,7 @@ const PillEditor = ({
             type='button'>+ {ctaLabel}</button>
         </div>
       </div >
-    </div>
+    </div >
   )
 }
 

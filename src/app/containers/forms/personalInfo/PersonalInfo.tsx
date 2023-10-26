@@ -88,21 +88,31 @@ const PersonalInfoForm = ({ labels, metadata, profileData }: any) => {
         ctaLabel={labels.cta_add}
         id={'language'}
         elements={languagesMetadata}
-        selectedPills={profileData?.idiomas?.map(({ id, idioma }: any) => (`${idioma}-${id}`))}
+        selectedPills={profileData?.idiomas?.map(({ id, idioma }: any) => ({
+          pillValue: id,
+          pillText: idioma,
+        }))}
       />
       <PillEditor
         title={labels.label_soft_skills}
         ctaLabel={labels.cta_add}
         id={'softSkills'}
         elements={softSkillsMetadata}
-        selectedPills={profileData?.habilidadesBlandas?.map(({ id, descripcion }: any) => (`${descripcion}-${id}`))}
+        selectedPills={profileData?.habilidadesBlandas?.map(({ id, descripcion }: any) => ({
+          pillValue: id,
+          pillText: descripcion,
+        }))}
       />
       <PillEditor
         title={labels.label_tech_skills}
         ctaLabel={labels.cta_add}
         id={'techSkills'}
         elements={techSkillsMetadata}
-        selectedPills={profileData?.habilidadesTecnicas?.map(({ id, descripcion }: any) => (`${descripcion}-${id}`))}
+        selectedPills={profileData?.habilidadesTecnicas?.map(({ id, descripcion }: any) => (
+          {
+            pillValue: id,
+            pillText: descripcion,
+          }))}
       />
     </div>
   )
