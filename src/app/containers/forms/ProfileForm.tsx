@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useState } from 'react';
 
+const cookieCutter = require('cookie-cutter');
+
 import AcademicInfoForm from './academicInfo/AcademicInfo';
 import PersonalInfoForm from "./personalInfo/PersonalInfo";
 import LaboralInfoForm from './laboralInfo/LaboralInfo';
@@ -22,14 +24,13 @@ const ProfileForm = ({ labels }: any) => {
 
   const onFormSubmit = useCallback((e: any) => {
     e.preventDefault();
-    const idiomas = e.target.language.value.split(',').map((idioma: any) => (idioma.split('-')[1]));
-    const habilidadesBlandas = e.target.softSkills.value.split(',').map((idioma: any) => (idioma.split('-')[1]));
-    const habilidadesTecnicas = e.target.techSkills.value.split(',').map((idioma: any) => (idioma.split('-')[1]));
+    const idiomas = e.target.language.value.split(',');
+    const habilidadesBlandas = e.target.softSkills.value.split(',');
+    const habilidadesTecnicas = e.target.techSkills.value.split(',');
 
     // Academic info
     let informacionAcademica: any = [];
-    console.log('Test::', e.target.educative_institution_name.value)
-    if(e.target.educative_institution_name.length) {
+    if (e.target.educative_institution_name.length) {
       e.target.educative_institution_name.forEach((institution: any, index: number) => {
         informacionAcademica.push({
           institucion: institution.value,
@@ -114,8 +115,15 @@ const ProfileForm = ({ labels }: any) => {
 
   useEffect(() => {
     if (!userType) return;
+
+    // Language
+    const lang = cookieCutter.get('NEXT_LOCALE');
+
+    // Query params
+    const queryParams = (lang && lang !== 'es') ? `language=${lang}` : '';
+
     // Get profile metadata
-    fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/${mapUser[userType]}/metadata/`)
+    fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/${mapUser[userType]}/metadata/?${queryParams}`)
       .then(res => res.json())
       .then(data => setProfileMetadata(data));
   }, [userType]);
