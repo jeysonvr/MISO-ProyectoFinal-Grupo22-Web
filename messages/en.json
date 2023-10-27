@@ -5,21 +5,11 @@
   },
   "footer": {
     "about": "About",
-    "all_jobs": "All Jobs",
-    "candidates": "candidates",
-    "companies": "Companies",
-    "company": "Company",
-    "copy_right": "© 2023 ABC Jobs",
-    "english": "English",
-    "join_us": "Join us",
-    "learn_more": "Learn more",
-    "privacy": "Privacy",
-    "product": "Product",
-    "sitemap": "Sitemap",
-    "spanish": "Spanish",
-    "terms": "Terms"
+    "privacy_policy": "Privacy policy",
+    "contact": "Contact",
+    "copy_right": "© 2023 ABC Jobs. All Rights Reserved."
   },
-  "navigation":{
+  "navigation": {
     "Home": "Home",
     "Tech_tests": "Technical Tests",
     "Performance_review": "Performance Review"
@@ -32,5 +22,61 @@
     "action": "Go back",
     "title_something_wrong": "Oops, something went wrong!",
     "error_404": "We're sorry, do you want to go back to the previous page?"
+  },
+  "user_profile": {
+    "main_title": "Edit profile",
+    "cta_cancel": "Cancel",
+    "cta_save": "Save",
+    "title_personal_info": "Personal information",
+    "title_academic_info": "Academic information",
+    "title_laboral_info": "Work information",
+    "title_general_info": "General information",
+    "input_name": "Name",
+    "input_age": "Age",
+    "input_email": "Email",
+    "input_phone": "Phone",
+    "select_country": "Country",
+    "label_language": "Languages",
+    "input_language": "Other language",
+    "label_soft_skills": "Soft skills",
+    "input_soft_skills": "Other skill",
+    "label_tech_skills": "Technical skills",
+    "input_tech_skills": "Other skill",
+    "cta_add": "Add",
+    "cta_remove": "Remove",
+    "label_educative_institution": "Educational institution",
+    "label_title": "Title",
+    "label_in_progress": "In progress",
+    "label_start_date": "Start date",
+    "label_end_date": "End date",
+    "label_company": "Company",
+    "label_role": "Role",
+    "label_current_job": "Current job",
+    "label_activity_description": "Activity description",
+    "label_business_type": "Business type",
+    "label_business_vertical": "Business vertical",
+    "label_ubication": "Location",
+    "input_business_vertical": "Other vertical",
+    "input_ubication_country": "Country",
+    "input_ubication_city": "City"
+  },
+  "login": {
+    "title_login": "Login",
+    "label_email": "Email:",
+    "label_password": "Password:",
+    "label_remember": "Remember",
+    "cta_login": "Login",
+    "label_have_an_account": "Does not have an account?",
+    "label_create_account": "Create an account"
+  },
+  "signup": {
+    "title_signup": "Register",
+    "label_full_name": "Full name:",
+    "label_email": "Email:",
+    "label_password": "Password:",
+    "label_agree_terms": "I agree to the terms of use and privacy policy",
+    "cta_signup": "Register",
+    "label_have_an_account": "Already have an account?",
+    "label_login": "Login"
   }
 }

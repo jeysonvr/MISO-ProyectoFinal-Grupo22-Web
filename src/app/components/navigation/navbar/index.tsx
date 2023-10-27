@@ -5,11 +5,9 @@ import Button from "./Button";
 
 
 const Navbar = ({ toggle }: { toggle: () => void }) => {
-  // const labels = useTranslations('navigation');
-
   return (
     <>
-      <div className="w-full h-20 bg-white sticky top-0">
+      <div className="w-full h-20 bg-white sticky top-0 my-6 mt-0">
         <div className="container mx-auto px-4 h-full">
           <div className="flex justify-between items-center h-full">
             <Logo />
@@ -37,7 +35,7 @@ const Navbar = ({ toggle }: { toggle: () => void }) => {
                 </Link>
               </li>
               <li>
-                <Link href="/signin">
+                <Link href="techTest">
                   <p>Pruebas Técnicas</p>
                 </Link>
               </li>
@@ -48,7 +46,10 @@ const Navbar = ({ toggle }: { toggle: () => void }) => {
               </li>              
             </ul>
             <div className="hidden md:block">
-              <Button />
+              {/* <Button/> */}
+              <Link href="/signup">
+                  <p>Registro</p>
+                </Link>
             </div>
           </div>
         </div>
