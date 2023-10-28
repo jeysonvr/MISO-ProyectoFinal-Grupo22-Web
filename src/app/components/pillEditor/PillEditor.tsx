@@ -69,10 +69,18 @@ const PillEditor = ({
   }, [pillsAmountLimit, isMultiSelector]);
 
   const handleDeletePill = useCallback((e: any) => {
+    e.preventDefault();
+    if (isMultiSelector) {
+      setPillsList((pills) => {
+        return [...pills.filter((pill) => pill.pillValue + '-' + pill.pillExtraValue != e.target.value)]
+      });
+      return;
+    }
+
     setPillsList((pills) => {
       return [...pills.filter((pill) => pill.pillValue != e.target.value)]
     });
-  }, []);
+  }, [isMultiSelector]);
 
   // Update pills
   useEffect(() => {
@@ -89,19 +97,19 @@ const PillEditor = ({
 
   return (
     <div className='mb-4'>
-      <input hidden defaultValue={pillsList?.map(pills => pills.pillValue)?.join()} id={id} />
+      <input hidden defaultValue={pillsList?.map(pills => isMultiSelector ? pills.pillExtraValue : pills.pillValue)?.join()} id={id} />
       <strong>{title}</strong>
       <div className='grid grid-cols-3'>
         <ul
           className="mb-5 flex list-none flex-col flex-wrap pl-0 md:flex-row col-span-2"
           role="tablist"
           data-te-nav-ref>
-          {pillsList?.map(({ pillValue, pillText, pillExtraValue }, index) => (
+          {pillsList?.map(({ pillValue, pillText, pillExtraValue, pillExtraText }, index) => (
             <div className="no-underline bg-teal-600 text-white font-sans font-semibold focus:outline-none mr-2 my-2 rounded" key={'pill-' + index}>
-              <span className='text-xs font-medium leading-tight text-white h-8 px-8'>{`${pillExtraValue ? pillExtraValue + ',' : ''}${pillText}`}</span>
+              <span className='text-xs font-medium leading-tight text-white h-8 px-8'>{`${pillExtraText ? pillExtraText + ',' : ''}${pillText}`}</span>
               <button
                 style={{ padding: '2px 4px' }}
-                onClick={handleDeletePill} value={pillValue} tabIndex={index}>x</button>
+                onClick={handleDeletePill} value={pillValue + `${pillExtraValue ? '-' + pillExtraValue : ''}`} tabIndex={index}>x</button>
             </div>
           ))
           }
@@ -133,7 +141,7 @@ const PillEditor = ({
                     >
                       {
                         secondarySelectorData?.map(({ id, value }: any) => (
-                          <option value={value} key={'extra-option-' + id}>{value}</option>
+                          <option value={id} key={'extra-option-' + id}>{value}</option>
                         ))
                       }
                     </select>
