@@ -47,9 +47,9 @@ export const labelsLogin = {
 
 export const labelsSignup = {
   title_signup: "Registrarme",
-  label_full_name: "Nombre completo:",
-  label_email: "Correo electrónico:",
-  label_password: "Contraseña:",
+  label_full_name: "Nombre",
+  label_email: "Correo electrónico",
+  label_password: "Contraseña",
   label_agree_terms: "Estoy de acuerdo con los términos de uso y política de privacidad",
   cta_signup: "Registrarme",
   label_have_an_account: "¿Tienes una cuenta?",

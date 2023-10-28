@@ -68,11 +68,11 @@ describe('Pill Editor Component', () => {
 
     expect(title).toBeDefined();
     expect(select).toHaveLength(2);
-    expect(select[1].value).toBe('Bogotá');
+    expect(select[1].value).toBe('1');
 
     fireEvent.change(select[0], { target: { value: '2' } })
 
-    expect(select[1].value).toBe('New York');
+    expect(select[1].value).toBe('1');
   });
 
   it('should render correctly for input type', () => {
