@@ -10,9 +10,14 @@
     "copy_right": "© 2023 ABC Jobs. Todos los derechos reservados."
   },
   "navigation": {
-    "Home": "Inicio",
-    "Tech_tests": "Pruebas técnicas",
-    "Performance_review": "Evaluación de desempeño"
+    "home": "Inicio",
+    "tech_tests": "Pruebas técnicas",
+    "performance_review": "Evaluación de desempeño",
+    "proyects": "Proyectos",
+    "candidates": "Candidates",
+    "employees": "Empleados",
+    "interviews": "Entrevistas",
+    "contract": "Registro contrato"
   },
   "language": {
     "en": "Inglés",
