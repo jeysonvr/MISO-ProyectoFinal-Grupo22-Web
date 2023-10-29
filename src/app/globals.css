@@ -33,6 +33,7 @@ body {
   font-family: 'Roboto', 'Lato', sans-serif;
 }
 
-h1>span {
+h1>span,
+button>span {
   color: var(--primary-color-500);
 }

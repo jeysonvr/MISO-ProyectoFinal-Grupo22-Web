@@ -76,12 +76,15 @@
   },
   "signup": {
     "title_signup": "Register",
-    "label_full_name": "Full name:",
-    "label_email": "Email:",
-    "label_password": "Password:",
+    "label_full_name": "Name",
+    "label_email": "Email",
+    "label_password": "Password",
     "label_agree_terms": "I agree to the terms of use and privacy policy",
     "cta_signup": "Register",
     "label_have_an_account": "Already have an account?",
-    "label_login": "Login"
+    "label_login": "Login",
+    "label_i_am": "I am",
+    "label_candidate": "candidate",
+    "label_company": "company"
   }
 }

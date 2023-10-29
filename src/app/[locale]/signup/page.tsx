@@ -13,7 +13,10 @@ export default function Signup() {
     label_agree_terms: labels('label_agree_terms'),
     cta_signup: labels('cta_signup'),
     label_have_an_account: labels('label_have_an_account'),
-    label_login: labels('label_login')
+    label_login: labels('label_login'),
+    label_i_am: labels('label_i_am'),
+    label_candidate: labels('label_candidate'),
+    label_company: labels('label_company'),
   };
 
   return (
