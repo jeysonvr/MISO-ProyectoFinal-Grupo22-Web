@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+ABC Jobs es una plataforma que permite conectar personas especializadas en tecnologías requeridas por companías del sector tecnológico con el fin de contratarlos para la ejecución de proyectos.
 
-## Getting Started
+La plataforma web de ABC Jobs está desarrollada con [Next.js](https://nextjs.org/) utilizando tecnologías como RSC (React Server Components), Typescript, Jest.
 
-First, run the development server:
+Url: https://miso-proyecto-final-grupo22-web.vercel.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+## Ejecución en ambiente local
+
+1. Obtenención del código: <br>
+`git clone https://github.com/jeysonvr/MISO-ProyectoFinal-Grupo22-Web.git`
+
+2. Intalación de dependencias: <br>
+`npm install`
+
+3. Ejecución: <br>
+`npm run dev`
+
+4. Abrir en el navegador: [http://localhost:3000](http://localhost:3000)
+
+```
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### Otros comandos útiles:
+* Ejecución de pruebas unitarias `npm run test`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Estructura del proyecto
+````
+├── .github
+|   └── workflows # Configuración de pipeline
+|   └── pull_request_template.md # Template para los Pull Requessts
+├── Coverage
+|   └── Icov-report # Reporte de cobertura de pruebas unitarias
+├── messages # Configuración de textos para la localización 
+├── public
+|   └── icons # iconos
+|   └── images # imágenes
+├── public
+|   └── icons # iconos
+|   └── images # imágenes
+├── src (app)
+|   └── [locale] # Páginas del proyecto
+|   └── components
+|   └── containers
+|   └── constants
+|   └── mocks
+|   └── globals.css # CSS global
+└── .gitignore # Archivo que contiene paths que debe ignorar para subir al repositorio
+└── jest.config.ts # Configuración de pruebas unitarias con Jest
+└── next.config.js # Configuración de NextJS
+└── package.json # Dependencias del proyecto
+└── tailwind.config.ts # Configuración de tailwind
+└── .env # Configuración de variables de entorno
+└── README.md # Estás aquí
+````
 
-## Learn More
+## CI/CD
 
-To learn more about Next.js, take a look at the following resources:
+La rama principal del proyecto es main. Para incluir código en esta rama se debe crear un PR (Pull Request) sobre el que se valida que el build de la aplicación se ejecuta correctamente y requiere al menos una aprobación por otro miembro del equipo.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Adicional, se ejecutan pruebas unitarias con jest y se valida una cobertura mínima de 60%.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Cuando se incluye nuevo código a main se ejecuta un proceso de despliegue automático en la [plataforma vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
- 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Acerca del desarrollo
+
+Este proyecto es desarrollado como parte de la [maestría de ingeniería de software de la Univerisdad de los Andes](https://sistemas.uniandes.edu.co/maestrias/miso/virtual/).
+
+Equipo de desarrollo:
+* [Erik Bernal](https://github.com/ErikBernal94)
+* [Lizeth López](https://github.com/lizlopez10)
+* [Zaray Rey](https://github.com/VivianaReyV)
+* [Jeyson Vega](https://github.com/jeysonvr)
