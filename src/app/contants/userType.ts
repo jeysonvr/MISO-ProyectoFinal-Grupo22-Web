@@ -4,3 +4,10 @@ export const UserType = {
   company: 'company',
   recruiter: 'recruiter',
 }
+
+export enum UserTypeEnum {
+  'free',
+  'admin',
+  'candidate',
+  'company',
+}

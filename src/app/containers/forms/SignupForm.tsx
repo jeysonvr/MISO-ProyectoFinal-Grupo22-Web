@@ -5,14 +5,14 @@ import { useState } from "react";
 import Link from "next/link";
 
 import '../../globals.css';
-import { UserType } from '../../contants/userType';
+import { UserTypeEnum } from '../../contants/userType';
 
 const SignupForm = ({ labels }: any) => {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [userType, setUserType] = useState({
-        id: UserType.candidate,
+        id: UserTypeEnum.candidate,
         text: labels.label_candidate,
     });
     const [termsAccepted, setTermsAccepted] = useState(false);
@@ -31,14 +31,14 @@ const SignupForm = ({ labels }: any) => {
 
     const onChangeRole = useCallback(() => {
         setUserType(type => {
-            if (type.id === UserType.candidate) {
+            if (type.id === UserTypeEnum.candidate) {
                 return {
-                    id: UserType.company,
+                    id: UserTypeEnum.company,
                     text: labels.label_company,
                 }
             }
             return {
-                id: UserType.candidate,
+                id: UserTypeEnum.candidate,
                 text: labels.label_candidate,
             }
         })
@@ -65,7 +65,7 @@ const SignupForm = ({ labels }: any) => {
                 // Success - created
                 if (resp.status === 201) {
                     localStorage.setItem('user', JSON.stringify(
-                        { email: formData.email, type: userType.id }
+                        { email: formData.email, type: UserTypeEnum[userType.id] }
                     ))
                     window.location.href = '/profile';
                     return;
@@ -91,7 +91,7 @@ const SignupForm = ({ labels }: any) => {
                     >{labels.label_i_am}
                         &nbsp;
                         <span>
-                            {userType.id === UserType.candidate ? labels.label_company : labels.label_candidate}
+                            {userType.id === UserTypeEnum.candidate ? labels.label_company : labels.label_candidate}
                         </span>
                     </button>
                 </div>
@@ -149,20 +149,19 @@ const SignupForm = ({ labels }: any) => {
                     </div>
 
                     <div>
-                        <Link href="login" className="ml-2 text-teal-500 font-semibold">
-                            <button
-                                className="mt-4 mx-auto w-full h-8"
-                                id='signupBtn'
-                                type="submit"
-                                style={{
-                                    backgroundColor: '#0DA89B',
-                                    color: 'white',
-                                    border: 'none',
-                                    borderRadius: '5px',
-                                }}>
-                                {labels.cta_signup}
-                            </button>
-                        </Link>  
+                        <button
+                            className="mt-4 mx-auto w-full h-8"
+                            id='signupBtn'
+                            type="submit"
+                            style={{
+                                backgroundColor: '#0DA89B',
+                                color: 'white',
+                                border: 'none',
+                                borderRadius: '5px',
+                            }}
+                        >
+                            {labels.cta_signup}
+                        </button>
                     </div>
 
                     <div className="flex items-center justify-center mt-3">

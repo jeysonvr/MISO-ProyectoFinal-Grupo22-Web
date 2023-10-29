@@ -120,7 +120,7 @@ describe('Signup Form Container', () => {
             nombre_completo: 'John Doe',
             email: 'test@example.com',
             contrasena: 'password123',
-            id_tipo_usuario: 'candidate',
+            id_tipo_usuario: 2,
           }),
         })
       );
@@ -160,7 +160,7 @@ describe('Signup Form Container', () => {
             nombre_completo: 'John Doe',
             email: 'test@example.com',
             contrasena: 'password123',
-            id_tipo_usuario: 'candidate',
+            id_tipo_usuario: 2,
           }),
         })
       );

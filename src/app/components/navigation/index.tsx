@@ -60,8 +60,6 @@ const Navigation = ({ labels }: any) => {
     setIsOpen(!isOpen);
   };
 
-  // if(appContext.user.type === UserType.anonymous) return null;
-
   return (
     <>
       <Sidebar isOpen={isOpen} toggle={toggle} />
