@@ -81,5 +81,14 @@
     "label_i_am": "I am",
     "label_candidate": "candidate",
     "label_company": "company"
+  }, 
+  "home": {
+    "label_oportunities": "Thousands of opportunities ",
+    "label_for_you": "For You",
+    "cta_login": "Login",
+    "span_or": "or",
+    "cta_signup": "Register",
+    "label_phrase_1": "Log in or register and access all these opportunities.",
+    "label_phrase_2": "If you are a company, you will be able to find the most qualified personnel for your projects."
   }
 }

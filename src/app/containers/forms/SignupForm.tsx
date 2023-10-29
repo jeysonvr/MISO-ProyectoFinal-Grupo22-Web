@@ -149,19 +149,20 @@ const SignupForm = ({ labels }: any) => {
                     </div>
 
                     <div>
-                        <button
-                            className="mt-4 mx-auto w-full h-8"
-                            id='signupBtn'
-                            type="submit"
-                            style={{
-                                backgroundColor: '#0DA89B',
-                                color: 'white',
-                                border: 'none',
-                                borderRadius: '5px',
-                            }}
-                        >
-                            {labels.cta_signup}
-                        </button>
+                        <Link href="login" className="ml-2 text-teal-500 font-semibold">
+                            <button
+                                className="mt-4 mx-auto w-full h-8"
+                                id='signupBtn'
+                                type="submit"
+                                style={{
+                                    backgroundColor: '#0DA89B',
+                                    color: 'white',
+                                    border: 'none',
+                                    borderRadius: '5px',
+                                }}>
+                                {labels.cta_signup}
+                            </button>
+                        </Link>  
                     </div>
 
                     <div className="flex items-center justify-center mt-3">

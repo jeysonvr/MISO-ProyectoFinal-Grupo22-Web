@@ -96,21 +96,22 @@ const LoginForm = ({ labels }: any) => {
               </div>
 
               <div>
-                  <button
-                  className="mt-4 mx-auto w-full h-8"
-                  id='loginBtn'
-                  type="submit"
-                  style={{
-                      backgroundColor: '#0DA89B',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '5px',
-                  }}
-                  >
-                  {labels.cta_login}
-                  </button>
+                <Link href="profile" className="ml-2 text-teal-500 font-semibold">
+                    <button
+                        className="mt-4 mx-auto w-full h-8"
+                        id='loginBtn'
+                        type="submit"
+                        style={{
+                            backgroundColor: '#0DA89B',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '5px',
+                        }}
+                        >
+                        {labels.cta_login}
+                    </button>
+                </Link> 
               </div>
-
               <div className="flex items-center justify-center mt-3">
                   <label> {labels.label_have_an_account} </label>
                   <Link href="signup" className="ml-2 text-teal-500 font-semibold">
