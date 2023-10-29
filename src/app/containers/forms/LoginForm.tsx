@@ -46,7 +46,7 @@ const LoginForm = ({ labels }: any) => {
             localStorage.setItem('user', JSON.stringify({ email: email, type: userType }))
 
         } catch (error) {
-            console.error('Request failed', error);
+            console.error('Error:', error);
         }
 
     }, [email, password]);

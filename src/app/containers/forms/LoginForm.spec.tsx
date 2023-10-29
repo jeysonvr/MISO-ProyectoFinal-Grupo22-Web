@@ -69,7 +69,7 @@ describe('Login Form Container', () => {
     it('should handle form submission with error', async () => {
         global.fetch = jest.fn(() =>
             Promise.reject({
-                error: 'Request failed',
+                Error: 'Error:',
             })
         );
 
@@ -86,11 +86,11 @@ describe('Login Form Container', () => {
         fireEvent.click(submitButton);
     
         await waitFor(() => {
-            expect(console.error).toHaveBeenCalledWith('Request failed', {
-              error: 'Request failed',
+            expect(console.error).toHaveBeenCalledWith('Error:', {
+              Error: 'Error:',
             });
         });
-    });
+    }); 
 
     it('debería manejar el evento onChange para el input "remember"', () => {
         render(<LoginForm labels={{}} />);

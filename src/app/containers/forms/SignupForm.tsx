@@ -5,14 +5,14 @@ import { useState } from "react";
 import Link from "next/link";
 
 import '../../globals.css';
-import { UserTypeEnum } from '../../contants/userType';
+import { UserType } from '../../contants/userType';
 
 const SignupForm = ({ labels }: any) => {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [userType, setUserType] = useState({
-        id: UserTypeEnum.candidate,
+        id: UserType.candidate,
         text: labels.label_candidate,
     });
     const [termsAccepted, setTermsAccepted] = useState(false);
@@ -31,14 +31,14 @@ const SignupForm = ({ labels }: any) => {
 
     const onChangeRole = useCallback(() => {
         setUserType(type => {
-            if (type.id === UserTypeEnum.candidate) {
+            if (type.id === UserType.candidate) {
                 return {
-                    id: UserTypeEnum.company,
+                    id: UserType.company,
                     text: labels.label_company,
                 }
             }
             return {
-                id: UserTypeEnum.candidate,
+                id: UserType.candidate,
                 text: labels.label_candidate,
             }
         })
@@ -65,7 +65,7 @@ const SignupForm = ({ labels }: any) => {
                 // Success - created
                 if (resp.status === 201) {
                     localStorage.setItem('user', JSON.stringify(
-                        { email: formData.email, type: UserTypeEnum[userType.id] }
+                        { email: formData.email, type: userType.id }
                     ))
                     window.location.href = '/profile';
                     return;
@@ -91,7 +91,7 @@ const SignupForm = ({ labels }: any) => {
                     >{labels.label_i_am}
                         &nbsp;
                         <span>
-                            {userType.id === UserTypeEnum.candidate ? labels.label_company : labels.label_candidate}
+                            {userType.id === UserType.candidate ? labels.label_company : labels.label_candidate}
                         </span>
                     </button>
                 </div>
