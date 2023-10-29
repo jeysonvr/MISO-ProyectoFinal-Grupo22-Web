@@ -1,6 +1,7 @@
 import '../globals.css';
 import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
+import Script from 'next/script'
 
 import Footer from '../containers/footer/Footer'
 import Navigation from '../components/navigation';
@@ -36,7 +37,7 @@ export default function RootLayout({ children, params: { locale } }: {
           </main>
           <Footer />
         </AppProvider>
-        <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+        <Script  src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></Script >
       </body>
     </html >
   )
