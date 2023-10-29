@@ -27,38 +27,27 @@ const ProfileForm = ({ labels }: any) => {
 
     let personal: any;
     let informacionAcademica: any = [];
-    let experiencia: any = [];
-
-    let bodyObject = {};
-
-    if (userType === UserType.candidate) {
-      // Personal info
-      personal.idiomas = e.target.language.value ? e.target.language.value.split(',') : [];
-      personal.habilidadesBlandas = e.target.softSkills.value ? e.target.softSkills.value.split(',') : [];
-      personal.habilidadesTecnicas = e.target.techSkills.value ? e.target.techSkills.value.split(',') : [];
-
-      // Academic info
-      if (e.target.educative_institution_name.length) {
-        e.target.educative_institution_name.forEach((institution: any, index: number) => {
-          informacionAcademica.push({
-            institucion: institution.value,
-            titulo: e.target.academic_title[index].value,
-            en_curso: e.target.academic_inProgress[index].checked ? 1 : 0,
-            fecha_inicio: e.target.academic_startDate[index].value,
-            fecha_fin: e.target.academic_endDate[index].value,
-          })
+    if (e.target.educative_institution_name.length) {
+      e.target.educative_institution_name.forEach((institution: any, index: number) => {
+        informacionAcademica.push({
+          institucion: institution.value,
+          titulo: e.target.academic_title[index].value,
+          en_curso: e.target.academic_inProgress[index].checked ? 1 : 0,
+          fecha_inicio: e.target.academic_startDate[index].value,
+          fecha_fin: e.target.academic_endDate[index].value,
         })
-      } else {
-        informacionAcademica = [
-          {
-            institucion: e.target.educative_institution_name.value,
-            titulo: e.target.degree.value,
-            en_curso: e.target.isInProgress.checked ? 1 : 0,
-            fecha_inicio: e.target.startDate.value,
-            fecha_fin: e.target.endDate.value,
-          }
-        ]
-      }
+      })
+    } else {
+      informacionAcademica = [
+        {
+          institucion: e.target.educative_institution_name?.value,
+          titulo: e.target.degree?.value,
+          en_curso: e.target.isInProgress?.checked ? 1 : 0,
+          fecha_inicio: e.target.startDate?.value,
+          fecha_fin: e.target.endDate?.value,
+        }
+      ]
+    }
 
       // Laboral info
       if (e.target.companyName.length) {

@@ -9,9 +9,6 @@ describe('Init Form Container', () => {
         render(<InitForm labels={labelsHome} />);
         const label_for_you = screen.getByText('Para Ti');
         expect (label_for_you).toBeDefined();       
-    });
-
-
-    
+    });    
 
 })
