@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Select from 'react-select'
+
 interface IMetadata {
   label: string;
   placeholder: string;
@@ -16,8 +18,30 @@ interface ISearchFilter {
 }
 
 const SearchFilter = ({ metadata, onChange }: ISearchFilter) => {
+
+  console.log('Test::', metadata);
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
+  ]
+
+
   return (
     <div className='flex'>
+
+      <div
+        className='mb-10 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
+      >
+
+        <Select
+          isMulti
+          name="colors"
+          options={metadata}
+          className="basic-multi-select"
+          classNamePrefix="select"
+        />
+      </div>
       {
         metadata?.map(({ label, placeholder, name, values }) => (
           <div className='flex-1 m-5'>
