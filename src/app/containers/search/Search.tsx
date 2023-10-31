@@ -2,79 +2,18 @@
 
 import { useCallback, useEffect, useState } from 'react';
 
-import SearchFilter from '@/app/components/searchFilter/SearchFilter';
-import SearchResult from '@/app/components/searchResult/SearchResult';
+import SearchFilter from '../../components/searchFilter/SearchFilter';
+import SearchResult from '../../components/searchResult/SearchResult';
+
+const cookieCutter = require('cookie-cutter');
 
 interface IFilter {
   key: string;
   value: string;
 };
 
-const SearchContainer = ({ labels, metadata, onSearchCandidates }: any) => {
-  const [value, setValue] = useState('');
-
-  const mockMetadata = [
-    {
-      label: 'Rol',
-      placeholder: 'Select an option',
-      name: 'rol',
-      values: [
-        {
-          value: 1,
-          text: 'rol 1',
-        },
-        {
-          value: 2,
-          text: 'rol 2',
-        },
-      ],
-    },
-    {
-      label: 'País',
-      placeholder: 'Select an option',
-      name: 'country',
-      values: [
-        {
-          value: 1,
-          text: 'país 1',
-        },
-        {
-          value: 2,
-          text: 'país 2',
-        },
-      ],
-    },
-    {
-      label: 'Habilidades técnicas',
-      placeholder: 'Select an option',
-      name: 'techSkills',
-      values: [
-        {
-          value: 1,
-          text: 'habilidad 1',
-        },
-        {
-          value: 2,
-          text: 'habilidad 2',
-        },
-      ],
-    },
-    {
-      label: 'Habilidades blandas',
-      placeholder: 'Select an option',
-      name: 'softSkills',
-      values: [
-        {
-          value: 1,
-          text: 'habilidad 1',
-        },
-        {
-          value: 2,
-          text: 'habilidad 2',
-        },
-      ],
-    }
-  ]
+const SearchContainer = ({ labels, onSearchCandidates }: any) => {
+  const [filterMetadata, setFilterMetadata] = useState<any>(null);
 
   const searchResult = [
     {
@@ -95,50 +34,68 @@ const SearchContainer = ({ labels, metadata, onSearchCandidates }: any) => {
    */
   const searchCandidateHandler = async () => {
     // const email = JSON.parse(localStorage.getItem('user') || '{}').email;
-    const response = await onSearchCandidates('token'); // TODO: Replace with user token
-
-    setValue(response);
+    // const response = await onSearchCandidates('token'); // TODO: Replace with user token
   }
 
-  /**
-   * Update Filter
-   */
-  const onFilterChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
-    // Remove from filter if value is empty
-    if (!e.target.value) {
-      setFilter(filter => {
-        const newFilter = filter.filter(obj => {
-          return obj.key !== e.target.name;
-        });
-        return [...newFilter];
-      });
-      return;
-    }
-
-    // Replace or add filter
-    setFilter(filter => {
-      const newFilter = filter.filter(obj => {
-        return obj.key !== e.target.name;
-      });
-      return [
-        ...newFilter,
-        {
-          key: e.target.name,
-          value: e.target.value,
-        }
-      ]
-    })
+  const onFilterChange = useCallback((e: any, filterKey: any) => {
+    console.log('Recibe::', e, filterKey)
   }, []);
 
   useEffect(() => {
     searchCandidateHandler();
   }, []);
 
+
+  // Get metadata for filters
+  useEffect(() => {
+
+    // Language
+    const lang = cookieCutter.get('NEXT_LOCALE');
+
+    // Query params
+    const queryParams = (lang && lang !== 'es') ? `language=${lang}` : '';
+
+    // Get profile metadata
+    fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/candidato/metadata/?${queryParams}`)
+      .then(res => res.json())
+      .then(data => {
+        const placeholder = labels.placeholder;
+        const metadataFilter = [
+          {
+            label: labels.filter_rol,
+            placeholder,
+            name: 'filterRol',
+            options: data.roles?.map(({ id, rol }: any) => ({ value: id, label: rol })),
+          },
+          {
+            label: labels.filter_country,
+            placeholder,
+            name: 'filterCountry',
+            options: data.paises?.map(({ id, pais }: any) => ({ value: id, label: pais })),
+          },
+          {
+            label: labels.filter_tech_skills,
+            placeholder,
+            name: 'filterTechSkills',
+            options: data.habilidadesTecnicas?.map(({ id, descripcion }: any) => ({ value: id, label: descripcion })),
+          },
+          {
+            label: labels.filter_soft_skills,
+            placeholder,
+            name: 'filterSoftSkills',
+            options: data.habilidadesBlandas?.map(({ id, descripcion }: any) => ({ value: id, label: descripcion })),
+          },
+        ]
+        setFilterMetadata(metadataFilter)
+      });
+  }, []);
+
   return (
     <>
-      <h2>{labels.title}</h2>
-      <p>{value}</p>
-      <SearchFilter metadata={mockMetadata} onChange={onFilterChange} />
+      <div className='mt-3 mb-5'>
+        <SearchFilter metadata={filterMetadata} onFilterChange={onFilterChange} />
+      </div>
+      <p>32 resultados {`${filter.join('&').length ? 'para: ' + filter.join('&') : ''}`}</p>
       <SearchResult
         labelResults={'32 para'}
         results={searchResult}

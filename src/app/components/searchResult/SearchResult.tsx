@@ -6,8 +6,8 @@ import ISearchResult from './ISearchResult';
 const SearchResult = ({ results }: ISearchResult) => {
 
   return (
-    results?.map(({ name, desc }) => (
-      <ResultCard name={name} desc={desc} />
+    results?.map(({ name, desc }, id) => (
+      <ResultCard name={name} desc={desc} key={name + '-' + id} />
     ))
   )
 }
