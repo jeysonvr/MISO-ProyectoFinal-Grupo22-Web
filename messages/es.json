@@ -10,9 +10,14 @@
     "copy_right": "© 2023 ABC Jobs. Todos los derechos reservados."
   },
   "navigation": {
-    "Home": "Inicio",
-    "Tech_tests": "Pruebas técnicas",
-    "Performance_review": "Evaluación de desempeño"
+    "home": "Inicio",
+    "tech_tests": "Pruebas técnicas",
+    "performance_review": "Evaluación de desempeño",
+    "proyects": "Proyectos",
+    "candidates": "Candidates",
+    "employees": "Empleados",
+    "interviews": "Entrevistas",
+    "contract": "Registro contrato"
   },
   "language": {
     "en": "Inglés",
@@ -92,5 +97,14 @@
     "label_i_am": "Soy",
     "label_candidate": "candidato",
     "label_company": "compañía"
+  }, 
+  "home": {
+    "label_oportunities": "Miles de oportunidades ",
+    "label_for_you": "Para Ti",
+    "cta_login": "Iniciar sesión",
+    "span_or": "ó",
+    "cta_signup": "Registrarme",
+    "label_phrase_1": "Inicia sesión o regístrate y accede a todas estas oportunidades.",
+    "label_phrase_2": "Si eres empresa, podrás encontrar el personal más calificado para tus proyectos."
   }
 }

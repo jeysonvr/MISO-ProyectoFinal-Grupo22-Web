@@ -71,7 +71,6 @@ const SignupForm = ({ labels }: any) => {
                     return;
                 }
 
-                // todo: handle error messages here
             })
             .catch((error) => {
                 console.error('Request failed', error);

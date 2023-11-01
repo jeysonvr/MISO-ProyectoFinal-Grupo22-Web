@@ -1,7 +1,8 @@
 export const UserType = {
-  admin: 'admin',
+  anonymous: 'anonymous',
   candidate: 'candidate',
   company: 'company',
+  recruiter: 'recruiter',
 }
 
 export enum UserTypeEnum {
