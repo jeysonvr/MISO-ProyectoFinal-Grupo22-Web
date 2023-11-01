@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Home from './page';
-import { labelsHome } from '../../app/mocks/labels'
 import '@testing-library/jest-dom';
 
 jest.mock('next-intl', () => ({
