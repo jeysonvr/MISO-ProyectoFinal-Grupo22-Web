@@ -48,6 +48,11 @@ describe('Login Form Container', () => {
     
         const submitButton = document.getElementById('loginBtn') as HTMLButtonElement ;
         fireEvent.click(submitButton);
+
+        const formData = {
+          email: 'test@example.com',
+          password: 'password',
+        };
     
         await waitFor(() => {
           expect(mockFetch).toHaveBeenCalledWith(
@@ -97,6 +102,6 @@ describe('Login Form Container', () => {
         const rememberInput = document.getElementById('remember') as HTMLInputElement;
         fireEvent.click(rememberInput);
         expect(rememberInput.checked).toBe(true);
-      });
+    });
 
 })

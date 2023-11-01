@@ -4,12 +4,17 @@ import { useCallback } from 'react';
 import { useState } from "react";
 import Link from "next/link";
 import '../../globals.css';
+import { UserTypeEnum } from '../../contants/userType';
 
 const LoginForm = ({ labels }: any) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [remember, setRemember] = useState(false);
+    const [userType] = useState({
+        id: UserTypeEnum.candidate,
+        text: labels.label_candidate,
+    });
 
     const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
@@ -28,22 +33,25 @@ const LoginForm = ({ labels }: any) => {
         };
 
         try {
-            const responseBody = await fetch('https://34.117.49.114/registro/login', {
+                await fetch('https://34.117.49.114/registro/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(formData),
             })
-                .then(resp => resp.json())
+                .then(resp => {
+                    // Success - created
+                    if (resp.status === 200) {
+                        localStorage.setItem('user', JSON.stringify(
+                            { email: formData.email, type: UserTypeEnum[userType.id] }
+                        ))
+                        window.location.href = '/profile';
+                        return;
+                    }
+    
+                })
                 .catch(error => console.error('Error:', error));
-
-            let userType: string = 'company';
-            if (responseBody.id_tipo_usuario == 1) {
-                userType = 'candidate';
-            }
-
-            localStorage.setItem('user', JSON.stringify({ email: email, type: userType }))
 
         } catch (error) {
             console.error('Error:', error);
@@ -96,21 +104,19 @@ const LoginForm = ({ labels }: any) => {
                     </div>
 
               <div>
-                <Link href="profile" className="ml-2 text-teal-500 font-semibold">
-                    <button
-                        className="mt-4 mx-auto w-full h-8"
-                        id='loginBtn'
-                        type="submit"
-                        style={{
-                            backgroundColor: '#0DA89B',
-                            color: 'white',
-                            border: 'none',
-                            borderRadius: '5px',
-                        }}
-                        >
-                        {labels.cta_login}
-                    </button>
-                </Link> 
+                <button
+                    className="mt-4 mx-auto w-full h-8"
+                    id='loginBtn'
+                    type="submit"
+                    style={{
+                        backgroundColor: '#0DA89B',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '5px',
+                    }}
+                    >
+                    {labels.cta_login}
+                </button>
               </div>
               <div className="flex items-center justify-center mt-3">
                   <label> {labels.label_have_an_account} </label>

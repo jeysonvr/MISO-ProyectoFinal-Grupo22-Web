@@ -4,6 +4,7 @@ import React, { useMemo } from "react";
 import Link from "next/link";
 import Logo from "./Logo";
 import { UrlPath } from "@/app/contants/urlPath";
+import '../../../globals.css';
 
 const Navbar = ({ toggle, menuItems }: { toggle: () => void, menuItems: any }) => {
 
