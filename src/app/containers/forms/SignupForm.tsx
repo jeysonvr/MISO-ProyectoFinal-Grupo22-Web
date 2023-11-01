@@ -42,7 +42,7 @@ const SignupForm = ({ labels }: any) => {
                 text: labels.label_candidate,
             }
         })
-    }, []);
+    }, [labels.label_company, labels.label_candidate]);
 
     const handleSubmit = useCallback(async (e: any) => {
         e.preventDefault();
