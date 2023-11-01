@@ -60,6 +60,18 @@
     "input_ubication_country": "Country",
     "input_ubication_city": "City"
   },
+  "search_candidate": {
+    "title": "Search <span>Candidates</span>",
+    "cta_clean_filter": "Clear filters",
+    "label_results_for": "{amount} results for {search}",
+    "select_placeholder": "Select...",
+    "filter_by": "Filter by:",
+    "filter_rol": "Role",
+    "filter_country": "Country",
+    "filter_tech_skills": "Tech skills",
+    "filter_soft_skills": "Soft skills"
+
+  },
   "login": {
     "title_login": "Login",
     "label_email": "Email:",
