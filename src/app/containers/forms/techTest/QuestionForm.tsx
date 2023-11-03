@@ -1,58 +1,107 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const QuestionForm = ({ questions, currentQuestionIndex, onNextQuestion, labels }: any) => {
-    const currentQuestion = questions[currentQuestionIndex];
+const QuestionForm = ({ testId, question, currentQuestionIndex, onNextQuestion, labels }: any) => { 
+
     const [answer, setAnswer] = useState(0);
+    const [options, setOptions] = useState();
+    useEffect(() => {
+      const radioButtons = question?.posibles_respuestas?.map((respuesta:any, index:any) => (
+        <div key={index} className="m-2">
+          <label>
+            <input
+              type="radio"
+              name="answer"
+              value={respuesta.id_respuesta}
+              onChange={handleChange}
+              className="mx-2"
+            />
+            {respuesta.respuesta}
+          </label>
+        </div>            
+      ))
+      setOptions(radioButtons);
+    }, [question])
+
     const handleChange = (event:any) => {
-      setAnswer(event.target.value)
+      setAnswer(parseInt(event.target.value))
     }
-  
-    if (currentQuestionIndex >= questions.length ) {
-      // fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/${mapUser[userType]}/`, {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(bodyObject),
-      // });
+    const endTest = () => {
+      fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/evaluacion/finalizar/${testId}`,{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then(res => res.status)
+      .then(res => {
+        if(res === 200){
+          localStorage.removeItem('testId');
+        }
+      })   
+      .catch((error) => {
+        console.error('Request failed', error);
+      });
+    }
+
+    if (currentQuestionIndex >= 5 ) {
+      let finalLabel = labels.cta_finiched_test;
+      const end = endTest();
       return (
         <div>
-          <p>{labels.cta_finiched_test}</p>
+          <p>{finalLabel}</p>
         </div>
       );
     }
-    const onClickButtonNext = () =>{
-      // enviar rta be
-      // llamar next test
-      // fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/${mapUser[userType]}/`, {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(bodyObject),
-      // });
-      onNextQuestion();
-      console.log(answer);
+
+    const onClickButtonNext = () =>{ 
+      const body = {
+        "idEvaluacion": testId,
+        "idPregunta":question.id_pregunta,
+        "idRespuesta": answer
+      }
+      fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/evaluacion/pregunta/responder`,{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      })
+      .then(res => res.status)
+      .then(res => {
+        if(res === 400){
+          if(currentQuestionIndex === 4){
+            onNextQuestion();
+          }
+          else{
+            endTest();
+            onNextQuestion(true)        
+          }
+        }
+        else {
+         onNextQuestion();
+        }
+      })   
+      .catch((error) => {
+        console.error('Request failed', error);
+      });
     }
-  
+       
+
     return (
-        <div>
-        <p>{currentQuestion.text}</p>
+      <div>
+        <p>{question?.pregunta}</p>
         <form className="m-5 my-10">
-          {currentQuestion.options.map((option: any, index: number) => (
-            <div key={index} className="m-2">
-              <label >
-                <input type="radio" name="answer" value={option} onChange={handleChange} />
-                {option}
-              </label>
-            </div>
-            
-          ))}
+          {options}
         </form>
-        <p className='text-[#9095A0] font-light'> {labels.label_question} {currentQuestionIndex + 1} {labels.label_of} {questions.length}</p>
-        <button className="bg-teal-700 text-white focus:outline-none mr-2 my-2 rounded p-2 inline-flex align-bottom" onClick={onClickButtonNext}>{labels.cta_next}</button>
+        <p className='text-[#9095A0] font-light'> {labels.label_question} {currentQuestionIndex + 1} {labels.label_of} 5</p>
+        <button
+          className="bg-teal-700 text-white focus:outline-none mr-2 my-2 rounded p-2 inline-flex align-bottom"
+          onClick={onClickButtonNext}
+        >
+          {labels.cta_next}
+        </button>
       </div>
     );
 }

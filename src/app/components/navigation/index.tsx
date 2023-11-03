@@ -16,7 +16,7 @@ const Navigation = ({ labels }: any) => {
       },
       {
         label: labels.tech_tests,
-        href: '/techTest'
+        href: '/listTechTest'
       },
       {
         label: labels.performance_review,

@@ -115,7 +115,8 @@
     "label_pending": "Pending",
     "label_expired": "Expired",
     "label_ready": "Performed",
-    "label_present": "Present"
+    "label_present": "Present",
+    "label_not_test": "Not test pending for the candidate"
   }, 
   "home": {
     "label_oportunities": "Thousands of opportunities ",

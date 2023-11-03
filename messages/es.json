@@ -114,7 +114,8 @@
     "label_pending": "Pendiente",
     "label_expired": "Vencida",
     "label_ready": "Presentada",
-    "label_present": "Presentar"
+    "label_present": "Presentar",
+    "label_not_test": "No hay tiene pruebas pendientes por presentar"
   }, 
   "home": {
     "label_oportunities": "Miles de oportunidades ",

@@ -74,23 +74,6 @@ const Navbar = ({ toggle, menuItems }: { toggle: () => void, menuItems: any }) =
               </svg>
             </button>
             <ul className="hidden md:flex gap-x-6 text-black ">
-              <li>
-                <Link href="/">
-                  <p>Inicio</p>
-                </Link>
-              </li>
-              <li>
-                <Link href="listTechTest">
-                  <p>Pruebas Técnicas</p>
-                </Link>
-              </li>
-              <li>
-                <Link href="/performanceReview">
-                  <p>Evaluacion de Desempeño</p>
-                </Link>
-              </li>
-            </ul>
-            <ul>           
               {
                 menuItems.map((item: any) => (
                   <li key={item.label}>
