@@ -55,3 +55,25 @@ export const labelsSignup = {
   label_have_an_account: "¿Tienes una cuenta?",
   label_login: "Iniciar sesión"
 }
+
+export const labelsHome = {
+  label_oportunities: "Miles de oportunidades ",
+  label_for_you: "Para Ti",
+  cta_login: "Iniciar sesión",
+  span_or: "ó",
+  cta_signup: "Registrarme",
+  label_phrase_1: "Inicia sesión o regístrate y accede a todas estas oportunidades.",
+  label_phrase_2: "Si eres empresa, podrás encontrar el personal más calificado para tus proyectos."
+}
+
+export const labelSearchCandidate = {
+  title: "Buscar <span>Candidatos</span>",
+  cta_clean_filter: "Limpiar filtros",
+  label_results_for: "{amount} resultados para {search}",
+  select_placeholder: "Seleccionar...",
+  filter_by: "Filtrar por:",
+  filter_rol: "Rol",
+  filter_country: "País",
+  filter_tech_skills: "Habilidades técnicas",
+  filter_soft_skills: "Habilidades blandas"
+}

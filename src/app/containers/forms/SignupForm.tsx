@@ -42,7 +42,7 @@ const SignupForm = ({ labels }: any) => {
                 text: labels.label_candidate,
             }
         })
-    }, []);
+    }, [labels.label_company, labels.label_candidate]);
 
     const handleSubmit = useCallback(async (e: any) => {
         e.preventDefault();
@@ -71,7 +71,6 @@ const SignupForm = ({ labels }: any) => {
                     return;
                 }
 
-                // todo: handle error messages here
             })
             .catch((error) => {
                 console.error('Request failed', error);

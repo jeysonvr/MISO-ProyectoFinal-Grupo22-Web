@@ -48,6 +48,11 @@ describe('Login Form Container', () => {
     
         const submitButton = document.getElementById('loginBtn') as HTMLButtonElement ;
         fireEvent.click(submitButton);
+
+        const formData = {
+          email: 'test@example.com',
+          password: 'password',
+        };
     
         await waitFor(() => {
           expect(mockFetch).toHaveBeenCalledWith(
@@ -69,7 +74,7 @@ describe('Login Form Container', () => {
     it('should handle form submission with error', async () => {
         global.fetch = jest.fn(() =>
             Promise.reject({
-                error: 'Request failed',
+                Error: 'Error:',
             })
         );
 
@@ -86,17 +91,17 @@ describe('Login Form Container', () => {
         fireEvent.click(submitButton);
     
         await waitFor(() => {
-            expect(console.error).toHaveBeenCalledWith('Request failed', {
-              error: 'Request failed',
+            expect(console.error).toHaveBeenCalledWith('Error:', {
+              Error: 'Error:',
             });
         });
-    });
+    }); 
 
     it('debería manejar el evento onChange para el input "remember"', () => {
         render(<LoginForm labels={{}} />);
         const rememberInput = document.getElementById('remember') as HTMLInputElement;
         fireEvent.click(rememberInput);
         expect(rememberInput.checked).toBe(true);
-      });
+    });
 
 })

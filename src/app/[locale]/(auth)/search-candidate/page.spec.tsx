@@ -1,11 +1,28 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { NextIntlClientProvider } from 'next-intl';
+import { render, screen, waitFor } from '@testing-library/react';
+
+import * as message from '../../../../../messages/es.json'
+
 import SearchCandidates from './page';
 
 describe('SearchCandidates page', () => {
-  it('should render content', () => {
-    const { getByText } = render(<SearchCandidates />);
-    const signUpMessage = getByText('Search candidates here');
-    expect(signUpMessage).toBeDefined();
+  const renderWithProvider = () => (
+    <NextIntlClientProvider
+      locale={'es'}
+      messages={message}
+    >
+      <SearchCandidates />
+    </NextIntlClientProvider >);
+
+  beforeEach(() => {
+    const mockFetch = jest.fn(() => Promise.resolve({ json: () => Promise.resolve({}) }));
+    global.fetch = mockFetch as any;
+  })
+  it('should render content', async () => {
+    render(renderWithProvider());
+    const searchTitle = screen.getByRole('heading', { level: 1, name: 'Buscar Candidatos' });
+
+    await waitFor(() => { expect(searchTitle).toBeDefined() });
   });
 });

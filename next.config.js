@@ -7,6 +7,9 @@ const withNextIntl = require('next-intl/plugin')(
 
 const nextConfig = withNextIntl({
   // Your Next.js config.
+  experimental: {
+    serverActions: true,
+  },
 });
 
 module.exports = nextConfig

@@ -10,9 +10,14 @@
     "copy_right": "© 2023 ABC Jobs. Todos los derechos reservados."
   },
   "navigation": {
-    "Home": "Inicio",
-    "Tech_tests": "Pruebas técnicas",
-    "Performance_review": "Evaluación de desempeño"
+    "home": "Inicio",
+    "tech_tests": "Pruebas técnicas",
+    "performance_review": "Evaluación de desempeño",
+    "proyects": "Proyectos",
+    "candidates": "Candidates",
+    "employees": "Empleados",
+    "interviews": "Entrevistas",
+    "contract": "Registro contrato"
   },
   "language": {
     "en": "Inglés",
@@ -60,6 +65,17 @@
     "input_ubication_country": "País",
     "input_ubication_city": "Ciudad"
   },
+  "search_candidate": {
+    "title": "Buscar <span>Candidatos</span>",
+    "cta_clean_filter": "Limpiar filtros",
+    "label_results_for": "{amount} resultados para {search}",
+    "select_placeholder": "Seleccionar...",
+    "filter_by": "Filtrar por:",
+    "filter_rol": "Rol",
+    "filter_country": "País",
+    "filter_tech_skills": "Habilidades técnicas",
+    "filter_soft_skills": "Habilidades blandas"
+  },
   "login": {
     "title_login": "Iniciar sesión",
     "label_email": "Correo electrónico:",
@@ -99,5 +115,14 @@
     "label_expired": "Vencida",
     "label_ready": "Presentada",
     "label_present": "Presentar"
+  }, 
+  "home": {
+    "label_oportunities": "Miles de oportunidades ",
+    "label_for_you": "Para Ti",
+    "cta_login": "Iniciar sesión",
+    "span_or": "ó",
+    "cta_signup": "Registrarme",
+    "label_phrase_1": "Inicia sesión o regístrate y accede a todas estas oportunidades.",
+    "label_phrase_2": "Si eres empresa, podrás encontrar el personal más calificado para tus proyectos."
   }
 }
