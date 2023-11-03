@@ -35,7 +35,7 @@ const Navbar = ({ toggle }: { toggle: () => void }) => {
                 </Link>
               </li>
               <li>
-                <Link href="techTest">
+                <Link href="listTechTest">
                   <p>Pruebas Técnicas</p>
                 </Link>
               </li>

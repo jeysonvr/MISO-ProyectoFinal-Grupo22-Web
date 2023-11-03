@@ -48,7 +48,7 @@ const Sidebar = ({
         <li
           role="listitem">
           <Link
-            href="/techTest" onClick={toggle}>
+            href="/listTechTest" onClick={toggle}>
             <p>Pruebas Técnicas</p>
           </Link>
         </li>

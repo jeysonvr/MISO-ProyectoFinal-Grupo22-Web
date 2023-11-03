@@ -81,5 +81,23 @@
     "label_i_am": "Soy",
     "label_candidate": "candidato",
     "label_company": "compañía"
+  },
+  "tech_test":{
+    "main_title": "Prueba Técnica",
+    "cta_cancel": "Cancelar",
+    "cta_next": "Siguiente",
+    "cta_send": "Enviar",
+    "cta_finiched_test": "¡Cuestionario completado!",
+    "label_test": "Lea atentamente, las preguntas seran contestadas una a una, no es posible volver atrás. ",
+    "label_question": "Pregunta",
+    "label_of": "De",
+    "label_loading": "Cargando...",
+    "label_name_test": "NOMBRE DE LA PRUEBA",
+    "label_status": "ESTADO",
+    "label_result": "ACCIÓN / RESULTADO",
+    "label_pending": "Pendiente",
+    "label_expired": "Vencida",
+    "label_ready": "Presentada",
+    "label_present": "Presentar"
   }
 }
