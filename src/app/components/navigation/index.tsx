@@ -17,11 +17,15 @@ const Navigation = ({ labels }: any) => {
       },
       {
         label: labels.tech_tests,
-        href: '/techTest'
+        href: '/listTechTest'
       },
       {
         label: labels.performance_review,
         href: '/performanceReview'
+      },
+      {
+        label: labels.interviews,
+        href: '/interviews'
       }
     ],
     [UserType.company]: [
@@ -41,6 +45,10 @@ const Navigation = ({ labels }: any) => {
         label: labels.employees,
         href: '/employees'
       },
+      {
+        label: labels.interviews,
+        href: '/interviews'
+      }
     ],
     [UserType.recruiter]: [
       {
@@ -51,6 +59,10 @@ const Navigation = ({ labels }: any) => {
         label: labels.contract,
         href: '/contract'
       },
+      {
+        label: labels.interviews,
+        href: '/interviews'
+      }
     ],
   }
   const appContext = useAppContext();
