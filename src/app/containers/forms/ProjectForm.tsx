@@ -29,12 +29,12 @@ const ProjectForm = ({ labels }: any) => {
         const userData = JSON.parse(localStorage.getItem('user') || '{}');
         const userEmail = userData.email;
       
-        fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/candidato/info/${userEmail}`)
+        fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/empresa/info/${userEmail}`)
           .then((result) => {
             return result.json();  
           })
           .then((data) => {
-            id_Company.current = data.usuario.id;
+            id_Company.current = data.id;
           })
           .catch((error) => {
             console.error('Error:', error);
@@ -83,6 +83,7 @@ const ProjectForm = ({ labels }: any) => {
                 if (resp.status === 201) {
                     console.log('Proyecto creado:');
                     console.log(resp)
+                    alert('Proyecto creado');
                 }
 
             })

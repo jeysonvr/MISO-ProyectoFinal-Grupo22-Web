@@ -35,7 +35,7 @@ const Navigation = ({ labels }: any) => {
       },
       {
         label: labels.proyects,
-        href: '/proyects'
+        href: '/projects'
       },
       {
         label: labels.candidates,
