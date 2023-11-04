@@ -11,6 +11,7 @@ const QuestionForm = ({ testId, question, currentQuestionIndex, onNextQuestion, 
         <div key={index} className="m-2">
           <label>
             <input
+              id={respuesta.id_respuesta}
               type="radio"
               name="answer"
               value={respuesta.id_respuesta}
@@ -50,7 +51,7 @@ const QuestionForm = ({ testId, question, currentQuestionIndex, onNextQuestion, 
       const end = endTest();
       return (
         <div>
-          <p>{finalLabel}</p>
+          <p id='idFinal'>{finalLabel}</p>
         </div>
       );
     }
@@ -89,7 +90,7 @@ const QuestionForm = ({ testId, question, currentQuestionIndex, onNextQuestion, 
 
     return (
       <div>
-        <p>{question?.pregunta}</p>
+        <p id='question'>{question?.pregunta}</p>
         <form className="m-5 my-10">
           {options}
         </form>

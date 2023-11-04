@@ -126,5 +126,13 @@
     "cta_signup": "Register",
     "label_phrase_1": "Log in or register and access all these opportunities.",
     "label_phrase_2": "If you are a company, you will be able to find the most qualified personnel for your projects."
+  },
+  "interviews": {
+    "main_title": "Scheduled Interviews",
+    "label_date": "Date",
+    "label_hour_start": "Initial time",
+    "label_hour_end": "Final time",
+    "label_subject": "Subject",
+    "label_not_interviews": "You don't have scheduled interviews"
   }
 }

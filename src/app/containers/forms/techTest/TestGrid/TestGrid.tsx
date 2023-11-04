@@ -3,7 +3,7 @@ import React, { Suspense, useEffect, useState } from 'react';
 import TestItem from './TestItem'; // Importa el componente TestItem
 
 
-function TestGrid({ tests, labels }:any) {
+function TestGrid({ labels }:any) {
   // consultar test por candidato id
 
  const [infoIdUser, setUser] = useState();
@@ -17,7 +17,6 @@ function TestGrid({ tests, labels }:any) {
   .then(data => {
     setUser(data?.id)
   })
-  .catch(error => console.error('Error:', error));
  },[])
 
 
@@ -29,7 +28,6 @@ function TestGrid({ tests, labels }:any) {
       console.log(res)
       setTestsUser(res)
     })
-    .catch(error => console.error('Error:', error));;
   }
  }, [infoIdUser]) 
 
