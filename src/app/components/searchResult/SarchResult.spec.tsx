@@ -10,14 +10,48 @@ jest.mock('./resultCard/ResultCard', () => ({
   )
 }));
 
+const countryMetadataMock = [
+  {
+    id: 1,
+    pais: 'Colombia',
+  },
+  {
+    id: 2,
+    pais: 'USA',
+  },
+];
+
+const resultsMock = [
+  {
+    usuario: {
+      email: '',
+      id: 1,
+      nombre_completo: 'test 1',
+    },
+    country: 'Colombia',
+    idiomas: [],
+    id_pais: 1,
+  },
+  {
+    usuario: {
+      email: '',
+      id: 1,
+      nombre_completo: 'test 2',
+    },
+    country: 'Colombia',
+    idiomas: [],
+    id_pais: 2,
+  },
+];
+
 describe('Search result component', () => {
   it('should render correctly for multiple results', () => {
     render(<SearchResult
       labelResults={'resultados:'}
-      results={[
-        { name: 'result 1', desc: 'desc 1' },
-        { name: 'result 2', desc: 'desc 2' },
-      ]} />);
+      countryMetadata={countryMetadataMock}
+      results={resultsMock}
+      ctaLabel={''}
+    />);
 
     const resultCards = screen.queryAllByText('ResultCardMock');
 
@@ -27,9 +61,10 @@ describe('Search result component', () => {
   it('should render correctly for one result', () => {
     render(<SearchResult
       labelResults={'resultados:'}
-      results={[
-        { name: 'result 1', desc: 'desc 1' },
-      ]} />);
+      countryMetadata={countryMetadataMock}
+      results={[resultsMock[0]]}
+      ctaLabel={''}
+    />);
 
     const resultCards = screen.queryAllByText('ResultCardMock');
 
@@ -39,7 +74,10 @@ describe('Search result component', () => {
   it('should render correctly for no results', () => {
     render(<SearchResult
       labelResults={'resultados:'}
-      results={[]} />);
+      countryMetadata={countryMetadataMock}
+      results={[]}
+      ctaLabel={''}
+    />);
 
     const resultCards = screen.queryAllByText('ResultCardMock');
 

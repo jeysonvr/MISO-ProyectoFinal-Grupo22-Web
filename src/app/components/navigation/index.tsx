@@ -4,6 +4,7 @@ import Navbar from "./navbar";
 import Sidebar from "./sidebar";
 import { useAppContext } from "@/app/providers/AppProvider";
 import { UserType } from "@/app/contants/userType";
+import { UrlPath } from "../../contants/urlPath";
 
 
 const Navigation = ({ labels }: any) => {
@@ -34,7 +35,7 @@ const Navigation = ({ labels }: any) => {
       },
       {
         label: labels.candidates,
-        href: '/candidates'
+        href: UrlPath.searchCandidates,
       },
       {
         label: labels.employees,

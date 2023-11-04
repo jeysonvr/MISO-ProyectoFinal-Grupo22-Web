@@ -7,7 +7,7 @@ export const UserType = {
 
 export enum UserTypeEnum {
   'free',
-  'admin',
-  'candidate',
-  'company',
+  'admin', // 1
+  'candidate', // 2
+  'company', // 3
 }
