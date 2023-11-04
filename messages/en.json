@@ -107,5 +107,18 @@
     "cta_signup": "Register",
     "label_phrase_1": "Log in or register and access all these opportunities.",
     "label_phrase_2": "If you are a company, you will be able to find the most qualified personnel for your projects."
+  },
+  "project": {
+    "title_projects": "Projects",
+    "cta_new_project": "New project",
+    "label_name": "Name",
+    "label_description": "Description",
+    "label_role": "Role",
+    "label_technical_skills": "Technical skills",
+    "label_soft_skills": "Soft skills",
+    "cta_add": "Add",
+    "cta_cancel": "Cancel",
+    "cta_save": "Save",
+    "label_status": "Status"
   }
 }

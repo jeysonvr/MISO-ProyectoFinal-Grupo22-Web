@@ -48,11 +48,6 @@ describe('Login Form Container', () => {
     
         const submitButton = document.getElementById('loginBtn') as HTMLButtonElement ;
         fireEvent.click(submitButton);
-
-        const formData = {
-          email: 'test@example.com',
-          password: 'password',
-        };
     
         await waitFor(() => {
           expect(mockFetch).toHaveBeenCalledWith(

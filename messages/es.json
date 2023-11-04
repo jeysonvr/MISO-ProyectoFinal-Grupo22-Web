@@ -106,5 +106,18 @@
     "cta_signup": "Registrarme",
     "label_phrase_1": "Inicia sesión o regístrate y accede a todas estas oportunidades.",
     "label_phrase_2": "Si eres empresa, podrás encontrar el personal más calificado para tus proyectos."
+  },
+  "project": {
+    "title_projects": "Proyectos",
+    "cta_new_project": "Nuevo proyecto",
+    "label_name": "Nombre",
+    "label_description": "Descripción",
+    "label_role": "Rol",
+    "label_technical_skills": "Habilidades técnicas",
+    "label_soft_skills": "Habilidades blandas",
+    "cta_add": "Agregar",
+    "cta_cancel": "Cancelar",
+    "cta_save": "Guardar",
+    "label_status": "Estado"
   }
 }
