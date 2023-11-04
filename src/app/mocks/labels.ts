@@ -83,7 +83,7 @@ export const labelTechTest = {
     cta_cancel: "Cancel",
     cta_next: "Next",
     cta_send: "Send",
-    cta_finiched_test: "¡Completed!",
+    cta_finished_test: "¡Completed!",
     label_test: "Read carefully, the questions will be answered one by one, it is not possible to go back.",
     label_question: "Question",
     label_of: "Of",

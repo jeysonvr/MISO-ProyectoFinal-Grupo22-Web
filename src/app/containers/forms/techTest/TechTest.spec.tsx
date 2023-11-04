@@ -27,7 +27,7 @@ describe('TechTestGrid Component', () => {
         global.fetch = mockFetch as any;
         const labels = {
         label_loading: 'Loading...',
-        cta_finiched_test: 'No test available',
+        cta_finished_test: 'No test available',
         };        
         const { container } = render(<TechTest labels={labels} />);
         const p = container.querySelector('endTest');

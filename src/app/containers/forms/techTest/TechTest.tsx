@@ -60,7 +60,7 @@ const TechTest = ({ labels }: any) => {
       
       <Suspense fallback={<p>{labels.label_loading}</p>}>
         {error && (
-          <p id='endTest'>{labels.cta_finiched_test}</p>
+          <p id='endTest'>{labels.cta_finished_test}</p>
         )}
         {!error && (
           <div>

@@ -12,7 +12,7 @@ export default function Profile() {
     title_test: labels('label_test'),
     label_question: labels('label_question'),
     label_of: labels('label_of'),
-    cta_finiched_test: labels('cta_finiched_test'),
+    cta_finished_test: labels('cta_finished_test'),
     label_name_test: labels('label_name_test'),
     label_status: labels("label_status"),
     label_result: labels("label_result"),

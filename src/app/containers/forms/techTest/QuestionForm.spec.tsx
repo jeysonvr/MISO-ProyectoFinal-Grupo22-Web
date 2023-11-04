@@ -30,7 +30,7 @@ describe('QuestionForm', () => {
       cta_next: 'Siguiente',
       label_question: 'Pregunta',
       label_of: 'de',
-      cta_finiched_test: 'Prueba finalizada',
+      cta_finished_test: 'Prueba finalizada',
     };
 
     const { getByText, getByLabelText } = render(
@@ -76,7 +76,7 @@ describe('QuestionForm', () => {
       cta_next: 'Siguiente',
       label_question: 'Pregunta',
       label_of: 'de',
-      cta_finiched_test: 'Prueba finalizada',
+      cta_finished_test: 'Prueba finalizada',
     };
 
     const { getByText, getByLabelText } = render(
@@ -111,7 +111,7 @@ describe('QuestionForm', () => {
       cta_next: 'Siguiente',
       label_question: 'Pregunta',
       label_of: 'de',
-      cta_finiched_test: 'Prueba finalizada',
+      cta_finished_test: 'Prueba finalizada',
     };
     const { getByText, getByLabelText } = render(
       <QuestionForm
