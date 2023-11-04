@@ -134,5 +134,18 @@
     "label_hour_end": "Final time",
     "label_subject": "Subject",
     "label_not_interviews": "You don't have scheduled interviews"
+  },
+  "project": {
+    "title_projects": "Projects",
+    "cta_new_project": "New project",
+    "label_name": "Name",
+    "label_description": "Description",
+    "label_role": "Role",
+    "label_technical_skills": "Technical skills",
+    "label_soft_skills": "Soft skills",
+    "cta_add": "Add",
+    "cta_cancel": "Cancel",
+    "cta_save": "Save",
+    "label_status": "Status"
   }
 }
