@@ -16,80 +16,74 @@ const mapUser = {
   [UserType.candidate]: 'candidato',
 };
 
+const buildAcademicObject = (element: any) => {
+  return {
+    institucion: element.educative_institution_name.value,
+    titulo: element.academic_title.value,
+    en_curso: element.academic_inProgress.checked ? 1 : 0,
+    fecha_inicio: element.academic_startDate.value,
+    fecha_fin: element.academic_endDate.value,
+  }
+}
+
+const buildLaboralObject = (element: any) => {
+  return {
+    nombre_empresa: element.companyName.value,
+    fecha_inicio: element.laboral_startDate.value,
+    fecha_fin: element.laboral_endDate.value,
+    actual: element.laboral_isCurrent.checked ? 1 : 0,
+    descripcion_actividades: element.laboral_activityDescription.value,
+    id_rol: element.laboral_rol.value,
+  }
+}
+
 const ProfileForm = ({ labels }: any) => {
   const [userType, setUserType] = useState(undefined); // User type
   const [userEmail, setUserEmail] = useState(undefined); // User email
   const [profileMetadata, setProfileMetadata] = useState(undefined); // Metadata depending on profile type
   const [profileInformation, setProfileInformation] = useState(undefined); // Profile information
 
-  const onFormSubmit = useCallback((e: any) => {
-    e.preventDefault();
+  const getDataByRol = (data: any, rol?: string) => {
+    // Candidate
+    if (rol === UserType.candidate) {
+      let personal: any = {};
+      let informacionAcademica: any = [];
+      let experiencia: any = [];
 
-    let personal: any;
-    let informacionAcademica: any = [];
-    let experiencia: any = [];
-
-    let bodyObject = {};
-
-    if (userType === UserType.candidate) {
       // Personal info
-      personal.idiomas = e.target.language.value ? e.target.language.value.split(',') : [];
-      personal.habilidadesBlandas = e.target.softSkills.value ? e.target.softSkills.value.split(',') : [];
-      personal.habilidadesTecnicas = e.target.techSkills.value ? e.target.techSkills.value.split(',') : [];
+      personal.idiomas = data.language.value ? data.language.value.split(',') : [];
+      personal.habilidadesBlandas = data.softSkills.value ? data.softSkills.value.split(',') : [];
+      personal.habilidadesTecnicas = data.techSkills.value ? data.techSkills.value.split(',') : [];
 
       // Academic info
-      if (e.target.educative_institution_name.length) {
-        e.target.educative_institution_name.forEach((institution: any, index: number) => {
-          informacionAcademica.push({
-            institucion: institution.value,
-            titulo: e.target.academic_title[index].value,
-            en_curso: e.target.academic_inProgress[index].checked ? 1 : 0,
-            fecha_inicio: e.target.academic_startDate[index].value,
-            fecha_fin: e.target.academic_endDate[index].value,
-          })
+      if (data.educative_institution_name?.length) {
+        data.educative_institution_name.forEach((institution: any) => {
+          if (institution?.value) {
+            informacionAcademica.push(buildAcademicObject(institution));
+          };
         })
-      } else {
-        informacionAcademica = [
-          {
-            institucion: e.target.educative_institution_name.value,
-            titulo: e.target.degree.value,
-            en_curso: e.target.isInProgress.checked ? 1 : 0,
-            fecha_inicio: e.target.startDate.value,
-            fecha_fin: e.target.endDate.value,
-          }
-        ]
+      } else if (data.educative_institution_name?.value) {
+        informacionAcademica = [buildAcademicObject(data)]
       }
 
       // Laboral info
-      if (e.target.companyName.length) {
-        e.target.companyName.forEach((company: any, index: number) => {
-          experiencia.push({
-            nombre_empresa: company.value,
-            fecha_inicio: e.target.laboral_startDate[index].value,
-            fecha_fin: e.target.laboral_endDate[index].value,
-            actual: e.target.laboral_isCurrent[index].checked ? 1 : 0,
-            descripcion_actividades: e.target.laboral_activityDescription[index].value,
-            id_rol: e.target.laboral_rol[index].value,
-          })
+      if (data.companyName?.length) {
+        data.companyName.forEach((company: any, index: number) => {
+          if (company?.value) {
+            experiencia.push(buildLaboralObject(company));
+          }
         })
       } else {
-        experiencia = [
-          {
-            nombre_empresa: e.target.companyName.value,
-            fecha_inicio: e.target.laboral_startDate.value,
-            fecha_fin: e.target.laboral_endDate.value,
-            actual: e.target.laboral_isCurrent.checked ? 1 : 0,
-            descripcion_actividades: e.target.laboral_activityDescription.value,
-            id_rol: e.target.laboral_rol.value,
-          }
-        ]
+        if (data.companyName?.value) {
+          experiencia = [buildLaboralObject(data)];
+        }
       }
 
-      bodyObject = {
-        edad: e.target.age.value,
-        numero_telefono: e.target.phone_number.value,
+      return {
+        edad: data.age.value,
+        numero_telefono: data.phone_number.value,
         email: userEmail,
-        id_pais: e.target.candidate_country.value,
+        id_pais: data.candidate_country.value,
         habilidadesBlandas: personal.habilidadesBlandas,
         habilidadesTecnicas: personal.habilidadesTecnicas,
         idiomas: personal.idiomas,
@@ -98,16 +92,20 @@ const ProfileForm = ({ labels }: any) => {
       }
     }
 
-    if (userType === UserType.company) {
-      bodyObject = {
-        email: userEmail,
-        id_tipo_empresa: e.target.company_type.value,
-        areasNegocio: e.target.business_vertical_selector.value ? e.target.business_vertical_selector.value.split(',') : [],
-        ciudades: e.target.ubication_selector.value ? e.target.ubication_selector.value.split(',') : [],
-      }
+    // Company
+    return {
+      email: userEmail,
+      id_tipo_empresa: data.company_type.value,
+      areasNegocio: data.business_vertical_selector.value ? data.business_vertical_selector.value.split(',') : [],
+      ciudades: data.ubication_selector.value ? data.ubication_selector.value.split(',') : [],
     }
+  }
 
+  const onFormSubmit = useCallback((e: any) => {
+    e.preventDefault();
     if (!userType) return;
+
+    const bodyPayload = getDataByRol(e.target, userType);
 
     // Send request
     fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/${mapUser[userType]}/`, {
@@ -115,7 +113,7 @@ const ProfileForm = ({ labels }: any) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(bodyObject),
+      body: JSON.stringify(bodyPayload),
     });
 
     //creacion de la evaluacion básica
