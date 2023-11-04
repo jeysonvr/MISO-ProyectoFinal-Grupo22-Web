@@ -68,13 +68,14 @@
   "search_candidate": {
     "title": "Buscar <span>Candidatos</span>",
     "cta_clean_filter": "Limpiar filtros",
-    "label_results_for": "{amount} resultados para {search}",
+    "label_results": "searchAmount resultados",
     "select_placeholder": "Seleccionar...",
     "filter_by": "Filtrar por:",
     "filter_rol": "Rol",
     "filter_country": "País",
     "filter_tech_skills": "Habilidades técnicas",
-    "filter_soft_skills": "Habilidades blandas"
+    "filter_soft_skills": "Habilidades blandas",
+    "cta_connect": "Conectar"
   },
   "login": {
     "title_login": "Iniciar sesión",
@@ -97,7 +98,7 @@
     "label_i_am": "Soy",
     "label_candidate": "candidato",
     "label_company": "compañía"
-  }, 
+  },
   "home": {
     "label_oportunities": "Miles de oportunidades ",
     "label_for_you": "Para Ti",
