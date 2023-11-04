@@ -55,8 +55,8 @@ const ProjectForm = ({ labels }: any) => {
             nombre: data.projectName.value,
             descripcion: data.description.value,
             rolesProyecto: roles,
-            habilidadesBlandas: project.habilidadesBlandas.map((valor) => Number(valor)),
-            habilidadesTecnicas: project.habilidadesTecnicas.map((valor) => Number(valor)),
+            habilidadesBlandas: project.habilidadesBlandas.map((valor: any) => Number(valor)),
+            habilidadesTecnicas: project.habilidadesTecnicas.map((valor: any) => Number(valor)),
             id_estado: parseInt(data.status.value),
             id_empresa: id_Company.current,
         }
@@ -147,7 +147,7 @@ const ProjectForm = ({ labels }: any) => {
         </div>
     );
     
-    function Container({ onClose, children }) {
+    function Container({ onClose, children }: any) {
         return (
             <div className="mx-auto max-w-screen-xl p-4">
                 {children}
