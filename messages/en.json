@@ -68,14 +68,14 @@
   "search_candidate": {
     "title": "Search <span>Candidates</span>",
     "cta_clean_filter": "Clear filters",
-    "label_results_for": "{amount} results for {search}",
+    "label_results": "searchAmount results",
     "select_placeholder": "Select...",
     "filter_by": "Filter by:",
     "filter_rol": "Role",
     "filter_country": "Country",
     "filter_tech_skills": "Tech skills",
-    "filter_soft_skills": "Soft skills"
-
+    "filter_soft_skills": "Soft skills",
+    "cta_connect": "Connect"
   },
   "login": {
     "title_login": "Login",
@@ -98,7 +98,7 @@
     "label_i_am": "I am",
     "label_candidate": "candidate",
     "label_company": "company"
-  }, 
+  },
   "home": {
     "label_oportunities": "Thousands of opportunities ",
     "label_for_you": "For You",
