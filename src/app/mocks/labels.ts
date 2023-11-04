@@ -77,3 +77,23 @@ export const labelSearchCandidate = {
   filter_tech_skills: "Habilidades técnicas",
   filter_soft_skills: "Habilidades blandas"
 }
+
+export const labelTechTest = {
+    main_title: "Tech Test",
+    cta_cancel: "Cancel",
+    cta_next: "Next",
+    cta_send: "Send",
+    cta_finiched_test: "¡Completed!",
+    label_test: "Read carefully, the questions will be answered one by one, it is not possible to go back.",
+    label_question: "Question",
+    label_of: "Of",
+    label_loading: "Loading...",
+    label_name_test: "TEST NAME",
+    label_status: "STAUS",
+    label_result: "ACTION / RESULT",
+    label_pending: "Pending",
+    label_expired: "Expired",
+    label_ready: "Performed",
+    label_presen: "Present",
+    label_not_test: "Not test pending for the candidate"
+}

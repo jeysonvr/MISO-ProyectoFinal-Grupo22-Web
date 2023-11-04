@@ -9,6 +9,27 @@ const TechTest = ({ labels }: any) => {
   const [test, setTest] = useState(0);
   const [question, setQuestion] = useState({});
   const [error, setError]= useState(false);
+
+  const endTest = () => {
+    setError(true)
+    fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/evaluacion/finalizar/${test}`,{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    .then(res => res.status)
+    .then(res => {
+      if(res === 200){
+        localStorage.removeItem('testId');
+      }
+    })   
+    .catch((error) => {
+      console.error('Request failed', error);
+    });
+  }
+
+
   useEffect(() => {
     const testId = localStorage.getItem('testId') || '0';
     setTest(parseInt(testId));
@@ -17,7 +38,10 @@ const TechTest = ({ labels }: any) => {
     })
     .then(res => res.json())
     .then(res => {
-      setQuestion(res)
+      if(res.codigoError === 409){
+        endTest()
+      }
+      else setQuestion(res)
     })   
     .catch((error) => {
       console.error('Request failed', error);
@@ -33,19 +57,22 @@ const TechTest = ({ labels }: any) => {
 
   return (
     <div className="m-5">
-      <h1 className="my-5">{labels.title_test}</h1>
+      
       <Suspense fallback={<p>{labels.label_loading}</p>}>
         {error && (
           <p>{labels.cta_finiched_test}</p>
         )}
         {!error && (
-          <QuestionForm
-            question={question}
-            currentQuestionIndex={currentQuestionIndex}
-            onNextQuestion={handleNextQuestion}
-            labels={labels}
-            testId={test}
-          />
+          <div>
+            <h1 className="my-5">{labels.title_test}</h1>
+            <QuestionForm
+              question={question}
+              currentQuestionIndex={currentQuestionIndex}
+              onNextQuestion={handleNextQuestion}
+              labels={labels}
+              testId={test}
+            />
+          </div>
         )}       
       </Suspense>
     </div>

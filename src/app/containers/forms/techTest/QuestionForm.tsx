@@ -70,14 +70,12 @@ const QuestionForm = ({ testId, question, currentQuestionIndex, onNextQuestion, 
       })
       .then(res => res.status)
       .then(res => {
-        if(res === 400){
-          if(currentQuestionIndex === 4){
-            onNextQuestion();
-          }
-          else{
-            endTest();
-            onNextQuestion(true)        
-          }
+        if(res === 409){
+          endTest();
+          onNextQuestion(true)
+        }
+        else if(res === 400){
+          alert('Error enviando respuesta')
         }
         else {
          onNextQuestion();
