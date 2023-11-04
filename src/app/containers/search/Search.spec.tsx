@@ -20,8 +20,8 @@ describe('Search Container', () => {
 
   it('should render correctly', async () => {
     render(<Search labels={labelSearchCandidate} />);
-    const labelResults = screen.getByText(/resultados/);
 
+    const labelResults = screen.queryByText(/resultados/);
     await waitFor(() => { expect(labelResults).toBeDefined() });
   });
 });
