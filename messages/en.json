@@ -99,6 +99,25 @@
     "label_candidate": "candidate",
     "label_company": "company"
   },
+  "tech_test":{
+    "main_title": "Tech Test",
+    "cta_cancel": "Cancel",
+    "cta_next": "Next",
+    "cta_send": "Send",
+    "cta_finished_test": "¡Completed!",
+    "label_test": "Read carefully, the questions will be answered one by one, it is not possible to go back.",
+    "label_question": "Question",
+    "label_of": "Of",
+    "label_loading": "Loading...",
+    "label_name_test": "TEST NAME",
+    "label_status": "STAUS",
+    "label_result": "ACTION / RESULT",
+    "label_pending": "Pending",
+    "label_expired": "Expired",
+    "label_ready": "Performed",
+    "label_present": "Present",
+    "label_not_test": "Not test pending for the candidate"
+  }, 
   "home": {
     "label_oportunities": "Thousands of opportunities ",
     "label_for_you": "For You",
@@ -107,6 +126,14 @@
     "cta_signup": "Register",
     "label_phrase_1": "Log in or register and access all these opportunities.",
     "label_phrase_2": "If you are a company, you will be able to find the most qualified personnel for your projects."
+  },
+  "interviews": {
+    "main_title": "Scheduled Interviews",
+    "label_date": "Date",
+    "label_hour_start": "Initial time",
+    "label_hour_end": "Final time",
+    "label_subject": "Subject",
+    "label_not_interviews": "You don't have scheduled interviews"
   },
   "project": {
     "title_projects": "Projects",

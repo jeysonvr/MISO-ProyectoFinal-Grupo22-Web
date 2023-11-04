@@ -99,6 +99,25 @@
     "label_candidate": "candidato",
     "label_company": "compañía"
   },
+  "tech_test":{
+    "main_title": "Prueba Técnica",
+    "cta_cancel": "Cancelar",
+    "cta_next": "Siguiente",
+    "cta_send": "Enviar",
+    "cta_finished_test": "¡Cuestionario completado!",
+    "label_test": "Lea atentamente, las preguntas seran contestadas una a una, no es posible volver atrás. ",
+    "label_question": "Pregunta",
+    "label_of": "De",
+    "label_loading": "Cargando...",
+    "label_name_test": "NOMBRE DE LA PRUEBA",
+    "label_status": "ESTADO",
+    "label_result": "ACCIÓN / RESULTADO",
+    "label_pending": "Pendiente",
+    "label_expired": "Vencida",
+    "label_ready": "Presentada",
+    "label_present": "Presentar",
+    "label_not_test": "No hay tiene pruebas pendientes por presentar"
+  }, 
   "home": {
     "label_oportunities": "Miles de oportunidades ",
     "label_for_you": "Para Ti",
@@ -107,6 +126,14 @@
     "cta_signup": "Registrarme",
     "label_phrase_1": "Inicia sesión o regístrate y accede a todas estas oportunidades.",
     "label_phrase_2": "Si eres empresa, podrás encontrar el personal más calificado para tus proyectos."
+  },
+  "interviews": {
+    "main_title": "Entrevistas Programadas",
+    "label_date": "Fecha",
+    "label_hour_start": "Hora Inicio",
+    "label_hour_end": "Hora Fin",
+    "label_subject": "Asunto",
+    "label_not_interviews": "No tienes entrevistas programadas"
   },
   "project": {
     "title_projects": "Proyectos",

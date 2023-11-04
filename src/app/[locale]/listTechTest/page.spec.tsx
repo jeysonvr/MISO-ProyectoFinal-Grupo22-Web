@@ -2,7 +2,7 @@ import React from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import TechTest from './page';
 import { render, screen, waitFor } from '@testing-library/react';
-import * as message from '../../../../../messages/es.json'
+import * as message from '../../../../messages/es.json'
 
 describe('TechTest page', () => {
   const renderWithProvider = () => (
