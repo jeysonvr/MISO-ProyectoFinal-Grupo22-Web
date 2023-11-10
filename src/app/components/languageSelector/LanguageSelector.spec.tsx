@@ -4,11 +4,6 @@ import { render } from '@testing-library/react';
 import LanguageSelector from './LanguageSelector';
 
 jest.mock("next/navigation", () => ({
-  useRouter() {
-    return {
-      prefetch: () => null,
-    };
-  },
   usePathname() {
     return 'pathname';
   },
