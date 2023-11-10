@@ -1,8 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from 'react';
-
-const cookieCutter = require('cookie-cutter');
+import { useParams } from 'next/navigation';
 
 import AcademicInfoForm from './academicInfo/AcademicInfo';
 import PersonalInfoForm from "./personalInfo/PersonalInfo";
@@ -38,6 +37,7 @@ const buildLaboralObject = (element: any) => {
 }
 
 const ProfileForm = ({ labels }: any) => {
+  const { locale } = useParams();
   const [userType, setUserType] = useState(undefined); // User type
   const [userEmail, setUserEmail] = useState(undefined); // User email
   const [profileMetadata, setProfileMetadata] = useState(undefined); // Metadata depending on profile type
@@ -134,17 +134,14 @@ const ProfileForm = ({ labels }: any) => {
   useEffect(() => {
     if (!userType) return;
 
-    // Language
-    const lang = cookieCutter.get('NEXT_LOCALE');
-
     // Query params
-    const queryParams = (lang && lang !== 'es') ? `language=${lang}` : '';
+    const queryParams = (locale !== 'es') ? `language=${locale}` : '';
 
     // Get profile metadata
     fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/${mapUser[userType]}/metadata/?${queryParams}`)
       .then(res => res.json())
       .then(data => setProfileMetadata(data));
-  }, [userType]);
+  }, [userType, locale]);
 
   useEffect(() => {
     if (!userEmail || !userType) return;

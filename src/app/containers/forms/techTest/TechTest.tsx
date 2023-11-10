@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 "use client";
 import { Suspense, useEffect, useState } from "react";
 

@@ -6,6 +6,14 @@ import * as message from '../../../../../messages/es.json'
 import { render } from '@testing-library/react';
 import Profile from './page';
 
+jest.mock("next/navigation", () => ({
+  useParams() {
+    return {
+      locale: 'en'
+    };
+  }
+}));
+
 describe('Profile page', () => {
   const renderWithProvider = () => (
     <NextIntlClientProvider
