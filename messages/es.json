@@ -147,5 +147,11 @@
     "cta_cancel": "Cancelar",
     "cta_save": "Guardar",
     "label_status": "Estado"
+  },
+  "alerts": {
+    "please_wait": "Por favor espere...",
+    "login_success": "Inicio de sesión exitoso",
+    "register_success": "Registro exitoso",
+    "try_again": "Hubo un error, intente de nuevo"
   }
 }

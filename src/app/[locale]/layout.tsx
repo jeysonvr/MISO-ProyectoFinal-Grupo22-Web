@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import Script from 'next/script'
 
+import { Toaster } from 'react-hot-toast';
+
 import Footer from '../containers/footer/Footer'
 import Navigation from '../components/navigation';
 import { AppProvider } from '../providers/AppProvider';
@@ -37,7 +39,8 @@ export default function RootLayout({ children, params: { locale } }: {
           </main>
           <Footer />
         </AppProvider>
-        <Script  src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></Script >
+        <Toaster />
+        <Script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></Script >
       </body>
     </html >
   )

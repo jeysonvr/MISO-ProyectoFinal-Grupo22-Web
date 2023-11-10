@@ -42,7 +42,10 @@ export const labelsLogin = {
   label_remember: "Recuérdame",
   cta_login: "Iniciar sesión",
   label_have_an_account: "¿Aún no tienes una cuenta?",
-  label_create_account: "Crear cuenta"
+  label_create_account: "Crear cuenta",
+  alert_please_wait: 'Por favor espere...',
+  alert_login_success: 'Inicio de sesión exitoso',
+  alert_try_again: 'Hubo un error, intente de nuevo',
 }
 
 export const labelsSignup = {
@@ -79,21 +82,21 @@ export const labelSearchCandidate = {
 }
 
 export const labelTechTest = {
-    main_title: "Tech Test",
-    cta_cancel: "Cancel",
-    cta_next: "Next",
-    cta_send: "Send",
-    cta_finished_test: "¡Completed!",
-    label_test: "Read carefully, the questions will be answered one by one, it is not possible to go back.",
-    label_question: "Question",
-    label_of: "Of",
-    label_loading: "Loading...",
-    label_name_test: "TEST NAME",
-    label_status: "STAUS",
-    label_result: "ACTION / RESULT",
-    label_pending: "Pending",
-    label_expired: "Expired",
-    label_ready: "Performed",
-    label_presen: "Present",
-    label_not_test: "Not test pending for the candidate"
+  main_title: "Tech Test",
+  cta_cancel: "Cancel",
+  cta_next: "Next",
+  cta_send: "Send",
+  cta_finished_test: "¡Completed!",
+  label_test: "Read carefully, the questions will be answered one by one, it is not possible to go back.",
+  label_question: "Question",
+  label_of: "Of",
+  label_loading: "Loading...",
+  label_name_test: "TEST NAME",
+  label_status: "STAUS",
+  label_result: "ACTION / RESULT",
+  label_pending: "Pending",
+  label_expired: "Expired",
+  label_ready: "Performed",
+  label_presen: "Present",
+  label_not_test: "Not test pending for the candidate"
 }
