@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useCallback } from 'react';
-import { usePathname, useRouter, useParams } from 'next/navigation';
+import { usePathname, useParams } from 'next/navigation';
 
 interface ILanguageSelectorProps {
   languages: { [key: string]: string },
@@ -9,13 +9,14 @@ interface ILanguageSelectorProps {
 
 const LanguageSelector = ({ languages }: ILanguageSelectorProps) => {
   const pathname = usePathname();
-  const { push } = useRouter();
   const { locale } = useParams();
 
   const handleLanguageChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>): void => {
     const pathWithoutLocale = pathname.replace(`/${locale as string}`, '');
-    push(`/${e.target.value}${pathWithoutLocale}`);
-  }, [locale, pathname, push]);
+    if (window?.location?.href) {
+      window.location.href = `/${e.target.value}${pathWithoutLocale}`;
+    }
+  }, [locale, pathname]);
 
   return (
     <select
