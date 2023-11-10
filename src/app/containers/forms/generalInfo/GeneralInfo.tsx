@@ -1,10 +1,12 @@
 'use client'
 
 import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
 
 import PillEditor from "../../../components/pillEditor/PillEditor";
 
 const GeneralInfoForm = ({ labels, metadata, profileData }: any) => {
+  const { locale } = useParams();
   const [selectedCompanyType, setSelectedCompanyType] = useState(profileData?.id_tipo_empresa);
   const companyTypesMetadata = metadata?.tipos_empresa?.map(({ id, tipo_empresa }: any) => ({ id, value: tipo_empresa })) || [];
 
@@ -64,9 +66,9 @@ const GeneralInfoForm = ({ labels, metadata, profileData }: any) => {
         ctaLabel={labels.cta_add}
         id={'business_vertical_selector'}
         elements={businessVerticalsMetadata}
-        selectedPills={profileData?.areasNegocio?.map(({ id, descripcion }: any) => ({
+        selectedPills={profileData?.areasNegocio?.map(({ id, descripcion, descripcion_en }: any) => ({
           pillValue: id,
-          pillText: descripcion,
+          pillText: locale == 'en' ? descripcion_en : descripcion,
         }))}
       />
 
@@ -78,7 +80,7 @@ const GeneralInfoForm = ({ labels, metadata, profileData }: any) => {
         isMultiSelector={true}
         selectedPills={profileData?.ciudades?.map(({ id, id_pais, ciudad, pai }: any) => ({
           pillValue: id_pais,
-          pillText: pai?.pais,
+          pillText: locale == 'en' ? pai?.pais_en : pai?.pais,
           pillExtraValue: id,
           pillExtraText: ciudad,
         }))}

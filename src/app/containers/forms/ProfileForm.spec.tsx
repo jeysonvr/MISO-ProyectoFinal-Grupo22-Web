@@ -4,7 +4,15 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import ProfileForm from './ProfileForm';
 
 import { labelsProfileInfo } from '../../mocks/labels';
-import { candidateMetadata } from '../../mocks/metadata';
+import { candidateMetadata, companyMetadata } from '../../mocks/metadata';
+
+jest.mock("next/navigation", () => ({
+  useParams() {
+    return {
+      locale: 'en'
+    };
+  }
+}));
 
 describe('Profile Form Container', () => {
   const originalLocation = window.location;
@@ -58,6 +66,10 @@ describe('Profile Form Container', () => {
   });
 
   it('should render company profile if userType is company', async () => {
+    global.fetch = jest.fn(async () =>
+      Promise.resolve({ json: async () => Promise.resolve(companyMetadata) })
+    ) as jest.Mock;
+
     Storage.prototype.getItem = jest.fn(() => JSON.stringify({ type: 'company' }));
     render(<ProfileForm labels={labelsProfileInfo} />);
 

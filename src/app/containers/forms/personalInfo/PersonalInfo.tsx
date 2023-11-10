@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useParams } from 'next/navigation';
 
 import PillEditor from "../../../components/pillEditor/PillEditor";
 
 const PersonalInfoForm = ({ labels, metadata, profileData }: any) => {
+  const { locale } = useParams();
   const languagesMetadata = metadata?.idiomas?.map(({ id, idioma }: any) => ({ id, value: idioma })) || [];
   const paisesMetadata = metadata?.paises?.map(({ id, pais }: any) => ({ id, value: pais })) || [];
   const softSkillsMetadata = metadata?.habilidadesBlandas?.map(({ id, descripcion }: any) => ({ id, value: descripcion })) || [];
@@ -88,9 +90,9 @@ const PersonalInfoForm = ({ labels, metadata, profileData }: any) => {
         ctaLabel={labels.cta_add}
         id={'language'}
         elements={languagesMetadata}
-        selectedPills={profileData?.idiomas?.map(({ id, idioma }: any) => ({
+        selectedPills={profileData?.idiomas?.map(({ id, idioma, idioma_en }: any) => ({
           pillValue: id,
-          pillText: idioma,
+          pillText: locale == 'en' ? idioma_en : idioma,
         }))}
       />
       <PillEditor
@@ -98,9 +100,9 @@ const PersonalInfoForm = ({ labels, metadata, profileData }: any) => {
         ctaLabel={labels.cta_add}
         id={'softSkills'}
         elements={softSkillsMetadata}
-        selectedPills={profileData?.habilidadesBlandas?.map(({ id, descripcion }: any) => ({
+        selectedPills={profileData?.habilidadesBlandas?.map(({ id, descripcion, descripcion_en }: any) => ({
           pillValue: id,
-          pillText: descripcion,
+          pillText: locale == 'en' ? descripcion_en : descripcion,
         }))}
       />
       <PillEditor
@@ -108,10 +110,10 @@ const PersonalInfoForm = ({ labels, metadata, profileData }: any) => {
         ctaLabel={labels.cta_add}
         id={'techSkills'}
         elements={techSkillsMetadata}
-        selectedPills={profileData?.habilidadesTecnicas?.map(({ id, descripcion }: any) => (
+        selectedPills={profileData?.habilidadesTecnicas?.map(({ id, descripcion, descripcion_en }: any) => (
           {
             pillValue: id,
-            pillText: descripcion,
+            pillText: locale == 'en' ? descripcion_en : descripcion,
           }))}
       />
     </div>
