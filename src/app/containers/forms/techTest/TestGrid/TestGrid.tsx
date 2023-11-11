@@ -25,7 +25,6 @@ function TestGrid({ labels }:any) {
     fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/evaluacion/obtener/${infoIdUser}`)
     .then(res => res.json())
     .then(res => {
-      console.log(res)
       setTestsUser(res)
     })
   }

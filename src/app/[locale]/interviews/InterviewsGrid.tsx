@@ -25,7 +25,6 @@ function InterviewGrid({ labels }:any) {
     fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/candidato/entrevista/${idUser}`)
     .then(res => res.json())
     .then(res => {
-      console.log(res)
       setInterviewsUser(res)
     })
     .catch(error => console.error('Error:', error));;

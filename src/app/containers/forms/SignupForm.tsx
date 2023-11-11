@@ -4,6 +4,9 @@ import { useCallback } from 'react';
 import { useState } from "react";
 import Link from "next/link";
 
+import toast from 'react-hot-toast';
+
+import { UrlPath } from '../../contants/urlPath';
 import '../../globals.css';
 import { UserTypeEnum } from '../../contants/userType';
 
@@ -54,6 +57,7 @@ const SignupForm = ({ labels }: any) => {
             id_tipo_usuario: userType.id,
         };
 
+        const toastWait = toast.loading(labels.alert_please_wait);
         await fetch('https://34.117.49.114/registro/usuario', {
             method: 'POST',
             headers: {
@@ -62,18 +66,20 @@ const SignupForm = ({ labels }: any) => {
             body: JSON.stringify(formData),
         })
             .then(resp => {
+                if (resp.status !== 201) {
+                    return Promise.reject();
+                };
                 // Success - created
-                if (resp.status === 201) {
-                    localStorage.setItem('user', JSON.stringify(
-                        { email: formData.email, type: UserTypeEnum[userType.id] }
-                    ))
-                    window.location.href = '/profile';
-                    return;
-                }
-
+                localStorage.setItem('user', JSON.stringify(
+                    { email: formData.email, type: UserTypeEnum[userType.id] }
+                ));
+                toast.dismiss(toastWait);
+                toast.success(labels.alert_register_success);
+                window.location.href = UrlPath.profile;
             })
-            .catch((error) => {
-                console.error('Request failed', error);
+            .catch(() => {
+                toast.dismiss(toastWait);
+                toast.error(labels.alert_try_again);
             });
 
     }, [fullName, email, password, userType]);

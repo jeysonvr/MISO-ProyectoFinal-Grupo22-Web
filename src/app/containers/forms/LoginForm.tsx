@@ -3,7 +3,6 @@
 import { useCallback } from 'react';
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from 'next/navigation';
 
 import toast from 'react-hot-toast';
 
@@ -12,8 +11,6 @@ import { UserTypeEnum } from '../../contants/userType';
 import { UrlPath } from '../../contants/urlPath';
 
 const LoginForm = ({ labels }: any) => {
-    const { push } = useRouter();
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [remember, setRemember] = useState(false);
@@ -34,7 +31,7 @@ const LoginForm = ({ labels }: any) => {
             contrasena: password
         };
 
-        const toastWait = toast.loading(labels.alert_please_wait)
+        const toastWait = toast.loading(labels.alert_please_wait);
         await fetch('https://34.117.49.114/registro/login', {
             method: 'POST',
             headers: {
@@ -55,7 +52,7 @@ const LoginForm = ({ labels }: any) => {
                 ));
                 toast.dismiss(toastWait);
                 toast.success(labels.alert_login_success);
-                push(UrlPath.profile)
+                window.location.href = UrlPath.profile;
             })
             .catch(() => {
                 toast.dismiss(toastWait);

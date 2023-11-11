@@ -67,8 +67,6 @@ const ProjectForm = ({ labels }: any) => {
         e.preventDefault();
 
         const bodyPayload = getData(e.target);
-        console.log('body');
-        console.log(bodyPayload);
 
         try {
             await fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/empresa/proyecto`, {
@@ -81,8 +79,6 @@ const ProjectForm = ({ labels }: any) => {
             .then(resp => {
                 // Success - created
                 if (resp.status === 201) {
-                    console.log('Proyecto creado:');
-                    console.log(resp)
                     alert('Proyecto creado');
                 }
 
