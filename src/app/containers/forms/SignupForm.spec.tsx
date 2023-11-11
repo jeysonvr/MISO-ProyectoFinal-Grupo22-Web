@@ -110,7 +110,7 @@ describe('Signup Form Container', () => {
 
     await waitFor(() => {
       expect(mockFetch).toHaveBeenCalledWith(
-        'https://34.117.49.114/registro/usuario',
+        expect.any(String),
         expect.objectContaining({
           method: 'POST',
           headers: {
@@ -150,7 +150,7 @@ describe('Signup Form Container', () => {
 
     await waitFor(() => {
       expect(mockFetch).toHaveBeenCalledWith(
-        'https://34.117.49.114/registro/usuario',
+        expect.any(String),
         expect.objectContaining({
           method: 'POST',
           headers: {

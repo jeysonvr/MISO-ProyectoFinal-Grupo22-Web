@@ -58,7 +58,7 @@ const SignupForm = ({ labels }: any) => {
         };
 
         const toastWait = toast.loading(labels.alert_please_wait);
-        await fetch('https://34.117.49.114/registro/usuario', {
+        await fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/registro/usuario`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
