@@ -4,6 +4,8 @@ import ProfileForm from "../../../containers/forms/ProfileForm";
 
 export default function Profile() {
   const labels = useTranslations('user_profile');
+  const alerts = useTranslations('alerts');
+
   const profileLabels = {
     title_personal_info: labels('title_personal_info'),
     title_academic_info: labels('title_academic_info'),
@@ -39,11 +41,14 @@ export default function Profile() {
     input_business_vertical: labels('input_business_vertical'),
     input_ubication_country: labels('input_ubication_country'),
     input_ubication_city: labels('input_ubication_city'),
+    alert_please_wait: alerts('please_wait'),
+    alert_update_success: alerts('update_success'),
+    alert_try_again: alerts('try_again'),
   };
 
   return (
     <main className="flex flex-col justify-between p-16 container m-auto">
-      <h1 className="mb-12 text-2xl font-bold tracking-tight text-gray-900 text-4xl">{labels('main_title')}</h1>
+      <h1 className="mb-12 font-bold tracking-tight text-gray-900 text-4xl">{labels('main_title')}</h1>
       <ProfileForm labels={profileLabels} />
     </main>
   )

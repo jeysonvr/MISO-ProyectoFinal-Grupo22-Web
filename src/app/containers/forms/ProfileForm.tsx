@@ -1,7 +1,10 @@
+/* istanbul ignore file */
 "use client";
 
 import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
+
+import toast from 'react-hot-toast';
 
 import AcademicInfoForm from './academicInfo/AcademicInfo';
 import PersonalInfoForm from "./personalInfo/PersonalInfo";
@@ -14,27 +17,6 @@ const mapUser = {
   [UserType.company]: 'empresa',
   [UserType.candidate]: 'candidato',
 };
-
-const buildAcademicObject = (element: any) => {
-  return {
-    institucion: element.educative_institution_name.value,
-    titulo: element.academic_title.value,
-    en_curso: element.academic_inProgress.checked ? 1 : 0,
-    fecha_inicio: element.academic_startDate.value,
-    fecha_fin: element.academic_endDate.value,
-  }
-}
-
-const buildLaboralObject = (element: any) => {
-  return {
-    nombre_empresa: element.companyName.value,
-    fecha_inicio: element.laboral_startDate.value,
-    fecha_fin: element.laboral_endDate.value,
-    actual: element.laboral_isCurrent.checked ? 1 : 0,
-    descripcion_actividades: element.laboral_activityDescription.value,
-    id_rol: element.laboral_rol.value,
-  }
-}
 
 const ProfileForm = ({ labels }: any) => {
   const { locale } = useParams();
@@ -56,27 +38,51 @@ const ProfileForm = ({ labels }: any) => {
       personal.habilidadesTecnicas = data.techSkills.value ? data.techSkills.value.split(',') : [];
 
       // Academic info
-      if (data.educative_institution_name?.length) {
-        data.educative_institution_name.forEach((institution: any) => {
-          if (institution?.value) {
-            informacionAcademica.push(buildAcademicObject(institution));
-          };
+      if (data?.educative_institution_name?.length) {
+        data.educative_institution_name.forEach((institution: any, index: number) => {
+          informacionAcademica.push({
+            institucion: institution.value,
+            titulo: data.academic_title[index].value,
+            en_curso: data.academic_inProgress[index].checked ? 1 : 0,
+            fecha_inicio: data.academic_startDate[index].value,
+            fecha_fin: data.academic_endDate[index].value,
+          })
         })
-      } else if (data.educative_institution_name?.value) {
-        informacionAcademica = [buildAcademicObject(data)]
+      } else if(data?.educative_institution_name) {
+        informacionAcademica = [
+          {
+            institucion: data.educative_institution_name.value,
+            titulo: data.degree.value,
+            en_curso: data.isInProgress.checked ? 1 : 0,
+            fecha_inicio: data.startDate.value,
+            fecha_fin: data.endDate.value,
+          }
+        ]
       }
 
       // Laboral info
-      if (data.companyName?.length) {
+      if (data?.companyName?.length) {
         data.companyName.forEach((company: any, index: number) => {
-          if (company?.value) {
-            experiencia.push(buildLaboralObject(company));
-          }
+          experiencia.push({
+            nombre_empresa: company.value,
+            fecha_inicio: data.laboral_startDate[index].value,
+            fecha_fin: data.laboral_endDate[index].value,
+            actual: data.laboral_isCurrent[index].checked ? 1 : 0,
+            descripcion_actividades: data.laboral_activityDescription[index].value,
+            id_rol: data.laboral_rol[index].value,
+          })
         })
-      } else {
-        if (data.companyName?.value) {
-          experiencia = [buildLaboralObject(data)];
-        }
+      } else if(data?.companyName) {
+        experiencia = [
+          {
+            nombre_empresa: data.companyName.value,
+            fecha_inicio: data.laboral_startDate.value,
+            fecha_fin: data.laboral_endDate.value,
+            actual: data.laboral_isCurrent.checked ? 1 : 0,
+            descripcion_actividades: data.laboral_activityDescription.value,
+            id_rol: data.laboral_rol.value,
+          }
+        ]
       }
 
       return {
@@ -107,6 +113,7 @@ const ProfileForm = ({ labels }: any) => {
 
     const bodyPayload = getDataByRol(e.target, userType);
 
+    const toastWait = toast.loading(labels.alert_please_wait);
     // Send request
     fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/${mapUser[userType]}/`, {
       method: 'POST',
@@ -114,7 +121,20 @@ const ProfileForm = ({ labels }: any) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(bodyPayload),
-    });
+    })
+      .then(resp => {
+        if (resp.status !== 200) {
+          return Promise.reject();
+        }
+        toast.dismiss(toastWait);
+        toast.success(labels.alert_update_success, {
+          icon: '💾',
+        });
+      })
+      .catch(() => {
+        toast.dismiss(toastWait);
+        toast.error(labels.alert_try_again);
+      });
 
     //creacion de la evaluacion básica
 

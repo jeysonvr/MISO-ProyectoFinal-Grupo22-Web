@@ -32,7 +32,7 @@ const LoginForm = ({ labels }: any) => {
         };
 
         const toastWait = toast.loading(labels.alert_please_wait);
-        await fetch('https://34.117.49.114/registro/login', {
+        await fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/registro/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
