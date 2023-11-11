@@ -99,7 +99,7 @@
     "label_candidate": "candidate",
     "label_company": "company"
   },
-  "tech_test":{
+  "tech_test": {
     "main_title": "Tech Test",
     "cta_cancel": "Cancel",
     "cta_next": "Next",
@@ -117,7 +117,7 @@
     "label_ready": "Performed",
     "label_present": "Present",
     "label_not_test": "Not test pending for the candidate"
-  }, 
+  },
   "home": {
     "label_oportunities": "Thousands of opportunities ",
     "label_for_you": "For You",
@@ -155,6 +155,7 @@
     "please_wait": "Please wait...",
     "login_success": "Successful login",
     "register_success": "Successful register",
-    "try_again": "There was an error, try again"
+    "try_again": "There was an error, try again",
+    "update_success": "Successful update"
   }
 }
