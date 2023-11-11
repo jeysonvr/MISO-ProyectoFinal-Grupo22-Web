@@ -150,5 +150,11 @@
     "label_active": "Activo",
     "label_inactive": "Inactivo",
     "label_no_content": "La empresa no tiene proyectos creados"
+  },
+  "alerts": {
+    "please_wait": "Por favor espere...",
+    "login_success": "Inicio de sesión exitoso",
+    "register_success": "Registro exitoso",
+    "try_again": "Hubo un error, intente de nuevo"
   }
 }

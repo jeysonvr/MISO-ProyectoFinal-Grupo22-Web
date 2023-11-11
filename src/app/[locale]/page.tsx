@@ -22,7 +22,7 @@ export default function Home() {
             </div>   
             <div>
                 <Link href="login" className="ml-2 text-teal-500 font-semibold">
-                <button className="mx-4 px-4 mx-auto h-8" id='loginBtn' type="submit" 
+                <button className="px-4 mx-auto h-8" id='loginBtn' type="submit" 
                         style={{
                             backgroundColor: '#0DA89B',
                             color: 'white',
@@ -34,7 +34,7 @@ export default function Home() {
                 </Link>   
                 <span className="text-center ml-2">{homeLabels.span_or}</span> 
                 <Link href="signup" className="ml-2 text-teal-500 font-semibold">
-                <button className="mx-4 px-4 mx-auto h-8" id='signupBtn' type="submit" 
+                <button className="px-4 mx-auto h-8" id='signupBtn' type="submit" 
                         style={{
                             backgroundColor: '#0DA89B',
                             color: 'white',

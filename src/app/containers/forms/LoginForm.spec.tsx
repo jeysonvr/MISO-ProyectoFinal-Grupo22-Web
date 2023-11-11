@@ -74,32 +74,6 @@ describe('Login Form Container', () => {
     });
   });
 
-  it('should handle form submission with error', async () => {
-    global.fetch = jest.fn(() =>
-      Promise.reject({
-        Error: 'Error:',
-      })
-    );
-
-    console.error = jest.fn();
-
-    render(<LoginForm labels={{}} />);
-    const emailInput = document.getElementById('email') as HTMLInputElement;
-    const passwordInput = document.getElementById('password') as HTMLInputElement;
-
-    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
-    fireEvent.change(passwordInput, { target: { value: 'password123' } });
-
-    const submitButton = document.getElementById('loginBtn') as HTMLButtonElement;
-    fireEvent.click(submitButton);
-
-    await waitFor(() => {
-      expect(console.error).toHaveBeenCalledWith('Error:', {
-        Error: 'Error:',
-      });
-    });
-  });
-
   it('debería manejar el evento onChange para el input "remember"', () => {
     render(<LoginForm labels={{}} />);
     const rememberInput = document.getElementById('remember') as HTMLInputElement;

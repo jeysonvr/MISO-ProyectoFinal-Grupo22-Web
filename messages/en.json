@@ -150,5 +150,11 @@
     "label_active": "Active",
     "label_inactive": "Inactive",
     "label_no_content": "Company do not have projects"
+  },
+  "alerts": {
+    "please_wait": "Please wait...",
+    "login_success": "Successful login",
+    "register_success": "Successful register",
+    "try_again": "There was an error, try again"
   }
 }

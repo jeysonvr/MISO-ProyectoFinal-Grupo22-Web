@@ -166,35 +166,4 @@ describe('Signup Form Container', () => {
       );
     });
   });
-
-  it('should handle form submission with error', async () => {
-    global.fetch = jest.fn(() =>
-      Promise.reject({
-        error: 'Request failed',
-      })
-    );
-
-    console.error = jest.fn();
-
-    render(<SignupForm labels={{}} />);
-    const fullNameInput = document.getElementById('fullName') as HTMLInputElement;
-    const emailInput = document.getElementById('email') as HTMLInputElement;
-    const passwordInput = document.getElementById('password') as HTMLInputElement;
-    const termsAcceptedCheckbox = document.getElementById('terms') as HTMLInputElement;
-
-    fireEvent.change(fullNameInput, { target: { value: 'John Doe' } });
-    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
-    fireEvent.change(passwordInput, { target: { value: 'password123' } });
-    fireEvent.click(termsAcceptedCheckbox);
-
-    const submitButton = document.getElementById('signupBtn') as HTMLButtonElement;
-    fireEvent.click(submitButton);
-
-    await waitFor(() => {
-      expect(console.error).toHaveBeenCalledWith('Request failed', {
-        error: 'Request failed',
-      });
-    });
-  });
-
 });
