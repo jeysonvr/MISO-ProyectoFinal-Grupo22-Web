@@ -3,15 +3,14 @@
 import { useCallback } from 'react';
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from 'next/navigation';
+
+import toast from 'react-hot-toast';
 
 import '../../globals.css';
 import { UserTypeEnum } from '../../contants/userType';
 import { UrlPath } from '../../contants/urlPath';
 
 const LoginForm = ({ labels }: any) => {
-    const { push } = useRouter();
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [remember, setRemember] = useState(false);
@@ -32,27 +31,33 @@ const LoginForm = ({ labels }: any) => {
             contrasena: password
         };
 
-        try {
-            await fetch('https://34.117.49.114/registro/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
+        const toastWait = toast.loading(labels.alert_please_wait);
+        await fetch('https://34.117.49.114/registro/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+            .then(resp => {
+                if (resp.status !== 200) {
+                    return Promise.reject();
+                };
+                return resp.json();
             })
-                .then(resp => resp.json())
-                .then(data => {
-                    // Successfully logged in
-                    localStorage.setItem('user', JSON.stringify(
-                        { email: data.usuario, type: UserTypeEnum[data.id_tipo_usuario] }
-                    ));
-                    push(UrlPath.profile)
-                })
-                .catch(error => console.error('Error:', error));
-
-        } catch (error) {
-            console.error('Error:', error);
-        }
+            .then(data => {
+                // Successfully logged in
+                localStorage.setItem('user', JSON.stringify(
+                    { email: data.usuario, type: UserTypeEnum[data.id_tipo_usuario] }
+                ));
+                toast.dismiss(toastWait);
+                toast.success(labels.alert_login_success);
+                window.location.href = UrlPath.profile;
+            })
+            .catch(() => {
+                toast.dismiss(toastWait);
+                toast.error(labels.alert_try_again);
+            });
 
     }, [email, password]);
 
