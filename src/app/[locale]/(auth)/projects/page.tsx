@@ -15,9 +15,12 @@ export default function Projects() {
     cta_add: labels('cta_add'),
     cta_cancel: labels('cta_cancel'),
     cta_save: labels('cta_save'),
-    label_status: labels('label_status')
+    label_status: labels('label_status'),
+    label_active: labels('label_active'),
+    label_inactive: labels('label_inactive'),
+    label_no_content: labels('label_no_content'),
   };
-  
+
   return (
     <main className="flex flex-col items-center justify-between p-24">
       <ProjectForm labels={projectLabels} />

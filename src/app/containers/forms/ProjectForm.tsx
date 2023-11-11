@@ -6,14 +6,15 @@ import { useCallback, useState, useEffect, useRef } from "react";
 import '../../globals.css';
 import Button, { ButtonStyle, IconType } from '../../components/button/Button';
 import ProjectInfoForm from "./projectInfo/ProjectInfo";
-
+import Grid from "../Grid/Grid"
 const ProjectForm = ({ labels }: any) => {
 
     const [isContainerOpen, setIsContainerOpen] = useState(false);
     const [isElementVisible, setElementVisibility] = useState(true);
     const [projectMetadata, setprojectMetadata] = useState(undefined); // Metadata depending on profile type
     const [projectInformation, setprojectInformation] = useState(undefined); // Profile information
-    const id_Company = useRef();;
+    const id_Company = useRef();
+    const [projectsCompany, setProjectsCompany] = useState([]);
 
     const openContainer = () => {
         setIsContainerOpen(true);
@@ -36,9 +37,21 @@ const ProjectForm = ({ labels }: any) => {
           .then((data) => {
             id_Company.current = data.id;
           })
+          .then((data) => {
+            fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/empresa/proyecto/${id_Company.current}`)
+            .then((result) => {
+                return result.json();  
+            })
+            .then((data) => {
+                setProjectsCompany(data)
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+          })
           .catch((error) => {
             console.error('Error:', error);
-          });
+          })
       }, []);
 
     const getData = (data: any) => {
@@ -103,7 +116,18 @@ const ProjectForm = ({ labels }: any) => {
           .then(res => res.json())
           .then(data => setprojectMetadata(data));
     }, []);
-
+    const headers = [
+        labels.label_name, 
+        labels.label_description,
+        labels.label_status
+      ]
+    const content = projectsCompany.map((row:any, index: number)=>{
+        return {
+            "nombre": row.nombre,
+            "descripcion":row.descripcion,
+            "estado": row.id_estado === 1 ? labels.label_active : labels.label_inactive           
+        }
+    })
     return (
         <div className="mx-auto max-w-screen-xl p-4" id="createProject">
             <div className="absolute top-20 right-20 p-4">
@@ -117,6 +141,11 @@ const ProjectForm = ({ labels }: any) => {
                     />
                 )}
             </div>
+            {isElementVisible && (
+                    <div>
+                        <Grid labels={labels} headers={headers} content={content} />
+                    </div>
+                )}
             <form onSubmit={onFormSubmit}>
                 {isContainerOpen && (
                     <div>

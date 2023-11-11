@@ -146,7 +146,10 @@
     "cta_add": "Agregar",
     "cta_cancel": "Cancelar",
     "cta_save": "Guardar",
-    "label_status": "Estado"
+    "label_status": "Estado",
+    "label_active": "Activo",
+    "label_inactive": "Inactivo",
+    "label_no_content": "La empresa no tiene proyectos creados"
   },
   "alerts": {
     "please_wait": "Por favor espere...",
