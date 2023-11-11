@@ -18,7 +18,7 @@ export default function Projects() {
     label_status: labels('label_status'),
     label_active: labels('label_active'),
     label_inactive: labels('label_inactive'),
-    label_no_projects: labels('label_no_projects'),
+    label_no_content: labels('label_no_content'),
   };
 
   return (

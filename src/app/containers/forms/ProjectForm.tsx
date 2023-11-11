@@ -44,7 +44,6 @@ const ProjectForm = ({ labels }: any) => {
             })
             .then((data) => {
                 setProjectsCompany(data)
-                console.log(data)
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -133,7 +132,6 @@ const ProjectForm = ({ labels }: any) => {
             "estado": row.id_estado === 1 ? labels.label_active : labels.label_inactive           
         }
     })
-    console.log(content)
     return (
         <div className="mx-auto max-w-screen-xl p-4" id="createProject">
             <div className="absolute top-20 right-20 p-4">

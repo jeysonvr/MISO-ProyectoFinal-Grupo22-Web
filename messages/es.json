@@ -149,6 +149,6 @@
     "label_status": "Estado",
     "label_active": "Activo",
     "label_inactive": "Inactivo",
-    "label_no_projects": "La empresa no tiene proyectos creados"
+    "label_no_content": "La empresa no tiene proyectos creados"
   }
 }
