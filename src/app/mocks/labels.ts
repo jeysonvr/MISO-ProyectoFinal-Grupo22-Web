@@ -100,3 +100,20 @@ export const labelTechTest = {
   label_presen: "Present",
   label_not_test: "Not test pending for the candidate"
 }
+
+export const labelHome = {
+  label_oportunities: 'Miles de oportunidades ',
+  label_for_you: 'Para Ti',
+  cta_login: 'Iniciar sesión',
+  span_or: 'ó',
+  cta_signup: 'Registrarme',
+  label_phrase_1: 'Inicia sesión o regístrate y accede a todas estas oportunidades.',
+  label_phrase_2: 'Si eres empresa, podrás encontrar el personal más calificado para tus proyectos.',
+  label_motivation: 'Estás en el lugar perfecto para iniciar tus proyectos. Los mejores profesionales y las mejores compañías del mercado se encuentran aquí',
+  label_companies_looking: 'Algunas compañías que buscan profesionales:',
+  cta_watch_video: 'Ver vídeo',
+  cta_edit_profile: 'Edita tu perfil',
+  title_part_1: 'Construye',
+  title_part_2: 'tu futuro',
+  title_part_3: 'iniciando hoy mismo',
+}

@@ -2,8 +2,9 @@ import { useTranslations } from 'next-intl';
 import ProjectForm from "../../../containers/forms/ProjectForm";
 
 export default function Projects() {
-
   const labels = useTranslations('project');
+  const alerts = useTranslations('alerts');
+
   const projectLabels = {
     title_projects: labels('title_projects'),
     cta_new_project: labels('cta_new_project'),
@@ -19,6 +20,9 @@ export default function Projects() {
     label_active: labels('label_active'),
     label_inactive: labels('label_inactive'),
     label_no_content: labels('label_no_content'),
+    alert_please_wait: alerts('please_wait'),
+    alert_successfully_created: alerts('successfully_created'),
+    alert_try_again: alerts('try_again'),
   };
 
   return (
