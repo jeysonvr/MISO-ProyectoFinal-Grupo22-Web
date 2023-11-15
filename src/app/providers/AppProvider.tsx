@@ -22,6 +22,11 @@ const AppContext = createContext<IAppContextProps>({
   }
 });
 
+const BASE_DATA = {
+  email: "",
+  type: UserType.anonymous,
+};
+
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [userData, setUserData] = useState<any>({ type: UserType.anonymous });
   const userContext = {
@@ -39,7 +44,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     setUserData(
       {
-        ...JSON.parse(localStorage?.getItem('user') || '{}'),
+        ...JSON.parse(localStorage?.getItem('user') || JSON.stringify(BASE_DATA)),
         language: cookieCutter.get('NEXT_LOCALE'),
       },
     );
