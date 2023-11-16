@@ -1,11 +1,10 @@
 'use client'
 import React, { Suspense } from 'react';
 
-function Grid({ labels, headers, content }:any) {
- 
+function Grid({ labels, headers, content=[] }:any) {
  return (
     <Suspense fallback={<p>{labels.label_loading}</p>}>
-      {content.length === 0 && <p>{labels.label_no_content}</p>}
+      {content.length === 0 && <p className="my-2">{labels.label_no_content}</p>}
       {content.length > 0 && (
         <div className="grid grid-cols-3 bg-[#fafafb]">
             {headers.map((header:any, index: number) => (

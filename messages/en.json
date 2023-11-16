@@ -156,6 +156,15 @@
     "login_success": "Successful login",
     "register_success": "Successful register",
     "try_again": "There was an error, try again",
-    "update_success": "Successful update"
+    "update_success": "Successful update",
+    "label_status": "Status"
+  },
+  "contract":{
+    "label_candidate": "Canditate",
+    "label_company": "Company",
+    "label_project": "Project",
+    "label_rol": "Rol",
+    "cta_cancel": "Cancel",
+    "cta_save": "Save"
   }
 }

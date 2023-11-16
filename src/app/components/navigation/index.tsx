@@ -52,10 +52,6 @@ const Navigation = ({ labels }: any) => {
     ],
     [UserType.recruiter]: [
       {
-        label: labels.interviews,
-        href: '/interviews'
-      },
-      {
         label: labels.contract,
         href: '/contract'
       },

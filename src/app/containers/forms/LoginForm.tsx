@@ -52,7 +52,8 @@ const LoginForm = ({ labels }: any) => {
                 ));
                 toast.dismiss(toastWait);
                 toast.success(labels.alert_login_success);
-                window.location.href = UrlPath.profile;
+                if(UserTypeEnum[data.id_tipo_usuario] !== 'admin') window.location.href = UrlPath.profile;
+                    else window.location.href = UrlPath.interviews;
             })
             .catch(() => {
                 toast.dismiss(toastWait);
