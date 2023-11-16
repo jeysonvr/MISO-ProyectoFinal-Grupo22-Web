@@ -40,6 +40,7 @@ const ProfileForm = ({ labels }: any) => {
       // Academic info
       if (data?.educative_institution_name?.length) {
         data.educative_institution_name.forEach((institution: any, index: number) => {
+          if (!institution?.value) return;
           informacionAcademica.push({
             institucion: institution.value,
             titulo: data.academic_title[index].value,
@@ -48,7 +49,7 @@ const ProfileForm = ({ labels }: any) => {
             fecha_fin: data.academic_endDate[index].value,
           })
         })
-      } else if(data?.educative_institution_name) {
+      } else if (data?.educative_institution_name?.value) {
         informacionAcademica = [
           {
             institucion: data.educative_institution_name.value,
@@ -63,6 +64,7 @@ const ProfileForm = ({ labels }: any) => {
       // Laboral info
       if (data?.companyName?.length) {
         data.companyName.forEach((company: any, index: number) => {
+          if (!company?.value) return;
           experiencia.push({
             nombre_empresa: company.value,
             fecha_inicio: data.laboral_startDate[index].value,
@@ -72,7 +74,7 @@ const ProfileForm = ({ labels }: any) => {
             id_rol: data.laboral_rol[index].value,
           })
         })
-      } else if(data?.companyName) {
+      } else if (data?.companyName?.value) {
         experiencia = [
           {
             nombre_empresa: data.companyName.value,

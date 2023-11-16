@@ -125,7 +125,14 @@
     "span_or": "or",
     "cta_signup": "Register",
     "label_phrase_1": "Log in or register and access all these opportunities.",
-    "label_phrase_2": "If you are a company, you will be able to find the most qualified personnel for your projects."
+    "label_phrase_2": "If you are a company, you will be able to find the most qualified personnel for your projects.",
+    "label_motivation": "You are in the perfect place to start your projects. The best professionals and the best companies in the market are here",
+    "label_companies_looking": "Some companies looking for professionals:",
+    "cta_watch_video": "Watch video",
+    "cta_edit_profile": "Edit your profile",
+    "title_part_1": "Build",
+    "title_part_2": "your future",
+    "title_part_3": "starting today"
   },
   "interviews": {
     "main_title": "Scheduled Interviews",
@@ -155,6 +162,7 @@
     "please_wait": "Please wait...",
     "login_success": "Successful login",
     "register_success": "Successful register",
+    "successfully_created": "Successfully created",
     "try_again": "There was an error, try again",
     "update_success": "Successful update",
     "label_status": "Status"
