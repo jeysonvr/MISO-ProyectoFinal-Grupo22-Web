@@ -153,6 +153,7 @@
     "cta_add": "Add",
     "cta_cancel": "Cancel",
     "cta_save": "Save",
+    "cta_remove": "Remove",
     "label_status": "Status",
     "label_active": "Active",
     "label_inactive": "Inactive",
