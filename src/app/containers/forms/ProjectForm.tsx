@@ -84,9 +84,6 @@ const ProjectForm = ({ labels }: any) => {
             ]
         }
 
-        console.log('roles');
-        console.log(roles);
-
         return {
             nombre: data.projectName.value,
             descripcion: data.description.value,
@@ -100,9 +97,6 @@ const ProjectForm = ({ labels }: any) => {
         e.preventDefault();
 
         const bodyPayload = getData(e.target);
-
-        console.log('bodyPayload');
-        console.log(bodyPayload);
 
         const toastWait = toast.loading(labels.alert_please_wait);
         await fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/empresa/proyecto`, {
