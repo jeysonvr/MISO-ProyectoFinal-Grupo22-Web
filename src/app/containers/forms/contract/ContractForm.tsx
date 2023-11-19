@@ -69,12 +69,10 @@ const ContractForm = ({ labels }: any) => {
 
     const onSelectedCandidateChange = (e: any) => {
       setCandidatoSeleccionado(e.target.value);
-      console.log(candidatoSeleccionado)
     }
 
     const onSelectedEmpresaChange = (e: any) => {
       setEmpresaSeleccionada(e.target.value);
-      console.log(empresaSeleccionada)
 
       // llamar proyectos de la empresa
       fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/empresa/proyecto/${e.target.value}`)
@@ -87,7 +85,6 @@ const ContractForm = ({ labels }: any) => {
     }
     const onSelectedProyectoChange = (e: any) => {
       setProyectoSeleccionado(e.target.value);
-      console.log(proyectoSeleccionado)
 
       const proyecto = listProyectos?.find(({ id }) => id == e.target.value);
       if(proyecto) getRoles(proyecto)
@@ -95,7 +92,6 @@ const ContractForm = ({ labels }: any) => {
 
     const onSelectedRolChange = (e: any) => {
       setRolSeleccionado(e.target.value);
-      console.log(rolSeleccionado)
 
     }
 
