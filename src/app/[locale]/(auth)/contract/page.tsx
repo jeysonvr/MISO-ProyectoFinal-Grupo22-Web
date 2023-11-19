@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import ContractForm from '@/app/containers/forms/contract/ContractForm';
+import ContractForm from '../../../containers/forms/contract/ContractForm';
 
 export default function Contract() {
   const labels = useTranslations('contract');
@@ -11,6 +11,7 @@ export default function Contract() {
     label_project: labels('label_project'),
     label_rol: labels('label_rol'),
     cta_cancel: labels('cta_cancel'),
+    label_title: labels('label_title'),
     cta_save: labels('cta_save'),
     alert_please_wait: alerts('please_wait'),
     alert_update_success: alerts('update_success'),
@@ -18,6 +19,7 @@ export default function Contract() {
   };
     return (
       <main className="flex flex-col items-center justify-between p-24">
+        <h1 className="mb-12 font-bold tracking-tight text-gray-900 text-4xl">{labels('label_title')}</h1>
         <ContractForm labels={contractLabels}/>
       </main>
     )

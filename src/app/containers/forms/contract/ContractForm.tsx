@@ -33,36 +33,34 @@ const ContractForm = ({ labels }: any) => {
     
     const onFormSubmit = useCallback((e: any) => {
       e.preventDefault();
+      const toastWait = toast.loading(labels.alert_please_wait);
       const body = {
-        id_candidato: candidatoSeleccionado,
-        id_empresa: empresaSeleccionada,
-        id_proyecto: proyectoSeleccionado,
-        id_rol: rolSeleccionado
-      }
-      toast.success(labels.alert_update_success, {
-            icon: '💾',
-          });
+        idUsuarioEmpleado: candidatoSeleccionado,
+        idUsuarioEmpresa: empresaSeleccionada,
+        idProyecto: proyectoSeleccionado,
+        idRol: rolSeleccionado
+      };
     // Send request
-      // fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/${mapUser[userType]}/`, {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(body),
-      // })
-      // .then(resp => {
-      //   if (resp.status !== 200) {
-      //     return Promise.reject();
-      //   }
-      //   toast.dismiss(toastWait);
-      //   toast.success(labels.alert_update_success, {
-      //     icon: '💾',
-      //   });
-      // })
-      // .catch(() => {
-      //   toast.dismiss(toastWait);
-      //   toast.error(labels.alert_try_again);
-      // });
+      fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/empresa/contrato`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      })
+      .then(resp => {
+        if (resp.status !== 200) {
+          return Promise.reject();
+        }
+        toast.dismiss(toastWait);
+        toast.success(labels.alert_update_success, {
+          icon: '💾',
+        });
+      })
+      .catch(() => {
+        toast.dismiss(toastWait);
+        toast.error(labels.alert_try_again);
+      });
     }, [candidatoSeleccionado, rolSeleccionado, proyectoSeleccionado, empresaSeleccionada]);
 
     const handleCancel = useCallback(() => {
@@ -132,8 +130,7 @@ const ContractForm = ({ labels }: any) => {
         <option selected>{labels.label_candidate}</option>
           {
             listCandidatos.map((candidato:any, index: number) => (
-              <option
-                key={candidato.id} value={candidato.usuario.id}>
+              <option key={candidato.id} value={candidato.usuario.id}>
                   {`${candidato.usuario.nombre_completo} - ${candidato.usuario.email}`}
               </option>
             ))

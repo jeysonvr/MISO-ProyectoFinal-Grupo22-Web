@@ -4,7 +4,7 @@ import Interviews from './page';
 import { render, screen, waitFor } from '@testing-library/react';
 import * as message from '../../../../messages/es.json'
 
-describe('TechTest page', () => {
+describe('Interviews page', () => {
   const renderWithProvider = () => (
     <NextIntlClientProvider
       locale={'es'}

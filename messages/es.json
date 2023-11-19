@@ -173,6 +173,7 @@
     "label_project": "Proyecto",
     "label_rol": "Rol",
     "cta_cancel": "Cancelar",
-    "cta_save": "Guardar"
+    "cta_save": "Guardar",
+    "label_title": "Notifica un nuevo contrato"
   }
 }
