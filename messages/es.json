@@ -164,6 +164,16 @@
     "register_success": "Registro exitoso",
     "successfully_created": "Creado exitosamente",
     "try_again": "Hubo un error, intente de nuevo",
-    "update_success": "Actualización exitosa"
+    "update_success": "Actualización exitosa",
+    "label_status": "Estado"
+  },
+  "contract":{
+    "label_candidate": "Candidato",
+    "label_company": "Empresa",
+    "label_project": "Proyecto",
+    "label_rol": "Rol",
+    "cta_cancel": "Cancelar",
+    "cta_save": "Guardar",
+    "label_title": "Notifica un nuevo contrato"
   }
 }
