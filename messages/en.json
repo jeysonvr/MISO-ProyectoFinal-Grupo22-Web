@@ -140,7 +140,9 @@
     "label_hour_start": "Initial time",
     "label_hour_end": "Final time",
     "label_subject": "Subject",
-    "label_not_interviews": "You don't have scheduled interviews"
+    "label_not_interviews": "You don't have scheduled interviews",
+    "label_resuls": "Results",
+    "cta_results": "Show"
   },
   "project": {
     "title_projects": "Projects",

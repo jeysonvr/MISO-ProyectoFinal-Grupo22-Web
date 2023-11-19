@@ -58,10 +58,6 @@ const Navigation = ({ labels }: any) => {
       {
         label: labels.contract,
         href: '/contract'
-      },
-      {
-        label: labels.interviews,
-        href: '/interviews'
       }
     ],
   }

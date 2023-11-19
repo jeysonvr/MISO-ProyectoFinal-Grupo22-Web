@@ -99,7 +99,7 @@
     "label_candidate": "candidato",
     "label_company": "compañía"
   },
-  "tech_test":{
+  "tech_test": {
     "main_title": "Prueba Técnica",
     "cta_cancel": "Cancelar",
     "cta_next": "Siguiente",
@@ -117,7 +117,7 @@
     "label_ready": "Presentada",
     "label_present": "Presentar",
     "label_not_test": "No hay tiene pruebas pendientes por presentar"
-  }, 
+  },
   "home": {
     "label_oportunities": "Miles de oportunidades ",
     "label_for_you": "Para Ti",
@@ -140,7 +140,9 @@
     "label_hour_start": "Hora Inicio",
     "label_hour_end": "Hora Fin",
     "label_subject": "Asunto",
-    "label_not_interviews": "No tienes entrevistas programadas"
+    "label_not_interviews": "No tienes entrevistas programadas",
+    "label_resuls": "Resultados",
+    "cta_results": "Ver"
   },
   "project": {
     "title_projects": "Proyectos",
