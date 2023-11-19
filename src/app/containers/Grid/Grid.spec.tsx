@@ -14,7 +14,7 @@ describe('Grid Component', () => {
         expect(title).toBeDefined();
         
     });
-    it('renders error message when content is not empty', () => {
+    it('renders grid when content is not empty', () => {
         const content = [{
             nombre: "proyecto1",
             descripcion: "proyecto 1",
@@ -27,8 +27,7 @@ describe('Grid Component', () => {
         }];
         const headers = ["nombre", "descripcion","estado"];
         const labels = {
-        label_loading: 'Loading...',
-        cta_finished_test: 'No test available',
+            label_loading: 'Loading...',
         };        
         const { container } = render(<Grid labels={labels} headers={headers} content={content}/>);
         const grid = container.querySelector('.grid');
