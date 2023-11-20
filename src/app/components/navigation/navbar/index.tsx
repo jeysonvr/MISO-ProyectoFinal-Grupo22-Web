@@ -8,7 +8,7 @@ import Logo from "./Logo";
 import { UrlPath } from "@/app/contants/urlPath";
 import '../../../globals.css';
 
-const Navbar = ({ toggle, menuItems }: { toggle: () => void, menuItems: any }) => {
+const Navbar = ({ toggle, menuItems, profileMenuItems }: { toggle: () => void, menuItems: any, profileMenuItems: any }) => {
   const pathname = usePathname();
   const onProfileClick = () => {
     // if is logged in then allow dropdown
@@ -36,9 +36,13 @@ const Navbar = ({ toggle, menuItems }: { toggle: () => void, menuItems: any }) =
         <div id='userDropdown' className='z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600'>
           <div className={`${!menuItems?.length ? 'hidden' : ''}`}>
             <ul className='py-2 text-sm text-gray-700 dark:text-gray-200' aria-labelledby="avatarButton">
-              <li>
-                <a href={UrlPath.profile} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
-              </li>
+              {
+                profileMenuItems?.map((profileItem: any) => (
+                  <li>
+                    <a href={profileItem?.href} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{profileItem?.label}</a>
+                  </li>
+                ))
+              }
             </ul>
             <div className="py-1">
               <a

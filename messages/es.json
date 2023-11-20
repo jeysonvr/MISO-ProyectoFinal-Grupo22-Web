@@ -17,7 +17,9 @@
     "candidates": "Candidates",
     "employees": "Empleados",
     "interviews": "Entrevistas",
-    "contract": "Registro contrato"
+    "contract": "Registro contrato",
+    "profile": "Perfil",
+    "sign_out": "Cerrar sesión"
   },
   "language": {
     "en": "Inglés",

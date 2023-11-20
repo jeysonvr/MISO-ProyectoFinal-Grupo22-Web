@@ -27,6 +27,8 @@ export default function RootLayout({ children, params: { locale } }: {
     employees: labels('employees'),
     interviews: labels('interviews'),
     contract: labels('contract'),
+    profile: labels('profile'),
+    sign_out: labels('sign_out'),
   }
 
   return (
