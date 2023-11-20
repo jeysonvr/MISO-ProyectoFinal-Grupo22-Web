@@ -117,16 +117,20 @@ const ProjectForm = ({ labels }: any) => {
         labels.label_name,
         labels.label_description,
         labels.label_status
-    ]
+      ]
 
-    const content = projectsCompany?.map(({ nombre, descripcion, id_estado }: any) => {
-        return {
-            nombre,
-            descripcion,
-            estado: id_estado ? labels.label_active : labels.label_inactive
+    const content = ()=>{
+        if(projectsCompany.length > 0){
+            return projectsCompany?.map((row:any, index: number)=>{
+                return {
+                    "nombre": row.nombre,
+                    "descripcion":row.descripcion,
+                    "estado": row.id_estado === 1 ? labels.label_active : labels.label_inactive           
+                }
+            })
         }
-    })
-
+        return []
+    }
     return (
         <div className="mx-auto max-w-screen-xl p-4" id="createProject">
             {

@@ -4,4 +4,5 @@ export const UrlPath = {
   home: '/',
   profile: '/profile',
   searchCandidates: '/search-candidate',
+  interviews: '/interviews'
 }
