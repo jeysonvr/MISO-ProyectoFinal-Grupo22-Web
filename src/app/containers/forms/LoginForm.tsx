@@ -7,7 +7,7 @@ import Link from "next/link";
 import toast from 'react-hot-toast';
 
 import '../../globals.css';
-import { UserTypeEnum } from '../../contants/userType';
+import { UserType, UserTypeEnum } from '../../contants/userType';
 import { UrlPath } from '../../contants/urlPath';
 
 const LoginForm = ({ labels }: any) => {
@@ -52,14 +52,13 @@ const LoginForm = ({ labels }: any) => {
                 ));
                 toast.dismiss(toastWait);
                 toast.success(labels.alert_login_success);
-                if(UserTypeEnum[data.id_tipo_usuario] !== 'admin') window.location.href = UrlPath.profile;
-                    else window.location.href = UrlPath.interviews;
+                if (UserTypeEnum[data.id_tipo_usuario] !== UserType.recruiter) window.location.href = UrlPath.profile;
+                else window.location.href = UrlPath.interviews;
             })
             .catch(() => {
                 toast.dismiss(toastWait);
                 toast.error(labels.alert_try_again);
             });
-
     }, [email, password]);
 
     return (
