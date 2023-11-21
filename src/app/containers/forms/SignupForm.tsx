@@ -82,7 +82,7 @@ const SignupForm = ({ labels }: any) => {
                 toast.error(labels.alert_try_again);
             });
 
-    }, [fullName, email, password, userType]);
+    }, [fullName, email, password, userType, labels.alert_please_wait, labels.alert_register_success, labels.alert_try_again]);
 
     return (
         <div style={{ height: '70vh', backgroundColor: 'white' }}>

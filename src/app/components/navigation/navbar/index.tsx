@@ -37,8 +37,8 @@ const Navbar = ({ toggle, menuItems, profileMenuItems }: { toggle: () => void, m
           <div className={`${!menuItems?.length ? 'hidden' : ''}`}>
             <ul className='py-2 text-sm text-gray-700 dark:text-gray-200' aria-labelledby="avatarButton">
               {
-                profileMenuItems?.map((profileItem: any) => (
-                  <li>
+                profileMenuItems?.map((profileItem: any, id: any) => (
+                  <li key={id}>
                     <a href={profileItem?.href} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{profileItem?.label}</a>
                   </li>
                 ))
@@ -54,7 +54,7 @@ const Navbar = ({ toggle, menuItems, profileMenuItems }: { toggle: () => void, m
         </div>
       </>
     )
-  }, [menuItems?.length, onProfileClick, onLogout]);
+  }, [menuItems?.length, onProfileClick, onLogout, profileMenuItems]);
 
   return (
     <>

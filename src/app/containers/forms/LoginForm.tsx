@@ -59,7 +59,7 @@ const LoginForm = ({ labels }: any) => {
                 toast.dismiss(toastWait);
                 toast.error(labels.alert_try_again);
             });
-    }, [email, password]);
+    }, [email, password, labels.alert_login_success, labels.alert_please_wait, labels.alert_try_again]);
 
     return (
         <div style={{ height: '70vh', backgroundColor: 'white' }}>
