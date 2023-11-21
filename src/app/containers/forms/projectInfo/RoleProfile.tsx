@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import PillEditor from "../../../components/pillEditor/PillEditor";
 import Button, { ButtonStyle, IconType } from '../../../components/button/Button';

@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from 'react';
 
-import PillEditor from "../../../components/pillEditor/PillEditor";
-import Button, { ButtonStyle, IconType } from '../../../components/button/Button';
 import RoleProfileForm from './RoleProfile';
 import { useParams } from 'next/navigation';
 
@@ -11,11 +9,6 @@ const ProjectInfoForm = ({ labels, metadata, projectData}: any) => {
   const [selectedStatus, setSelectedStatus] = useState(projectData?.id_estado);
   const [selectedRole, setSelectedRole] = useState(projectData?.rolesProyecto);
   
-  const rolesMetadata = metadata?.roles?.map(({ id, rol }: any) => ({ id, value: rol })) || [];
-
-  const technicalSkillsMetadata = metadata?.habilidadesTecnicas?.map(({ id, descripcion }: any) => ({ id, value: descripcion })) || [];
-  const locationssoftSkillsMetadata = metadata?.habilidadesBlandas?.map(({ id, descripcion }: any) => ({ id, value: descripcion })) || [];
-
   const [projectMetadata, setprojectMetadata] = useState(undefined); // Metadata depending on profile type
   const [projectInformation, setprojectInformation] = useState(undefined); // Profile information
   const { locale } = useParams();
@@ -48,7 +41,7 @@ const ProjectInfoForm = ({ labels, metadata, projectData}: any) => {
 
   return (
     <div
-      className="blockp-6 bg-white border border-gray-200 rounded-lg px-10 py-5 items-center" id='create_project'>
+      className="blockp-6 bg-white border border-gray-200 rounded-lg px-10 py-5 items-center">
       <h2 className="mb-6 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{labels.cta_new_project}</h2>
       <div className="grid gap-6 md:grid-cols-2">
         <div>
