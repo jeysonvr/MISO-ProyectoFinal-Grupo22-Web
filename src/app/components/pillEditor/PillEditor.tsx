@@ -66,7 +66,7 @@ const PillEditor = ({
       return [...pills, { pillValue, pillText, pillExtraValue, pillExtraText }];
     })
     setInputValue('');
-  }, [pillsAmountLimit, isMultiSelector]);
+  }, [pillsAmountLimit, isMultiSelector, type]);
 
   const handleDeletePill = useCallback((e: any) => {
     e.preventDefault();
@@ -93,7 +93,7 @@ const PillEditor = ({
   useEffect(() => {
     if (!elements?.[0]?.extraData) return;
     setSecondarySelectorData(elements?.[0]?.extraData);
-  }, [elements?.[0]?.extraData]);
+  }, [elements]);
 
   return (
     <div className='mb-4'>

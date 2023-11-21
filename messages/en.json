@@ -17,7 +17,9 @@
     "candidates": "Candidates",
     "employees": "Employees",
     "interviews": "Interviews",
-    "contract": "Contract registration"
+    "contract": "Contract registration",
+    "profile": "Profile",
+    "sign_out": "Log out"
   },
   "language": {
     "en": "English",
@@ -140,7 +142,9 @@
     "label_hour_start": "Initial time",
     "label_hour_end": "Final time",
     "label_subject": "Subject",
-    "label_not_interviews": "You don't have scheduled interviews"
+    "label_not_interviews": "You don't have scheduled interviews",
+    "label_resuls": "Results",
+    "cta_results": "Show"
   },
   "project": {
     "title_projects": "Projects",
@@ -165,6 +169,16 @@
     "register_success": "Successful register",
     "successfully_created": "Successfully created",
     "try_again": "There was an error, try again",
-    "update_success": "Successful update"
+    "update_success": "Successful update",
+    "label_status": "Status"
+  },
+  "contract": {
+    "label_candidate": "Canditate",
+    "label_company": "Company",
+    "label_project": "Project",
+    "label_rol": "Rol",
+    "cta_cancel": "Cancel",
+    "cta_save": "Save",
+    "label_title": "Registry Contract"
   }
 }

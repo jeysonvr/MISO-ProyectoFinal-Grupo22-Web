@@ -2,15 +2,17 @@
 
 import React, { useMemo } from "react";
 import Link from "next/link";
+import { usePathname } from 'next/navigation';
+
 import Logo from "./Logo";
 import { UrlPath } from "@/app/contants/urlPath";
 import '../../../globals.css';
 
-const Navbar = ({ toggle, menuItems }: { toggle: () => void, menuItems: any }) => {
-
+const Navbar = ({ toggle, menuItems, profileMenuItems }: { toggle: () => void, menuItems: any, profileMenuItems: any }) => {
+  const pathname = usePathname();
   const onProfileClick = () => {
     // if is logged in then allow dropdown
-    if (menuItems.length) return;
+    if (menuItems?.length) return;
 
     window.location.href = UrlPath.login;
   }
@@ -32,23 +34,27 @@ const Navbar = ({ toggle, menuItems }: { toggle: () => void, menuItems: any }) =
           <svg className="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path></svg>
         </div>
         <div id='userDropdown' className='z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600'>
-          <div className={`${!menuItems.length ? 'hidden' : ''}`}>
-          <ul className='py-2 text-sm text-gray-700 dark:text-gray-200' aria-labelledby="avatarButton">
-            <li>
-              <a href={UrlPath.profile} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
-            </li>
-          </ul>
-          <div className="py-1">
-            <a
-              onClick={onLogout}
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
-            >Sign out</a>
-          </div>
+          <div className={`${!menuItems?.length ? 'hidden' : ''}`}>
+            <ul className='py-2 text-sm text-gray-700 dark:text-gray-200' aria-labelledby="avatarButton">
+              {
+                profileMenuItems?.map((profileItem: any, id: any) => (
+                  <li key={id}>
+                    <a href={profileItem?.href} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{profileItem?.label}</a>
+                  </li>
+                ))
+              }
+            </ul>
+            <div className="py-1">
+              <a
+                onClick={onLogout}
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+              >Sign out</a>
+            </div>
           </div>
         </div>
       </>
     )
-  }, [menuItems.length, onProfileClick, onLogout]);
+  }, [menuItems?.length, onProfileClick, onLogout, profileMenuItems]);
 
   return (
     <>
@@ -75,8 +81,13 @@ const Navbar = ({ toggle, menuItems }: { toggle: () => void, menuItems: any }) =
             </button>
             <ul className="hidden md:flex gap-x-6 text-black ">
               {
-                menuItems.map((item: any) => (
-                  <li key={item.label}>
+                menuItems?.map((item: any) => (
+                  <li
+                    key={item.label}
+                    style={{
+                      color: `${item.href === pathname ? 'var(--primary-color-500)' : ''}`
+                    }}
+                  >
                     <Link href={item.href}>
                       <p>{item.label}</p>
                     </Link>

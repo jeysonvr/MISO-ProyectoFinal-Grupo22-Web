@@ -52,10 +52,6 @@ const Navigation = ({ labels }: any) => {
     ],
     [UserType.recruiter]: [
       {
-        label: labels.interviews,
-        href: '/interviews'
-      },
-      {
         label: labels.contract,
         href: '/contract'
       },
@@ -64,6 +60,23 @@ const Navigation = ({ labels }: any) => {
         href: '/interviews'
       }
     ],
+  }
+
+  const profileMenuItemsMapper = {
+    [UserType.anonymous]: [],
+    [UserType.candidate]: [
+      {
+        label: labels.profile,
+        href: UrlPath.profile
+      },
+    ],
+    [UserType.company]: [
+      {
+        label: labels.profile,
+        href: UrlPath.profile
+      },
+    ],
+    [UserType.recruiter]: [],
   }
   const appContext = useAppContext();
 
@@ -76,7 +89,11 @@ const Navigation = ({ labels }: any) => {
   return (
     <>
       <Sidebar isOpen={isOpen} toggle={toggle} />
-      <Navbar toggle={toggle} menuItems={menuItemsMapper[appContext.user.type]} />
+      <Navbar
+        toggle={toggle}
+        menuItems={menuItemsMapper[appContext.user.type]}
+        profileMenuItems={profileMenuItemsMapper[appContext.user.type]}
+      />
     </>
   );
 };

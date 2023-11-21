@@ -3,5 +3,6 @@ export const UrlPath = {
   register: '/register',
   home: '/',
   profile: '/profile',
-  searchCandidates: 'search-candidate',
+  searchCandidates: '/search-candidate',
+  interviews: '/interviews'
 }
