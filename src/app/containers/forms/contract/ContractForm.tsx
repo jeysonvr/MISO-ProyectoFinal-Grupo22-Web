@@ -98,44 +98,30 @@ const ContractForm = ({ labels }: any) => {
 
   }
 
-  return (
-    <form onSubmit={onFormSubmit}>
-      <div className='text-right'>
-        <Button
-          style={ButtonStyle.secondary}
-          type={'button'}
-          text={labels.cta_cancel}
-          onClick={handleCancel}
-        />
-        <Button
-          style={ButtonStyle.primary}
-          type={'submit'}
-          icon={IconType.save}
-          text={labels.cta_save}
-        />
-      </div>
+    return (
+      <form onSubmit={onFormSubmit} className={"self-center w-5/6"}>
       <div
-        className="blockp-6 bg-white border border-gray-200 rounded-lg px-10 py-5 items-center">
-        <h2 className="mb-6 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{labels.title_personal_info}</h2>
-        <div className="grid gap-6 mb-6">
-          <div>
-            <label htmlFor="candidate" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_candidate}</label>
-            <select
-              id="candidate"
-              className="mb-10 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              value={candidatoSeleccionado}
-              onChange={onSelectedCandidateChange}
-            >
-              <option selected>{labels.label_candidate}</option>
-              {
-                listCandidatos.map((candidato: any, index: number) => (
-                  <option key={candidato.id} value={candidato.usuario.id}>
-                    {`${candidato.usuario.nombre_completo} - ${candidato.usuario.email}`}
-                  </option>
-                ))
-              }
-            </select>
-          </div>
+      className="blockp-6 bg-white border border-gray-200 rounded-lg px-10 py-5 cl-7 ">
+      <h2 className="mb-6 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{labels.title_personal_info}</h2>
+      <div className="grid gap-6 mb-6">
+      <div>
+        <label htmlFor="candidate" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_candidate}</label>
+        <select
+          id="candidate"
+          className="mb-10 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          value={candidatoSeleccionado}
+          onChange={onSelectedCandidateChange}
+        > 
+        <option selected>{labels.label_candidate}</option>
+          {
+            listCandidatos.map((candidato:any, index: number) => (
+              <option key={candidato.id} value={candidato.usuario.id}>
+                  {`${candidato.usuario.nombre_completo} - ${candidato.usuario.email}`}
+              </option>
+            ))
+          }
+        </select>
+      </div>
 
           <div>
             <label htmlFor="empresa" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labels.label_company}</label>
@@ -195,7 +181,21 @@ const ContractForm = ({ labels }: any) => {
           </div>
         </div>
 
-
+      
+      </div>
+      <div className='text-right'>
+        <Button
+          style={ButtonStyle.secondary}
+          type={'button'}
+          text={labels.cta_cancel}
+          onClick={handleCancel}
+        />
+        <Button
+          style={ButtonStyle.primary}
+          type={'submit'}
+          icon={IconType.save}
+          text={labels.cta_save}
+        />
       </div>
     </form>
   )
