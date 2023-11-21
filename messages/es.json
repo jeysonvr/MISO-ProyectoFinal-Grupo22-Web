@@ -157,6 +157,7 @@
     "cta_add": "Agregar",
     "cta_cancel": "Cancelar",
     "cta_save": "Guardar",
+    "cta_remove": "Remover",
     "label_status": "Estado",
     "label_active": "Activo",
     "label_inactive": "Inactivo",
@@ -179,5 +180,22 @@
     "cta_cancel": "Cancelar",
     "cta_save": "Guardar",
     "label_title": "Registro contrato"
+  },
+  "employees": {
+    "title_employees": "Empleados",
+    "label_name": "Nombre",
+    "label_start_date": "Fecha Inicio",
+    "label_end_date": "Fecha Fin",
+    "label_status": "Estado",
+    "label_evaluation": "Evaluación de desempeño",
+    "cta_add": "Agregar",
+    "cta_cancel": "Cancelar",
+    "cta_save": "Guardar",
+    "cta_remove": "Remover",
+    "label_active": "Activo",
+    "label_inactive": "Inactivo",
+    "label_no_content": "La empresa no tiene empleados",
+    "label_employee": "Empleado",
+    "label_loading": "Cargando..."
   }
 }

@@ -16,6 +16,7 @@ export default function Projects() {
     cta_add: labels('cta_add'),
     cta_cancel: labels('cta_cancel'),
     cta_save: labels('cta_save'),
+    cta_remove: labels('cta_remove'),
     label_status: labels('label_status'),
     label_active: labels('label_active'),
     label_inactive: labels('label_inactive'),

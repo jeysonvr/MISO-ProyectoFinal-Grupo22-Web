@@ -56,19 +56,38 @@ const ProjectForm = ({ labels }: any) => {
 
     const getData = (data: any) => {
         let roles: any = [];
-        let project: any = [];
+        let profile: any = [];
 
-        roles[0] = parseInt(data.role.value);
+        const rolesProfile = document.querySelectorAll('#role');
 
-        project.habilidadesBlandas = data.soft_skills.value ? data.soft_skills.value.split(',') : [];
-        project.habilidadesTecnicas = data.technical_skills.value ? data.technical_skills.value.split(',') : [];
+        // Roles profile
+        if (rolesProfile.length > 1) {
+            data.role.forEach((rol: any, index: number) => {
+                if (!rol?.value) return;
+                profile.habilidadesBlandas = data.soft_skills[index].value ? data.soft_skills[index].value.split(',') : [];
+                profile.habilidadesTecnicas = data.technical_skills[index].value ? data.technical_skills[index].value.split(',') : [];
+                roles.push({
+                    id_rol: data.role[index].value,
+                    habilidadesBlandas: profile.habilidadesBlandas.map((valor: any) => Number(valor)),
+                    habilidadesTecnicas: profile.habilidadesTecnicas.map((valor: any) => Number(valor)), 
+                })
+            })
+        } else {
+            profile.habilidadesBlandas = data.soft_skills.value ? data.soft_skills.value.split(',') : [];
+            profile.habilidadesTecnicas = data.technical_skills.value ? data.technical_skills.value.split(',') : [];    
+            roles = [
+            {
+                id_rol: roles[0] = parseInt(data.role.value),
+                habilidadesBlandas: profile.habilidadesBlandas.map((valor: any) => Number(valor)),
+                habilidadesTecnicas: profile.habilidadesTecnicas.map((valor: any) => Number(valor)), 
+            }
+            ]
+        }
 
         return {
             nombre: data.projectName.value,
             descripcion: data.description.value,
             rolesProyecto: roles,
-            habilidadesBlandas: project.habilidadesBlandas.map((valor: any) => Number(valor)),
-            habilidadesTecnicas: project.habilidadesTecnicas.map((valor: any) => Number(valor)),
             id_estado: parseInt(data.status.value),
             id_empresa: id_Company.current,
         }
