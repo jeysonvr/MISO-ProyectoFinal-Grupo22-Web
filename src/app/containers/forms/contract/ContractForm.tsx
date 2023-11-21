@@ -96,23 +96,9 @@ const ContractForm = ({ labels }: any) => {
     }
 
     return (
-      <form onSubmit={onFormSubmit}>
-      <div className='text-right'>
-        <Button
-          style={ButtonStyle.secondary}
-          type={'button'}
-          text={labels.cta_cancel}
-          onClick={handleCancel}
-        />
-        <Button
-          style={ButtonStyle.primary}
-          type={'submit'}
-          icon={IconType.save}
-          text={labels.cta_save}
-        />
-      </div>
+      <form onSubmit={onFormSubmit} className={"self-center w-5/6"}>
       <div
-      className="blockp-6 bg-white border border-gray-200 rounded-lg px-10 py-5 items-center">
+      className="blockp-6 bg-white border border-gray-200 rounded-lg px-10 py-5 cl-7 ">
       <h2 className="mb-6 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{labels.title_personal_info}</h2>
       <div className="grid gap-6 mb-6">
       <div>
@@ -193,7 +179,21 @@ const ContractForm = ({ labels }: any) => {
       </div>
 
       
-    </div>
+      </div>
+      <div className='text-right'>
+        <Button
+          style={ButtonStyle.secondary}
+          type={'button'}
+          text={labels.cta_cancel}
+          onClick={handleCancel}
+        />
+        <Button
+          style={ButtonStyle.primary}
+          type={'submit'}
+          icon={IconType.save}
+          text={labels.cta_save}
+        />
+      </div>
     </form>
     )
 }
