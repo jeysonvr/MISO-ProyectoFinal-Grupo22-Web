@@ -61,6 +61,23 @@ const Navigation = ({ labels }: any) => {
       }
     ],
   }
+
+  const profileMenuItemsMapper = {
+    [UserType.anonymous]: [],
+    [UserType.candidate]: [
+      {
+        label: labels.profile,
+        href: UrlPath.profile
+      },
+    ],
+    [UserType.company]: [
+      {
+        label: labels.profile,
+        href: UrlPath.profile
+      },
+    ],
+    [UserType.recruiter]: [],
+  }
   const appContext = useAppContext();
 
   // toggle sidebar
@@ -72,7 +89,11 @@ const Navigation = ({ labels }: any) => {
   return (
     <>
       <Sidebar isOpen={isOpen} toggle={toggle} />
-      <Navbar toggle={toggle} menuItems={menuItemsMapper[appContext.user.type]} />
+      <Navbar
+        toggle={toggle}
+        menuItems={menuItemsMapper[appContext.user.type]}
+        profileMenuItems={profileMenuItemsMapper[appContext.user.type]}
+      />
     </>
   );
 };

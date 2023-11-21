@@ -101,7 +101,7 @@ const ProjectForm = ({ labels }: any) => {
                 toast.dismiss(toastWait);
                 toast.error(labels.alert_try_again);
             });
-    }, []);
+    }, [labels.alert_please_wait, labels.alert_successfully_created, labels.alert_try_again]);
 
     useEffect(() => {
         // Query params

@@ -33,7 +33,7 @@ export const labelsProfileInfo = {
   input_business_vertical: 'Otra vertical',
   input_ubication_country: 'País',
   input_ubication_city: 'Ciudad',
-}
+};
 
 export const labelsLogin = {
   title_login: "Iniciar sesión",
@@ -46,7 +46,7 @@ export const labelsLogin = {
   alert_please_wait: 'Por favor espere...',
   alert_login_success: 'Inicio de sesión exitoso',
   alert_try_again: 'Hubo un error, intente de nuevo',
-}
+};
 
 export const labelsSignup = {
   title_signup: "Registrarme",
@@ -57,7 +57,7 @@ export const labelsSignup = {
   cta_signup: "Registrarme",
   label_have_an_account: "¿Tienes una cuenta?",
   label_login: "Iniciar sesión"
-}
+};
 
 export const labelsHome = {
   label_oportunities: "Miles de oportunidades ",
@@ -67,7 +67,7 @@ export const labelsHome = {
   cta_signup: "Registrarme",
   label_phrase_1: "Inicia sesión o regístrate y accede a todas estas oportunidades.",
   label_phrase_2: "Si eres empresa, podrás encontrar el personal más calificado para tus proyectos."
-}
+};
 
 export const labelSearchCandidate = {
   title: "Buscar <span>Candidatos</span>",
@@ -79,7 +79,7 @@ export const labelSearchCandidate = {
   filter_country: "País",
   filter_tech_skills: "Habilidades técnicas",
   filter_soft_skills: "Habilidades blandas"
-}
+};
 
 export const labelTechTest = {
   main_title: "Tech Test",
@@ -99,7 +99,7 @@ export const labelTechTest = {
   label_ready: "Performed",
   label_presen: "Present",
   label_not_test: "Not test pending for the candidate"
-}
+};
 
 export const labelHome = {
   label_oportunities: 'Miles de oportunidades ',
@@ -116,4 +116,13 @@ export const labelHome = {
   title_part_1: 'Construye',
   title_part_2: 'tu futuro',
   title_part_3: 'iniciando hoy mismo',
-}
+};
+
+export const labelInterview = {
+  label_loading: 'Loading...',
+  label_not_interviews: 'No interviews available',
+  label_subject: 'Subject',
+  label_date: 'Date',
+  label_hour_start: 'Start Time',
+  label_hour_end: 'End Time',
+};

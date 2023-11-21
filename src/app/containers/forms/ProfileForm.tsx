@@ -139,9 +139,7 @@ const ProfileForm = ({ labels }: any) => {
       });
 
     //creacion de la evaluacion básica
-
-    // TODO: Show success message
-  }, [userEmail, userType]);
+  }, [userEmail, userType, getDataByRol, labels.alert_please_wait, labels.alert_try_again, labels.alert_update_success]);
 
   const handleCancel = useCallback(() => {
     window.location.reload();
