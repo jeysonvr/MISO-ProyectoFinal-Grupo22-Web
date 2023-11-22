@@ -14,7 +14,7 @@
     "tech_tests": "Pruebas técnicas",
     "performance_review": "Evaluación de desempeño",
     "proyects": "Proyectos",
-    "candidates": "Candidates",
+    "candidates": "Candidatos",
     "employees": "Empleados",
     "interviews": "Entrevistas",
     "contract": "Registro contrato",
@@ -187,7 +187,7 @@
     "label_start_date": "Fecha Inicio",
     "label_end_date": "Fecha Fin",
     "label_status": "Estado",
-    "label_evaluation": "Evaluación de desempeño",
+    "label_evaluation": "Acción",
     "cta_add": "Agregar",
     "cta_cancel": "Cancelar",
     "cta_save": "Guardar",
@@ -196,6 +196,11 @@
     "label_inactive": "Inactivo",
     "label_no_content": "La empresa no tiene empleados",
     "label_employee": "Empleado",
-    "label_loading": "Cargando..."
+    "label_loading": "Cargando...",
+    "label_performance": "Ev. desempeño",
+    "label_performance_title": "Evaluación de desempeño",
+    "label_watch": "Ver",
+    "label_close": "Cerrar"
+
   }
 }
