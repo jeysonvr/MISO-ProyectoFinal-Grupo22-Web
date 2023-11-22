@@ -1,17 +1,19 @@
 "use client";
 
 import React from 'react';
-import Link from "next/link";
+import { useRouter } from 'next/navigation';
 
 import { useAppContext } from "../../providers/AppProvider";
 import { UserType } from '../../contants/userType';
 import { UrlPath } from '../../contants/urlPath';
+import Button, { ButtonStyle } from '../../components/button/Button';
 
 /**
  * Home page
  * @returns JSX
  */
 export const HomeContainer = ({ labels }: any) => {
+  const router = useRouter();
   const appContext = useAppContext();
 
   const userEmail = appContext?.user?.email;
@@ -21,10 +23,7 @@ export const HomeContainer = ({ labels }: any) => {
     return (
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 pt-20 text-center lg:pt-32">
         <h1 className="mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight text-slate-900 sm:text-7xl">{labels.title_part_1}
-          <span
-            className="relative whitespace-nowrap"
-            style={{ color: '#05A89B' }}
-          >
+          <span className="relative whitespace-nowrap">
             <svg aria-hidden="true" viewBox="0 0 418 42"
               className="absolute left-0 top-2/3 h-[0.58em] w-full" preserveAspectRatio="none"
               style={{ fill: '#B6E5E1' }}
@@ -84,42 +83,30 @@ export const HomeContainer = ({ labels }: any) => {
     )
   }
 
-  return (
-    <div className="container mx-auto px-4 flex flex-col justify-center items-center h-70vh bg-b6e5e1 text-center" style={{ height: '70vh', background: "#b6e5e1", textAlign: 'center' }}>
-      <div className="pb-5 pt-5 ">
-        <span className="text-center text-2xl font-bold" style={{ color: '#0DA89B' }}>{labels.label_oportunities}</span>
-        <span className="text-center text-2xl font-bold text-black">{labels.label_for_you}</span>
-      </div>
-      <div>
-        <Link href="login" className="ml-2 text-teal-500 font-semibold">
-          <button className="px-4 mx-auto h-8" id='loginBtn' type="submit"
-            style={{
-              backgroundColor: '#0DA89B',
-              color: 'white',
-              border: 'none',
-              borderRadius: '5px',
-            }}>
-            {labels.cta_login}
-          </button>
-        </Link>
-        <span className="text-center ml-2">{labels.span_or}</span>
-        <Link href="signup" className="ml-2 text-teal-500 font-semibold">
-          <button className="px-4 mx-auto h-8" id='signupBtn' type="submit"
-            style={{
-              backgroundColor: '#0DA89B',
-              color: 'white',
-              border: 'none',
-              borderRadius: '5px',
-            }}>
-            {labels.cta_signup}
-          </button>
-        </Link>
-      </div>
-      <div className="pb-5 pt-5 ">
-        <span className="text-center text-black">{labels.label_phrase_1}</span>
-        <br></br>
-        <span className="text-center text-black">{labels.label_phrase_2}</span>
-      </div>
+return (
+  <div className="container mx-auto px-4 flex flex-col justify-center items-center h-70vh bg-b6e5e1 text-center" style={{ height: '70vh' }}>
+    <h1 className="opacity-0">Home page</h1>
+    <div className="py-5">
+      <span className="text-center text-2xl font-bold text-teal-700">{labels.label_oportunities}</span>
+      <span className="text-center text-2xl font-bold text-black">{labels.label_for_you}</span>
     </div>
-  );
+    <div className="ml-2">
+      <Button
+        style={ButtonStyle.primary}
+        text={labels.cta_login}
+        onClick={() => router.push(UrlPath.login)}
+      />
+      <Button
+        style={ButtonStyle.primary}
+        text={labels.cta_signup}
+        onClick={() => router.push(UrlPath.register)}
+      />
+    </div>
+    <div className="pb-5 pt-5 ">
+      <span className="text-center text-black">{labels.label_phrase_1}</span>
+      <br></br>
+      <span className="text-center text-black">{labels.label_phrase_2}</span>
+    </div>
+  </div>
+);
 }

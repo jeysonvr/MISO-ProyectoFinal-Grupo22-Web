@@ -67,7 +67,7 @@ const LoginForm = ({ labels }: any) => {
                 <img className="w-80 h-80" src="/images/imageBackground.png" alt='Background Image'></img>
             </div>
             <div className="p-4 float-right mx-auto w-2/5 bg-white h-full">
-                <h2 className="pb-5 text-center text-2xl font-bold text-black">{labels.title_login}</h2>
+                <h1 className="pb-5 text-center text-2xl font-bold text-black">{labels.title_login}</h1>
                 <form className="text-center" onSubmit={handleSubmit}>
                     <div>
                         <label className="text-left block" htmlFor="email">{labels.label_email}</label>
@@ -111,7 +111,7 @@ const LoginForm = ({ labels }: any) => {
                             id='loginBtn'
                             type="submit"
                             style={{
-                                backgroundColor: '#0DA89B',
+                                backgroundColor: 'var(--primary-color-700)',
                                 color: 'white',
                                 border: 'none',
                                 borderRadius: '5px',
@@ -122,7 +122,7 @@ const LoginForm = ({ labels }: any) => {
                     </div>
                     <div className="flex items-center justify-center mt-3">
                         <label> {labels.label_have_an_account} </label>
-                        <Link href="signup" className="ml-2 text-teal-500 font-semibold">
+                        <Link href="signup" className="ml-2 text-teal-700 font-semibold">
                             <p>{labels.label_create_account}</p>
                         </Link>
                     </div>

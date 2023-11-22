@@ -1,7 +1,7 @@
 import React from "react";
 
 const PerformanceReview = () => {
-  return <div>Performance review</div>;
+  return <h1>Performance review</h1>;
 };
 
 export default PerformanceReview;

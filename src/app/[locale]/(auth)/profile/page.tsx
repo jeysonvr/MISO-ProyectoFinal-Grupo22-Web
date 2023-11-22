@@ -47,9 +47,9 @@ export default function Profile() {
   };
 
   return (
-    <main className="flex flex-col justify-between p-16 container m-auto">
+    <div className="flex flex-col justify-between p-16 container m-auto">
       <h1 className="mb-12 font-bold tracking-tight text-gray-900 text-4xl">{labels('main_title')}</h1>
       <ProfileForm labels={profileLabels} />
-    </main>
+    </div>
   )
 }

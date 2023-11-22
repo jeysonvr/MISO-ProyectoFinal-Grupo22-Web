@@ -17,10 +17,10 @@ export default function Contract() {
     alert_update_success: alerts('update_success'),
     alert_try_again: alerts('try_again'),
   };
-    return (
-      <main className="flex flex-col justify-between p-16 container m-auto">
-        <h1 className="mb-12 font-bold tracking-tight text-gray-900 text-4xl">{labels('label_title')}</h1>
-        <ContractForm labels={contractLabels}/>
-      </main>
-    )
-  }
+  return (
+    <div className="flex flex-col justify-between p-16 container m-auto">
+      <h1 className="mb-12 font-bold tracking-tight text-gray-900 text-4xl">{labels('label_title')}</h1>
+      <ContractForm labels={contractLabels} />
+    </div>
+  )
+}

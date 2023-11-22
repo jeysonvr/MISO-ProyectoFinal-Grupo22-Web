@@ -6,6 +6,14 @@ import * as appProvider from '../../providers/AppProvider';
 
 import { HomeContainer } from './Home';
 
+jest.mock("next/navigation", () => ({
+  useRouter() {
+    return {
+      router: () => null,
+    };
+  }
+}));
+
 describe('Footer component', () => {
   it('should render correctly for identified user', async () => {
     jest.spyOn(appProvider, 'useAppContext').mockImplementation(() => ({

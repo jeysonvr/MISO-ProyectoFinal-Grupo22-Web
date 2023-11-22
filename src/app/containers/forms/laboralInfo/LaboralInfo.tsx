@@ -60,7 +60,7 @@ const LaboralInfoForm = ({ labels, metadata, profileData }: any) => {
   return (
     <div
       className="blockp-6 bg-white border border-gray-200 rounded-lg px-10 py-5 items-center mt-2">
-      <h5 className="mb-6 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{labels.title_laboral_info}</h5>
+      <h2 className="mb-6 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{labels.title_laboral_info}</h2>
       {
         laboralRegisters.map((register, idx) => (
           <div className="grid gap-6 my-16 md:grid-cols-2" key={'laboralRegister' + idx}>

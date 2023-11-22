@@ -60,7 +60,7 @@ function InterviewGrid({ labels }: any) {
                 />
               )
             }
-            <div className="grid grid-cols-5 bg-[#f7a46c] pt-5 pb-5 pl-5 border-solid">
+            <div className="grid grid-cols-5 bg-[#8c4516] pt-5 pb-5 pl-5 border-solid">
               <div className='text-[#FFFFFF] font-bold'>{labels.label_subject}</div>
               <div className='text-[#FFFFFF] font-bold'>{labels.label_date}</div>
               <div className='text-[#FFFFFF] font-bold'>{labels.label_hour_start}</div>

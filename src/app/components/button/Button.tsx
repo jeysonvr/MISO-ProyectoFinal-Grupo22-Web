@@ -51,7 +51,7 @@ const iconsMapper = {
 const Button = ({ style, icon, text, onClick, type = 'button', classOverrides }: IButton) => {
   return (
     <button
-      className={`${stylesMapper[style]} ${classOverrides ?? ''}`}
+      className={`${classOverrides ?? ''} ${stylesMapper[style]}`}
       onClick={onClick}
       type={type}
     >

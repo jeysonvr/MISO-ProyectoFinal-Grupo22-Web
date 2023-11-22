@@ -28,6 +28,7 @@ export default function Projects() {
 
   return (
     <main className="flex flex-col items-center justify-between p-24">
+      <h1 className="mb-12 font-bold tracking-tight text-gray-900 text-4xl">{labels('title_projects')}</h1>
       <ProjectForm labels={projectLabels} />
     </main>
   )
