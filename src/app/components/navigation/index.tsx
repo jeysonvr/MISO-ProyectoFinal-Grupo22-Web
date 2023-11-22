@@ -21,7 +21,7 @@ const Navigation = ({ labels }: any) => {
       },
       {
         label: labels.performance_review,
-        href: '/performanceReview'
+        href: '/performance'
       },
       {
         label: labels.interviews,

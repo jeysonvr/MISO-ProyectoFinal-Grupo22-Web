@@ -55,7 +55,7 @@ const Sidebar = ({
         <li
           role="listitem">
           <Link
-            href="/performanceReview" onClick={toggle}>
+            href="/performance" onClick={toggle}>
             <p>Evaluación de Desempeño</p>
           </Link>
         </li>
