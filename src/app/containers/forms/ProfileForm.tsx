@@ -53,10 +53,10 @@ const ProfileForm = ({ labels }: any) => {
         informacionAcademica = [
           {
             institucion: data.educative_institution_name.value,
-            titulo: data.degree.value,
-            en_curso: data.isInProgress.checked ? 1 : 0,
-            fecha_inicio: data.startDate.value,
-            fecha_fin: data.endDate.value,
+            titulo: data.academic_title.value,
+            en_curso: data.academic_inProgress.checked ? 1 : 0,
+            fecha_inicio: data.academic_startDate.value,
+            fecha_fin: data.academic_endDate.value,
           }
         ]
       }
