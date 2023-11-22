@@ -1,4 +1,4 @@
-import PerformanceReviewGrid from '@/app/containers/Grid/PerformanceReview/PerformanceReviewGrid';
+import PerformanceReviewGrid from '../../../../app/containers/Grid/PerformanceReview/PerformanceReviewGrid';
 import { useTranslations } from 'next-intl';
 
 export default function Profile() {
