@@ -48,7 +48,7 @@ const QuestionForm = ({ testId, question, currentQuestionIndex, onNextQuestion, 
 
     if (currentQuestionIndex >= 5 ) {
       let finalLabel = labels.cta_finished_test;
-      const end = endTest();
+      endTest();
       return (
         <div>
           <p id='idFinal'>{finalLabel}</p>

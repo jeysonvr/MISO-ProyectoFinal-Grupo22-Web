@@ -27,7 +27,7 @@ const ProjectForm = ({ labels }: any) => {
     };
 
     useEffect(() => {
-        const userData = JSON.parse(localStorage.getItem('user') || '{}');
+        const userData = JSON.parse(localStorage.getItem('user') ?? '{}');
         const userEmail = userData.email;
 
         fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/empresa/info/${userEmail}`)
