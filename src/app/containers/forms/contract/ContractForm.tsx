@@ -1,7 +1,6 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
 import Button, { ButtonStyle, IconType } from '../../../components/button/Button';
 import toast from 'react-hot-toast';
 interface IProyecto {

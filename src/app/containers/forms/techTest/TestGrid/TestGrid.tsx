@@ -11,7 +11,7 @@ function TestGrid({ labels }:any) {
  let email :string;
  
  useEffect(() => {
-  email = JSON.parse(localStorage.getItem('user') || '{}').email;
+  email = JSON.parse(localStorage.getItem('user') ?? '{}').email;
   fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/candidato/info/${email}`)
   .then(res => res.json())
   .then(data => {

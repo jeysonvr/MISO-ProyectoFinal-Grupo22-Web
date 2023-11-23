@@ -44,7 +44,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     setUserData(
       {
-        ...JSON.parse(localStorage?.getItem('user') || JSON.stringify(BASE_DATA)),
+        ...JSON.parse(localStorage?.getItem('user') ?? JSON.stringify(BASE_DATA)),
         language: cookieCutter.get('NEXT_LOCALE'),
       },
     );
