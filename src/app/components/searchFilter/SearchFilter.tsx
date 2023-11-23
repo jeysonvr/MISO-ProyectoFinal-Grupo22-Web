@@ -23,7 +23,7 @@ const SearchFilter = ({ metadata, onFilterChange }: ISearchFilter) => {
       {
         metadata?.map((filter, key) => (
           <div className='flex-1 m-1' key={key}>
-            <h3>{filter.label}</h3>
+            <h2>{filter.label}</h2>
 
             < div
               className='mb-10 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'

@@ -1,6 +1,6 @@
 export const UrlPath = {
   login: '/login',
-  register: '/register',
+  register: '/signup',
   home: '/',
   profile: '/profile',
   searchCandidates: '/search-candidate',

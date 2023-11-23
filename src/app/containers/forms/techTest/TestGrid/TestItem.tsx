@@ -31,7 +31,7 @@ function TestItem({ test, labels}: any) {
   }
   return (
     <div className="test-item  grid grid-cols-3 pt-5 pb-5 pl-5 border-solid border-2 border-[#F3F4F6]">
-      <h3 id='nameTest' className='font-bold'>{test.nombre_evaluacion}</h3>
+      <h2 id='nameTest' className='font-bold'>{test.nombre_evaluacion}</h2>
       {status}
       {action}
     </div>

@@ -100,9 +100,9 @@ const SignupForm = ({ labels }: any) => {
                         </span>
                     </button>
                 </div>
-                <h2 className="pb-5 text-center text-2xl font-bold text-black">
+                <h1 className="pb-5 text-center text-2xl font-bold text-black">
                     {labels.title_signup} {userType.text}
-                </h2>
+                </h1>
                 <form className="text-center" onSubmit={handleSubmit}>
                     <div>
                         <label className="text-left block" htmlFor="fullName">{labels.label_full_name}</label>
@@ -159,7 +159,7 @@ const SignupForm = ({ labels }: any) => {
                             id='signupBtn'
                             type="submit"
                             style={{
-                                backgroundColor: '#0DA89B',
+                                backgroundColor: 'var(--primary-color-700)',
                                 color: 'white',
                                 border: 'none',
                                 borderRadius: '5px',
@@ -171,7 +171,7 @@ const SignupForm = ({ labels }: any) => {
 
                     <div className="flex items-center justify-center mt-3">
                         <label> {labels.label_have_an_account} </label>
-                        <Link href="login" className="ml-2 text-teal-500 font-semibold">
+                        <Link href="login" className="ml-2 text-teal-700 font-semibold">
                             <p>{labels.label_login}</p>
                         </Link>
                     </div>

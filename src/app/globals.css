@@ -12,6 +12,7 @@
   --neutral-600: #565E6C;
   --neutral-900: #161A1E;
   --primary-color-500: #05A89B;
+  --primary-color-700: #11766e;
   --bg-grid:#FAFAFB;
 
   /* SIZE */
@@ -36,5 +37,5 @@ body {
 
 h1>span,
 button>span {
-  color: var(--primary-color-500);
+  color: var(--primary-color-700);
 }
