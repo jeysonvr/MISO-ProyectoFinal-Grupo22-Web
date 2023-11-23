@@ -5,9 +5,9 @@ import { useParams } from 'next/navigation';
 
 import toast from 'react-hot-toast';
 
-import '../../globals.css';
-import Button, { ButtonStyle, IconType } from '../../components/button/Button';
-import EmployeeEvaluationForm from "./employeeEvaluation/EmployeeEvaluation";
+import '../../../../app/globals.css';
+import Button, { ButtonStyle, IconType } from '../../../components/button/Button';
+import EmployeeEvaluationForm from "../../forms/employeeEvaluation/EmployeeEvaluation";
 
 const EmployeesForm = ({ labels }: any) => {
     const { locale } = useParams();
@@ -124,24 +124,40 @@ const EmployeesForm = ({ labels }: any) => {
           ? (
             <p>{labels.label_no_content}</p>
           ) : (
-            <div className="grid grid-cols-5 bg-[#fafafb]">
+            <div className="grid grid-cols-5">
               {headers.map((header: any, index: number) => (
-                <div className='text-[#565E6C] font-bold pt-5 pb-5 pl-5 pr-5' key={index}>{header}</div>
+                <div className='text-[#565E6C] font-light pt-5 pb-5 pl-5 pr-5 bg-[#FAFAFB]' key={index}>{header}</div>
               ))}
               {content.map((row: any, index: number) => (
                 <>
-                  <div className='text-[#565E6C] font-light pt-5 pb-5 pl-5 pr-5' key={index} onClick={() => handleRowClick(index)}>{row.empleado.nombre_completo}</div>
-                  <div className='text-[#565E6C] font-light pt-5 pb-5 pl-5 pr-5' key={index} onClick={() => handleRowClick(index)}>{row.fecha_inicio}</div>
-                  <div className='text-[#565E6C] font-light pt-5 pb-5 pl-5 pr-5' key={index} onClick={() => handleRowClick(index)}>{row.fecha_fin}</div>
-                  <div className='text-[#565E6C] font-light pt-5 pb-5 pl-5 pr-5' key={index} onClick={() => handleRowClick(index)}>{row.estado}</div>
-                  <div className='text-[#565E6C] font-light pt-5 pb-5 pl-5 pr-5' key={index} onClick={() => handleRowClick(index)}>{row.evaluacion}</div>
+                  <div className='text-[#565E6C] font-bold pt-5 pb-5 pl-5 pr-5' key={row.empleado.nombre_completo}>{row.empleado.nombre_completo}</div>
+                  <div className='text-[#565E6C] font-light pt-5 pb-5 pl-5 pr-5' key={row.fecha_inicio}>{row.fecha_inicio}</div>
+                  <div className='text-[#565E6C] font-light pt-5 pb-5 pl-5 pr-5' key={row.fecha_fin}>{row.fecha_fin}</div>
+                  {row.estado === 'Activo' ? (
+                     <div className='text-[#379AE6] font-light pt-5 pb-5 pl-5 pr-5' key={row.estado}>{row.estado}</div>
+                  ):
+                  (
+                    <div className='text-[#DE3B40] font-light pt-5 pb-5 pl-5 pr-5' key={row.estado}>{row.estado}</div>
+                  )}
+                  {row.estado === 'Activo' ? (
+                    <div className='text-[#0EA89BFF] font-light pt-5 pb-5 pl-5 pr-5 underline cursor-pointer' key={index} 
+                        onClick={() => handleRowClick(index)}>
+                            {labels.label_performance}
+                    </div>
+                  ):
+                  (
+                    <div className='text-[#9095A0FF] font-light pt-5 pb-5 pl-5 pr-5' key={index}
+                        onClick={() => handleRowClick(index)}>{
+                            labels.label_performance}
+                    </div>
+                  )}
                 </>
               ))}
             </div>
           )
         }
         {selectedRow !== null && (
-            <div className="container mx-auto p-4" 
+            <div className="container mx-auto p-4 min-w-full" 
                 id="evaluationForm" 
                 style={{ 
                     display: isContainerOpen ? 'flex' : 'none', 

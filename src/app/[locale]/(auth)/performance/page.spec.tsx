@@ -1,11 +1,32 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import Performance from './page';
+import { NextIntlClientProvider } from 'next-intl';
 
-describe('Performance page', () => {
+import * as message from '../../../../../messages/es.json'
+
+import { render } from '@testing-library/react';
+import PerformanceReview from './page';
+
+jest.mock("next/navigation", () => ({
+  useParams() {
+    return {
+      locale: 'es'
+    };
+  }
+}));
+
+describe('PerformanceReview page', () => {
+  const renderWithProvider = () => (
+    <NextIntlClientProvider
+      locale={'es'}
+      messages={message}
+    >
+      <PerformanceReview />
+    </NextIntlClientProvider >);
   it('should render content', () => {
-    const { getByText } = render(<Performance />);
-    const signUpMessage = getByText('Performance here');
-    expect(signUpMessage).toBeDefined();
+    const mockFetch = jest.fn(() => Promise.resolve({ json: () => Promise.resolve({}) }));
+    global.fetch = mockFetch as any;
+    const { getByText } = render(renderWithProvider());
+    const labelPerformanceReviewTitle = getByText('Evaluación de desempeño');
+    expect(labelPerformanceReviewTitle).toBeDefined();
   });
 });

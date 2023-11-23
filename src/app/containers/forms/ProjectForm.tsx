@@ -182,7 +182,7 @@ const ProjectForm = ({ labels }: any) => {
                             />
                         </div>
                         <div>
-                            <Grid labels={labels} headers={headers} content={content} />
+                            <Grid labels={labels} headers={headers} content={content()} />
                         </div>
                     </>
                 )

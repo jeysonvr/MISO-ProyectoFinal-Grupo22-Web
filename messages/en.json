@@ -187,7 +187,7 @@
     "label_start_date": "Start Date",
     "label_end_date": "End Date",
     "label_status": "Status",
-    "label_evaluation": "Performance Evaluation",
+    "label_evaluation": "Action",
     "cta_add": "Add",
     "cta_cancel": "Cancel",
     "cta_save": "Save",
@@ -196,7 +196,11 @@
     "label_inactive": "Inactive",
     "label_no_content": "Company do not have employees",
     "label_employee": "Employee",
-    "label_loading": "Loading..."
+    "label_loading": "Loading...",
+    "label_performance": "Performance Review",
+    "label_performance_title": "Performance Review",
+    "label_watch": "Watch",
+    "label_close": "Close"
 
   }
 }

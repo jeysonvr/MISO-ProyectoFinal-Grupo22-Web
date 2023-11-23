@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import EmployeesForm from '../../../containers/forms/EmployeesForm';
+import EmployeesForm from '../../../containers/Grid/Employees/EmployeesGrid';
 
 export default function Employees() {
   const labels = useTranslations('employees');
@@ -23,11 +23,12 @@ export default function Employees() {
     alert_please_wait: alerts('please_wait'),
     alert_successfully_created: alerts('successfully_created'),
     alert_try_again: alerts('try_again'),
-    label_loading: labels('label_loading')
+    label_loading: labels('label_loading'),
+    label_performance: labels('label_performance')
   };
 
   return (
-    <main className="flex flex-col items-center justify-between p-24">
+    <main className="flex flex-col justify-between p-16 container m-auto">
       <h1 className="mb-4 font-bold tracking-tight text-gray-900 text-4xl">{labels('title_employees')}</h1>
       <EmployeesForm labels={employeesLabels} />
     </main>
