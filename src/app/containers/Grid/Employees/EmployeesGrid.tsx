@@ -139,7 +139,7 @@ const EmployeesForm = ({ labels }: any) => {
                                         (
                                             <div className='text-[#DE3B40] font-light pt-5 pb-5 pl-5 pr-5' key={row.estado}>{row.estado}</div>
                                         )}
-                                    {row.estado === 'Activo' ? (
+                                    {row.evaluacion_desempeño === null ? (
                                         <div className='text-[#0EA89BFF] font-light pt-5 pb-5 pl-5 pr-5 underline cursor-pointer' key={index}
                                             onClick={() => handleRowClick(index)}>
                                             {labels.label_performance}
@@ -148,7 +148,7 @@ const EmployeesForm = ({ labels }: any) => {
                                         (
                                             <div className='text-[#9095A0FF] font-light pt-5 pb-5 pl-5 pr-5' key={index}
                                                 onClick={() => handleRowClick(index)}>{
-                                                    labels.label_performance}
+                                                    labels.label_sent}
                                             </div>
                                         )}
                                 </>

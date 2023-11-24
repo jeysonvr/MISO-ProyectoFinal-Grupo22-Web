@@ -24,7 +24,8 @@ export default function Employees() {
     alert_successfully_created: alerts('successfully_created'),
     alert_try_again: alerts('try_again'),
     label_loading: labels('label_loading'),
-    label_performance: labels('label_performance')
+    label_performance: labels('label_performance'),
+    label_sent: labels('label_sent')
   };
 
   return (

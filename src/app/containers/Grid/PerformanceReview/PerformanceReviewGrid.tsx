@@ -83,14 +83,19 @@ const PerformanceReviewGrid = ({ labels }: any) => {
                   <div className='text-[#565E6C] font-light pt-5 pb-5 pl-5 pr-5' key={row.fecha_fin}>{row.fecha_fin}</div>
                   {row.estado === 'Activo' ? (
                     <div className='text-[#379AE6] font-light pt-5 pb-5 pl-5 pr-5' key={row.estado}>{row.estado}</div>
-                  ) :
-                    (
-                      <div className='text-[#DE3B40] font-light pt-5 pb-5 pl-5 pr-5' key={row.estado}>{row.estado}</div>
-                    )}
-                  <div className='text-[#0EA89BFF] font-light pt-5 pb-5 pl-5 pr-5 cursor-pointer' key={index} onClick={() => handleRowClick({
-                    empresa: row.empresa.nombre_completo,
-                    descripcion: row.descripcion
-                  })}>{labels.label_watch}</div>
+                  ):
+                  (
+                    <div className='text-[#DE3B40] font-light pt-5 pb-5 pl-5 pr-5' key={row.estado}>{row.estado}</div>
+                  )}
+                  {row.evaluacion_desempeño !== null ? (
+                    <div className='text-[#0EA89BFF] font-light pt-5 pb-5 pl-5 pr-5 cursor-pointer' key={index} onClick={() => handleRowClick({
+                      empresa: row.empresa.nombre_completo,
+                      descripcion: row.descripcion
+                    })}>{labels.label_watch}</div>
+                  ):
+                  (
+                    <div className='text-[#565E6C] font-light pt-5 pb-5 pl-5 pr-5'>{labels.label_not_available}</div>
+                  )}        
                 </>
               ))}
             </div>

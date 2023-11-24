@@ -28,7 +28,8 @@ export default function Profile() {
     label_performance: labels('label_performance'),
     label_company: labels_company('label_company'),
     label_watch: labels('label_watch'),
-    label_close: labels('label_close')
+    label_close: labels('label_close'),
+    label_not_available: labels('label_not_available')
   };
   return (
     <main className="flex flex-col justify-between p-16 container m-auto">
