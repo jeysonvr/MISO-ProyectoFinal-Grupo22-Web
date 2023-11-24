@@ -75,9 +75,9 @@ const ContractForm = ({ labels }: any) => {
 
   const onSelectedEmpresaChange = (e: any) => {
     setEmpresaSeleccionada(e.target.value);
-
+    const empresaId:any =  listEmpresas.find((empresa: any) => empresa.usuario.id == e.target.value);
     // llamar proyectos de la empresa
-    fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/empresa/proyecto/${e.target.value}`)
+    fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/empresa/proyecto/${empresaId?.id}`)
       .then(res => res.json())
       .then(data => setListProyectos(data));
 
@@ -132,7 +132,7 @@ const ContractForm = ({ labels }: any) => {
               {
                 listEmpresas.map((empresa: any, index: number) => (
                   <option
-                    key={empresa.id} value={empresa.id}>
+                    key={empresa.id} value={empresa.usuario.id}>
                     {`${empresa.usuario.nombre_completo}`}
                   </option>
                 ))
