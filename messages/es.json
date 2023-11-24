@@ -201,6 +201,7 @@
     "label_performance_title": "Evaluación de desempeño",
     "label_watch": "Ver",
     "label_close": "Cerrar",
-    "label_not_available": "No disponible"
+    "label_not_available": "No disponible",
+    "label_sent": "Enviada"
   }
 }

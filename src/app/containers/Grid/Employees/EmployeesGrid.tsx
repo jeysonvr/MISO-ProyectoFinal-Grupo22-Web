@@ -22,7 +22,7 @@ const EmployeesForm = ({ labels }: any) => {
         setSelectedRow(index === selectedRow ? null : index);
         setIsContainerOpen(true);
     };
-  
+
     const closeContainer = () => {
         setIsContainerOpen(false);
     };
@@ -119,60 +119,59 @@ const EmployeesForm = ({ labels }: any) => {
 
     return (
         <Suspense fallback={<p>{labels.label_loading}</p>}>
-      {
-        (!content || content.length === 0)
-          ? (
-            <p>{labels.label_no_content}</p>
-          ) : (
-            <div className="grid grid-cols-5">
-              {headers.map((header: any, index: number) => (
-                <div className='text-[#565E6C] font-light pt-5 pb-5 pl-5 pr-5 bg-[#FAFAFB]' key={index}>{header}</div>
-              ))}
-              {content.map((row: any, index: number) => (
-                <>
-                  <div className='text-[#565E6C] font-bold pt-5 pb-5 pl-5 pr-5' key={row.empleado.nombre_completo}>{row.empleado.nombre_completo}</div>
-                  <div className='text-[#565E6C] font-light pt-5 pb-5 pl-5 pr-5' key={row.fecha_inicio}>{row.fecha_inicio}</div>
-                  <div className='text-[#565E6C] font-light pt-5 pb-5 pl-5 pr-5' key={row.fecha_fin}>{row.fecha_fin}</div>
-                  {row.estado === 'Activo' ? (
-                     <div className='text-[#379AE6] font-light pt-5 pb-5 pl-5 pr-5' key={row.estado}>{row.estado}</div>
-                  ):
-                  (
-                    <div className='text-[#DE3B40] font-light pt-5 pb-5 pl-5 pr-5' key={row.estado}>{row.estado}</div>
-                  )}
-                  {row.estado === 'Activo' ? (
-                    <div className='text-[#0EA89BFF] font-light pt-5 pb-5 pl-5 pr-5 underline cursor-pointer' key={index} 
-                        onClick={() => handleRowClick(index)}>
-                            {labels.label_performance}
-                    </div>
-                  ):
-                  (
-                    <div className='text-[#9095A0FF] font-light pt-5 pb-5 pl-5 pr-5' key={index}
-                        onClick={() => handleRowClick(index)}>{
-                            labels.label_performance}
-                    </div>
-                  )}
-                </>
-              ))}
-            </div>
-          )
-        }
-        {selectedRow !== null && (
-            <div className="container mx-auto p-4 min-w-full" 
-                id="evaluationForm" 
-                style={{ 
-                    display: isContainerOpen ? 'flex' : 'none', 
-                    position: 'fixed', 
-                    top: 0, 
-                    left: 0, 
-                    width: '100%', 
-                    height: '100%', 
-                    backgroundColor: 'rgba(0,0,0,0.5)', 
-                    zIndex: 999, 
-                    justifyContent: 'center', 
-                    alignItems: 'center' 
-                }} >
-                {isContainerOpen && (
-                    <>
+            {
+                (!content || content.length === 0)
+                    ? (
+                        <p>{labels.label_no_content}</p>
+                    ) : (
+                        <div className="grid grid-cols-5">
+                            {headers.map((header: any, index: number) => (
+                                <div className='text-[#565E6C] font-light pt-5 pb-5 pl-5 pr-5 bg-[#FAFAFB]' key={index}>{header}</div>
+                            ))}
+                            {content.map((row: any, index: number) => (
+                                <>
+                                    <div className='text-[#565E6C] font-bold pt-5 pb-5 pl-5 pr-5' key={row.empleado.nombre_completo}>{row.empleado.nombre_completo}</div>
+                                    <div className='text-[#565E6C] font-light pt-5 pb-5 pl-5 pr-5' key={row.fecha_inicio}>{row.fecha_inicio}</div>
+                                    <div className='text-[#565E6C] font-light pt-5 pb-5 pl-5 pr-5' key={row.fecha_fin}>{row.fecha_fin}</div>
+                                    {row.estado === 'Activo' ? (
+                                        <div className='text-[#379AE6] font-light pt-5 pb-5 pl-5 pr-5' key={row.estado}>{row.estado}</div>
+                                    ) :
+                                        (
+                                            <div className='text-[#DE3B40] font-light pt-5 pb-5 pl-5 pr-5' key={row.estado}>{row.estado}</div>
+                                        )}
+                                    {row.evaluacion_desempeño === null ? (
+                                        <div className='text-[#0EA89BFF] font-light pt-5 pb-5 pl-5 pr-5 underline cursor-pointer' key={index}
+                                            onClick={() => handleRowClick(index)}>
+                                            {labels.label_performance}
+                                        </div>
+                                    ) :
+                                        (
+                                            <div className='text-[#9095A0FF] font-light pt-5 pb-5 pl-5 pr-5' key={index}
+                                                onClick={() => handleRowClick(index)}>{
+                                                    labels.label_sent}
+                                            </div>
+                                        )}
+                                </>
+                            ))}
+                        </div>
+                    )
+            }
+            {selectedRow !== null && (
+                <div className="container mx-auto p-4 min-w-full"
+                    id="evaluationForm"
+                    style={{
+                        display: isContainerOpen ? 'flex' : 'none',
+                        position: 'fixed',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        backgroundColor: 'rgba(0,0,0,0.5)',
+                        zIndex: 999,
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }} >
+                    {isContainerOpen && (
                         <div style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '8px', maxWidth: '600px', width: '100%' }}>
                             <form onSubmit={onFormSubmit}>
                                 <EmployeeEvaluationForm labels={labels} metadata={content[selectedRow]} onIdContractChange={handleIdContractChange} />
@@ -190,12 +189,11 @@ const EmployeesForm = ({ labels }: any) => {
                                 </div>
                             </form>
                         </div>
-                    </>
-                )}
-            </div>
-        )}
-    </Suspense>
-  );
+                    )}
+                </div>
+            )}
+        </Suspense>
+    );
 }
 
 export default EmployeesForm;

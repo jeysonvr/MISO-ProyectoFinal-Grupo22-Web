@@ -31,7 +31,7 @@ const TechTest = ({ labels }: any) => {
 
 
   useEffect(() => {
-    const testId = localStorage.getItem('testId') || '0';
+    const testId = localStorage.getItem('testId') ?? '0';
     setTest(parseInt(testId));
     fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/evaluacion/pregunta/solicitar/${testId}`,{
         method: 'GET',

@@ -30,13 +30,13 @@ const ResultCard = ({ usuario, country, idiomas, ctaLabel }: ICardResult) => {
               <ul
                 className="mb-5 flex list-none flex-col flex-wrap pl-0 md:flex-row"
                 id="pills-tab"
-                role="tablist"
+                role="list"
                 data-te-nav-ref>
                 {
                   techSkills.map((skill, id) => (
                     <li key={id}>
                       <p
-                        className="my-2 rounded bg-neutral-100 p-2 font-light uppercase leading-tight text-neutral-500 md:mr-2"
+                        className="my-2 rounded bg-neutral-100 p-2 font-light uppercase leading-tight text-neutral-600 md:mr-2"
                         style={{ fontSize: '10px' }}
                       >{skill}</p>
                     </li>

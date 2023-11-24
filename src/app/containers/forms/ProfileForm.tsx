@@ -146,7 +146,7 @@ const ProfileForm = ({ labels }: any) => {
   }, []);
 
   useEffect(() => {
-    const userData = JSON.parse(localStorage.getItem('user') || '{}');
+    const userData = JSON.parse(localStorage.getItem('user') ?? '{}');
     setUserType(userData.type);
     setUserEmail(userData.email);
   }, []);

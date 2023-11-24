@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 
 const EmployeeEvaluationForm = ({ labels, metadata, onIdContractChange}: any) => {
 
