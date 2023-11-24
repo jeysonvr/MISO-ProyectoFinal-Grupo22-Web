@@ -81,7 +81,7 @@ const PerformanceReviewGrid = ({ labels }: any) => {
                   <div className='text-[#565E6C] font-bold pt-5 pb-5 pl-5 pr-5' key={row.empresa.nombre_completo}>{row.empresa.nombre_completo}</div>
                   <div className='text-[#565E6C] font-light pt-5 pb-5 pl-5 pr-5' key={row.fecha_inicio}>{row.fecha_inicio}</div>
                   <div className='text-[#565E6C] font-light pt-5 pb-5 pl-5 pr-5' key={row.fecha_fin}>{row.fecha_fin}</div>
-                  {row.estado === 'Activo' ? (
+                  {row.estado === labels.label_active ? (
                     <div className='text-[#379AE6] font-light pt-5 pb-5 pl-5 pr-5' key={row.estado}>{row.estado}</div>
                   ):
                   (
