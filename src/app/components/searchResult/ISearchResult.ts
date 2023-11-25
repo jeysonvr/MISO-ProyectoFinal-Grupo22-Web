@@ -8,6 +8,7 @@ export interface ICardResult {
   country: string;
   idiomas: any;
   ctaLabel?: string;
+  habilidadesTecnicas?: any;
 }
 
 export default interface ISearchResult {
