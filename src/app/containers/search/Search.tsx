@@ -68,13 +68,13 @@ const SearchContainer = ({ labels, onSearchCandidates }: any) => {
           {
             label: labels.filter_tech_skills,
             placeholder,
-            name: 'habilidadesBlandas',
+            name: 'habilidadesTecnicas',
             options: data.habilidadesTecnicas?.map(({ id, descripcion }: any) => ({ value: id, label: descripcion })),
           },
           {
             label: labels.filter_soft_skills,
             placeholder,
-            name: 'habilidadesTecnicas',
+            name: 'habilidadesBlandas',
             options: data.habilidadesBlandas?.map(({ id, descripcion }: any) => ({ value: id, label: descripcion })),
           },
         ]
@@ -84,7 +84,7 @@ const SearchContainer = ({ labels, onSearchCandidates }: any) => {
 
   // Get results for search
   useEffect(() => {
-    onSearchCandidates?.(JSON.stringify(searchFilter)).then((test: any) => setSearchResult(test));
+    onSearchCandidates?.(JSON.stringify(searchFilter)).then((result: any) => setSearchResult(result));
   }, [searchFilter]);
 
   return (

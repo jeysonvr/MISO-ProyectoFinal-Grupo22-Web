@@ -3,9 +3,8 @@ import React from 'react';
 import { ICardResult } from '../ISearchResult';
 import Button, { ButtonStyle } from '../../button/Button';
 
-const ResultCard = ({ usuario, country, idiomas, ctaLabel }: ICardResult) => {
-  // todo: add tech skills from request
-  const techSkills = ['React', 'HTML', 'Web development'];
+const ResultCard = ({ usuario, country, idiomas, ctaLabel, habilidadesTecnicas }: ICardResult) => {
+  const techSkills = habilidadesTecnicas?.map((skill: any) => idiomas === 'en' ? skill?.descripcion_en : skill?.descripcion) || [];
 
   const userNameArray = usuario.nombre_completo.split(' ');
   const nameInitials = userNameArray?.[0]?.[0] + (userNameArray?.[1]?.[0] || '');
@@ -33,7 +32,7 @@ const ResultCard = ({ usuario, country, idiomas, ctaLabel }: ICardResult) => {
                 role="list"
                 data-te-nav-ref>
                 {
-                  techSkills.map((skill, id) => (
+                  techSkills.map((skill: string, id: number) => (
                     <li key={id}>
                       <p
                         className="my-2 rounded bg-neutral-100 p-2 font-light uppercase leading-tight text-neutral-600 md:mr-2"
